@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - LUNARA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+</head>
+<body class="w-full text-center">
+
+  <!-- Menú de navegación -->
+  <header class="w-full">
+
+  <!-- Encabezado rojo (vacío) -->
+  <div class="bg-red-900 py-4"></div>
+
+  <!-- Fila blanca con logo, buscador, iconos -->
+  <div class="bg-white shadow flex items-center justify-between px-6 py-3">
+    
+    <!-- Izquierda: Logo + Nombre + Menu -->
+    <div class="flex items-center gap-4">
+      <!-- Logo -->
+      <span class="material-icons-outlined">handyman</span>
+      <!-- Nombre -->
+      <h1 class="text-4xl font-bold text-gray-800">FERRE-CHE</h1>
+      <!-- Botón menú hamburguesa (solo visible en móviles) -->
+      <button class="lg:hidden text-gray-700 border px-2 py-1 rounded">☰ Menu</button>
+    </div>
+
+    <!-- Centro: Buscador -->
+    <div class="flex-1 mx-6">
+      <div class="flex border rounded overflow-hidden w-full max-w-md mx-auto">
+        <input type="text" placeholder="¿Qué producto estás buscando?"
+               class="flex-1 px-3 py-2 focus:outline-none">
+        <button class="bg-gray-300 px-4">
+          <span class="material-icons-outlined">search
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Derecha: Iconos -->
+    <div class="flex items-center gap-6 text-gray-700">
+      <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+        <span class="material-symbols-outlined">person</span>
+        <span class="hidden sm:inline">Iniciar sesión </span></a>
+
+      <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+      <span class="material-symbols-outlined">local_shipping</span>
+       <span class="hidden sm:inline">Envío</span></a>
+      
+        <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+      <span class="material-symbols-outlined">shopping_cart</span>
+      <span class="hidden sm:inline">Carrito S/0.00</span></a>
+
+    </div>
+  </div>
+
+  <!-- Menú de navegación -->
+  <nav class="bg-white border-t border-b px-8">
+    <ul class="flex justify-center gap-20 font-semibold text-gray-700 leading-loose">
+      <li><a href="{{ url_for('index') }}" class="py-2 px-3 hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose">INICIO</a>
+      <li><a href="#" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose" >PRODUCTO</a></li>
+      <li><a href="{{ url_for('nosotros') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loosel">NOSOTROS</a></li>
+      <li><a href="#" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose">CATÁLOGO</a></li>
+      <li><a href="#" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose">MARCAS</a></li>
+      <li><a href="{{ url_for('contacto') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose">CONTACTENOS</a></li>
+    </ul>
+  </nav>
+  </header>
+
+<!--MAPS -->
+   <div class="w-full h-[500px]">
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.285944887573!2d-76.39341372534267!3d-13.081055562018937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x910ff9369c2c4741%3A0x717e0d2ed85000d5!2sLibertad%20101%2C%20San%20Vicente%20de%20Ca%C3%B1ete%2015701!5e0!3m2!1ses!2spe!4v1757427141473!5m2!1ses!2spe" 
+    class="w-full h-full border-0" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
+<!-- Sección Contacto -->
+<section class="max-w-6xl mx-auto mt-12 px-6">
+  <div class="grid md:grid-cols-3 gap-8">
+
+    <!-- Columna izquierda: Info de la empresa -->
+    <div class="bg-gray-100 p-8 rounded-2xl shadow-lg md:col-span-1">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Información de Contacto</h2>
+      <ul class="space-y-4 text-gray-700">
+        <li class="flex items-center gap-3">
+          <i class="fa-solid fa-phone text-pink-600"></i>
+          <span>+51 999 888 777</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <i class="fa-brands fa-whatsapp text-green-600"></i>
+          <span>+51 999 555 444</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <i class="fa-solid fa-envelope text-pink-600"></i>
+          <span>contacto@ferreche.com</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <i class="fa-solid fa-location-dot text-pink-600"></i>
+          <span>Libertad 101, San Vicente de Cañete</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <i class="fa-solid fa-clock text-pink-600"></i>
+          <span>Lunes - Sábado: 9am - 7pm</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Columna derecha: Formulario -->
+    <div class="bg-white p-8 rounded-2xl shadow-lg md:col-span-2">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">Contáctanos</h2>
+      <p class="text-gray-600 mb-8">
+        Completa el formulario y nos pondremos en contacto contigo lo antes posible.
+      </p>
+
+      <form action="#" method="POST" class="space-y-6">
+        <div>
+          <label for="nombre" class="block text-left text-gray-700 font-medium">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required
+            class="w-full mt-2 p-3 border rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none">
+        </div>
+
+        <div>
+          <label for="email" class="block text-left text-gray-700 font-medium">Correo electrónico</label>
+          <input type="email" id="email" name="email" required
+            class="w-full mt-2 p-3 border rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none">
+        </div>
+
+        <div>
+          <label for="mensaje" class="block text-left text-gray-700 font-medium">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="4" required
+            class="w-full mt-2 p-3 border rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none"></textarea>
+        </div>
+
+        <button type="submit"
+          class="w-full bg-pink-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-pink-700 transition">
+          Enviar mensaje
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8 px-6 mt-10">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-sm">
+      <!-- Empresa -->
+      <div>
+        <h4 class="font-bold mb-2">FERRE-CHE</h4>
+        <p>Venta de artículos de seguridad industrial en Lima, Perú.</p>
+      </div>
+      <!-- Contactos -->
+      <div>
+        <h4 class="font-bold mb-2">Datos de Contacto</h4>
+        <p><i class="fa-solid fa-phone mr-2"></i> +51 999 888 777</p>
+        <p><i class="fa-solid fa-envelope mr-2"></i> contacto@ferreche.com</p>
+      </div>
+      <!-- Redes sociales -->
+      <div>
+        <h4 class="font-bold mb-2">Redes Sociales</h4>
+        <div class="flex gap-3 text-xl">
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-tiktok"></i>
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+      </div>
+      <!-- Bancos -->
+      <div>
+        <h4 class="font-bold mb-2">Bancos</h4>
+        <div class="flex gap-3">
+          <img src="{{ url_for('static', filename='imagenes/visa.png') }}" class="h-6" alt="Visa">
+          <img src="{{ url_for('static', filename='imagenes/mastercard.png') }}" class="h-6" alt="Mastercard">
+          <img src="{{ url_for('static', filename='imagenes/bcp.png') }}" class="h-6" alt="BCP">
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-xs mt-6 border-t border-gray-700 pt-4">
+      © 2023 Ferre-Che. Todos los derechos reservados.
+    </div>
+  </footer>
+
+</body>
+</html> 

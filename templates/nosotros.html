@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nosotros</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+</head>
+<body class="w-full text-center">
+
+  <!-- Menú de navegación -->
+  <header class="w-full">
+
+  <!-- Encabezado rojo (vacío) -->
+  <div class="bg-red-900 py-4"></div>
+
+  <!-- Fila blanca con logo, buscador, iconos -->
+  <div class="bg-white shadow flex items-center justify-between px-6 py-3">
+    
+    <!-- Izquierda: Logo + Nombre + Menu -->
+    <div class="flex items-center gap-4">
+      <!-- Logo -->
+      <span class="material-icons-outlined">handyman</span>
+      <!-- Nombre -->
+      <h1 class="text-4xl font-bold text-gray-800">FERRE-CHE</h1>
+      <!-- Botón menú hamburguesa (solo visible en móviles) -->
+      <button class="lg:hidden text-gray-700 border px-2 py-1 rounded">☰ Menu</button>
+    </div>
+
+    <!-- Centro: Buscador -->
+    <div class="flex-1 mx-6">
+      <div class="flex border rounded overflow-hidden w-full max-w-md mx-auto">
+        <input type="text" placeholder="¿Qué producto estás buscando?"
+               class="flex-1 px-3 py-2 focus:outline-none">
+        <button class="bg-gray-300 px-4">
+          <span class="material-icons-outlined">search
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Derecha: Iconos -->
+    <div class="flex items-center gap-6 text-gray-700">
+      <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+        <span class="material-symbols-outlined">person</span>
+        <span class="hidden sm:inline">Iniciar sesión </span></a>
+
+      <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+      <span class="material-symbols-outlined">local_shipping</span>
+       <span class="hidden sm:inline">Envío</span></a>
+      
+        <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+      <span class="material-symbols-outlined">shopping_cart</span>
+      <span class="hidden sm:inline">Carrito S/0.00</span></a>
+
+    </div>
+  </div>
+
+  <!-- Menú de navegación -->
+  <nav class="bg-white border-t border-b px-8">
+    <ul class="flex justify-center gap-20 font-semibold text-gray-700 leading-loose">
+      <li><a href="{{ url_for('index') }}" class="py-2 px-3 hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose">INICIO</a>
+      <li><a href="#" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose" >PRODUCTO</a></li>
+      <li><a href="{{ url_for('nosotros') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loosel">NOSOTROS</a></li>
+      <li><a href="#" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose">CATÁLOGO</a></li>
+      <li><a href="#" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose">MARCAS</a></li>
+      <li><a href="{{ url_for('contacto') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose">CONTACTENOS</a></li>
+    </ul>
+  </nav>
+  </header>
+
+  <!-- Hero Nosotros -->
+  <section class="bg-red-900 text-white py-12 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8">
+      <div class="md:w-1/2">
+        <h2 class="text-3xl font-bold mb-4">Corporación Ferre-Che <br> Venta de Artículos de Seguridad Industrial</h2>
+        <p class="leading-relaxed">
+          Somos una empresa familiar peruana dedicada a la venta de productos industriales. 
+          Tenemos más de 4 años de experiencia y toda una amplia gama de productos. 
+          Contamos con un amplio stock que garantiza nuestra confiabilidad y excelencia. 
+          Somos una empresa socialmente responsable con la comunidad y el medio ambiente.
+        </p>
+      </div>
+      <div class="md:w-1/2">
+        <img src="{{ url_for('static', filename='image/nosotros1.png') }}" class="rounded-lg shadow-lg" alt="Ferretería Ferre-Che">
+      </div>
+    </div>
+  </section>
+
+  <!-- Propósito -->
+  <section class="bg-white py-12 px-6 text-center">
+    <h2 class="text-2xl font-bold mb-8">Trabajamos con un propósito</h2>
+    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
+      <!-- Misión -->
+      <div class="bg-blue-50 p-6 rounded-lg shadow-md">
+        <i class="fa-solid fa-bullseye text-3xl text-blue-600 mb-4"></i>
+        <h3 class="font-bold text-lg mb-2">Misión</h3>
+        <p>Brindar a nuestros clientes productos de calidad en artículos de seguridad industrial con atención personalizada y precios competitivos.</p>
+      </div>
+      <!-- Visión -->
+      <div class="bg-yellow-50 p-6 rounded-lg shadow-md">
+        <i class="fa-solid fa-eye text-3xl text-yellow-600 mb-4"></i>
+        <h3 class="font-bold text-lg mb-2">Visión</h3>
+        <p>Ser referentes a nivel nacional en la venta de artículos de seguridad industrial, reconocidos por nuestra confiabilidad y excelencia.</p>
+      </div>
+      <!-- Valores -->
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+        <i class="fa-solid fa-handshake text-3xl text-gray-700 mb-4"></i>
+        <h3 class="font-bold text-lg mb-2">Valores</h3>
+        <ul class="text-left list-disc list-inside">
+          <li>Honestidad</li>
+          <li>Responsabilidad</li>
+          <li>Compromiso</li>
+          <li>Calidad</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+<!-- Únete -->
+<section class="bg-red-900 text-white py-12 px-6 relative">
+  <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-8">
+
+    <!-- Texto a la izquierda -->
+    <div class="lg:w-1/2 text-center lg:text-left z-10">
+      <h2 class="text-2xl font-bold mb-4">Únete a la familia Ferre-Che</h2>
+      <p class="leading-relaxed mb-6">
+        En la ferreteria nos dedicamos a ofrecer equipos de protección personal de la más alta calidad. 
+        Si compartes nuestra pasión por la seguridad y el compromiso, ¡te invitamos a formar parte de nuestra familia!
+      </p>
+    </div>
+
+    <!-- Imagen a la derecha, sobresaliendo -->
+    <div class="lg:w-1/2 flex justify-center lg:justify-end relative">
+      <img src="{{ url_for('static', filename='image/sin fondo.png') }}" 
+           class="rounded-lg shadow-lg w-80 lg:translate-x-16 -translate-y-12" 
+           alt="Equipo Ferre-Che">
+    </div>
+
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8 px-6">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-sm">
+      <!-- Empresa -->
+      <div>
+        <h4 class="font-bold mb-2">FERRE-CHE</h4>
+        <p>Venta de artículos de seguridad industrial en Lima, Perú.</p>
+      </div>
+      <!-- Contactos -->
+      <div>
+        <h4 class="font-bold mb-2">Datos de Contacto</h4>
+        <p><i class="fa-solid fa-phone mr-2"></i> +51 999 888 777</p>
+        <p><i class="fa-solid fa-envelope mr-2"></i> contacto@ferreche.com</p>
+      </div>
+      <!-- Redes sociales -->
+      <div>
+        <h4 class="font-bold mb-2">Redes Sociales</h4>
+        <div class="flex gap-3 text-xl">
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-tiktok"></i>
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+      </div>
+      <!-- Bancos -->
+      <div>
+        <h4 class="font-bold mb-2">Bancos</h4>
+        <div class="flex gap-3">
+          <img src="{{ url_for('static', filename='imagenes/visa.png') }}" class="h-6" alt="Visa">
+          <img src="{{ url_for('static', filename='imagenes/mastercard.png') }}" class="h-6" alt="Mastercard">
+          <img src="{{ url_for('static', filename='imagenes/bcp.png') }}" class="h-6" alt="BCP">
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-xs mt-6 border-t border-gray-700 pt-4">
+      © 2023 Ferre-Che. Todos los derechos reservados.
+    </div>
+  </footer>
+
+</body>
+</html>
