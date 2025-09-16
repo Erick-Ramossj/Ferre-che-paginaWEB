@@ -303,3 +303,8 @@
     }
   }
 }
+
+.group:hover .group-hover\:block {
+  display: block;
+  transition: all 0.3s ease;
+}

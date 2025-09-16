@@ -9,9 +9,6 @@
   <link href="{{ url_for('static', filename='css/slider.css') }}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-  
-
-
 
 </head>
 <body class="w-full text-center">
@@ -49,15 +46,25 @@
 
     <!-- Derecha: Iconos -->
     <div class="flex items-center gap-6 text-gray-700">
-      <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
-        <span class="material-symbols-outlined">person</span>
-        <span class="hidden sm:inline">Iniciar sesión </span></a>
+        <div class="relative group">
+    <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+      <span class="material-symbols-outlined">person</span>
+      <span class="hidden sm:inline">Iniciar sesión</span>
+    </a>
+    <!-- Contenido desplegable -->
+    <div class="absolute mt-2 w-40 bg-red-600 rounded shadow-lg hidden group-hover:block">
+      <a href="#" class="block px-4 py-2 text-white hover:bg-red-700">Iniciar sesión</a>
+      <a href="{{ url_for('formulario') }}" class="block px-4 py-2 text-white hover:bg-red-700">Regístrate</a>
+      <a href="#" class="block px-4 py-2 text-white hover:bg-red-700">Mi cuenta</a>
+    </div>
+  </div>
 
       <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
       <span class="material-symbols-outlined">local_shipping</span>
        <span class="hidden sm:inline">Envío</span></a>
+       
       
-        <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+        <a href="{{ url_for('carrito') }}" class="flex items-center gap-1 hover:text-red-600 text-lg">
       <span class="material-symbols-outlined">shopping_cart</span>
       <span class="hidden sm:inline">Carrito S/0.00</span></a>
 

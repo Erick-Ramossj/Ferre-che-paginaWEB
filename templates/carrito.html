@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras | FERRE-CHE</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
+</head>
+<body class="w-full">
+
+    <header class="w-full">
+        <div class="bg-red-900 py-4"></div>
+        <div class="bg-white shadow flex items-center justify-between px-6 py-3">
+            <div class="flex items-center gap-4">
+                <span class="material-icons-outlined">handyman</span>
+                <h1 class="text-4xl font-bold text-gray-800">FERRE-CHE</h1>
+            </div>
+            <div class="flex-1 mx-6">
+                <div class="flex border rounded overflow-hidden w-full max-w-md mx-auto">
+                    <input type="text" placeholder="¿Qué producto estás buscando?" class="flex-1 px-3 py-2 focus:outline-none">
+                    <button class="bg-gray-300 px-4">
+                        <span class="material-icons-outlined">search</span>
+                    </button>
+                </div>
+            </div>
+            <div class="flex items-center gap-6 text-gray-700">
+                <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+                    <span class="material-symbols-outlined">person</span>
+                    <span class="hidden sm:inline">Iniciar sesión </span>
+                </a>
+                <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+                    <span class="material-symbols-outlined">local_shipping</span>
+                    <span class="hidden sm:inline">Envío</span>
+                </a>
+                <a href="{{ url_for('carrito') }}" class="flex items-center gap-1 hover:text-red-600 text-lg active">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <span class="hidden sm:inline">Carrito S/0.00</span>
+                </a>
+            </div>
+        </div>
+        <nav class="bg-white border-t border-b px-8">
+            <ul class="flex justify-center gap-20 font-semibold text-gray-700 leading-loose">
+                <li><a href="{{ url_for('index') }}" class="py-2 px-3 hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose">INICIO</a></li>
+                <li><a href="{{ url_for('producto') }}" class="hover:text-red-600 leading-loose">PRODUCTO</a></li>
+                <li><a href="{{ url_for('nosotros') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose">NOSOTROS</a></li>
+                <li><a href="{{ url_for('catalogo') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose">CATÁLOGO</a></li>
+                <li><a href="{{ url_for('marcas') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose">MARCAS</a></li>
+                <li><a href="{{ url_for('contacto') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose">CONTACTENOS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container mx-auto p-6 mt-10">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <div class="flex-1">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">Carrito de Compras</h2>
+                <div class="flex items-center bg-white rounded-lg shadow p-4 mb-4">
+                    <img src="https://via.placeholder.com/100" alt="Producto 1" class="w-24 h-24 object-contain mr-6">
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-gray-800">Producto de Seguridad Industrial</h3>
+                        <p class="text-gray-600 text-sm mt-1">S/ 45.00</p>
+                    </div>
+                    <div class="flex items-center gap-2 mx-6">
+                        <button class="bg-gray-200 text-gray-700 w-8 h-8 rounded">-</button>
+                        <span class="text-lg">1</span>
+                        <button class="bg-gray-200 text-gray-700 w-8 h-8 rounded">+</button>
+                    </div>
+                    <p class="font-bold text-lg text-gray-900 w-20 text-right">S/ 45.00</p>
+                    <button class="ml-4 text-gray-400 hover:text-red-600">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="w-full lg:w-1/3 bg-white p-6 rounded-lg shadow-lg h-fit">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Resumen del Pedido</h3>
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-gray-700">Subtotal:</span>
+                    <span class="font-semibold">S/ 45.00</span>
+                </div>
+                <div class="flex justify-between items-center border-b pb-2 mb-2">
+                    <span class="text-gray-700">Envío:</span>
+                    <span class="font-semibold">S/ 15.00</span>
+                </div>
+                <div class="flex justify-between items-center font-bold text-xl pt-2">
+                    <span>Total:</span>
+                    <span>S/ 60.00</span>
+                </div>
+                <button class="mt-6 w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition duration-300">
+                    Proceder al Pago
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-8 px-6 mt-10">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-sm">
+            <div>
+                <h4 class="font-bold mb-2">FERRE-CHE</h4>
+                <p>Venta de artículos de seguridad industrial en Lima, Perú.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-2">Datos de Contacto</h4>
+                <p><i class="fa-solid fa-phone mr-2"></i> +51 999 888 777</p>
+                <p><i class="fa-solid fa-envelope mr-2"></i> contacto@ferreche.com</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-2">Redes Sociales</h4>
+                <div class="flex gap-3 text-xl">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-tiktok"></i>
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold mb-2">Bancos</h4>
+                <div class="flex gap-3">
+                    <img src="https://via.placeholder.com/60x24?text=Visa" class="h-6" alt="Visa">
+                    <img src="https://via.placeholder.com/60x24?text=Mastercard" class="h-6" alt="Mastercard">
+                    <img src="https://via.placeholder.com/60x24?text=BCP" class="h-6" alt="BCP">
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-xs mt-6 border-t border-gray-700 pt-4">
+            © 2025 Ferre-Che. Todos los derechos reservados.
+        </div>
+    </footer>
+</body>
+</html>
