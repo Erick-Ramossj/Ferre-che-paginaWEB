@@ -34,6 +34,10 @@ def nosotros():
 @app.route("/contacto")
 def contacto():
     return render_template("contacto.html", active_page="contacto")
+@app.route('/formulario')
+def formulario():
+    return render_template('formulario.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
