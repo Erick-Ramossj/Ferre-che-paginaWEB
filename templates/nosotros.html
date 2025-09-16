@@ -61,17 +61,19 @@
   </div>
 
   <!-- Menú de navegación -->
-  <nav class="bg-white border-t border-b px-8">
-    <ul class="flex justify-center gap-20 font-semibold text-gray-700 leading-loose">
-      <li><a href="{{ url_for('index') }}" class="py-2 px-3 hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose">INICIO</a>
-      <li><a href="#" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose" >PRODUCTO</a></li>
-      <li><a href="{{ url_for('nosotros') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loosel">NOSOTROS</a></li>
-      <li><a href="#" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose">CATÁLOGO</a></li>
-      <li><a href="#" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose">MARCAS</a></li>
-      <li><a href="{{ url_for('contacto') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 leading-loose">CONTACTENOS</a></li>
-    </ul>
-  </nav>
-  </header>
+<nav class="bg-white border-t border-b px-8">
+  <ul class="flex justify-center gap-20 font-semibold text-gray-700 leading-loose">
+    <li><a href="{{ url_for('index') }}" class="py-2 px-3 hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='index' %}text-red-600 border-red-600{% endif %}">INICIO</a></li>
+    <li><a href="{{ url_for('producto') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='producto' %}text-red-600 border-red-600{% endif %}">PRODUCTO</a></li>
+    <li><a href="{{ url_for('nosotros') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='nosotros' %}text-red-600 border-red-600{% endif %}">NOSOTROS</a></li>
+    <li><a href="{{ url_for('catalogo') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='catalogo' %}text-red-600 border-red-600{% endif %}">CATÁLOGO</a></li>
+    <li><a href="{{ url_for('marcas') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='marcas' %}text-red-600 border-red-600{% endif %}">MARCAS</a></li>
+    <li><a href="{{ url_for('contacto') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='contacto' %}text-red-600 border-red-600{% endif %}">CONTACTENOS</a></li>
+  </ul>
+</nav>
+
+
+
 
   <!-- Hero Nosotros -->
   <section class="bg-red-900 text-white py-12 px-6">

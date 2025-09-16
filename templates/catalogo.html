@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo - Ferre-Che</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body class="w-full text-center bg-gray-100">
+
+  <!-- Encabezado -->
+  <header class="w-full">
+    <div class="bg-red-900 py-4"></div>
+    <div class="bg-white shadow flex items-center justify-between px-6 py-3">
+      <div class="flex items-center gap-4">
+        <span class="material-icons-outlined">handyman</span>
+        <h1 class="text-4xl font-bold text-gray-800">FERRE-CHE</h1>
+      </div>
+
+      <!-- Barra de búsqueda -->
+      <div class="flex-1 mx-6">
+        <div class="flex border rounded overflow-hidden w-full max-w-md mx-auto">
+          <input type="text" placeholder="Buscar en el catálogo..."
+                 class="flex-1 px-3 py-2 focus:outline-none">
+          <button class="bg-gray-300 px-4">
+            <span class="material-icons-outlined">search</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Iconos de usuario, envío y carrito -->
+      <div class="flex items-center gap-6 text-gray-700">
+        <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+          <span class="material-symbols-outlined">person</span>
+          <span class="hidden sm:inline">Iniciar sesión</span>
+        </a>
+        <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+          <span class="material-symbols-outlined">local_shipping</span>
+          <span class="hidden sm:inline">Envío</span>
+        </a>
+        <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+          <span class="material-symbols-outlined">shopping_cart</span>
+          <span class="hidden sm:inline">Carrito S/0.00</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Menú de navegación -->
+   <nav class="bg-white border-t border-b px-8">
+  <ul class="flex justify-center gap-20 font-semibold text-gray-700 leading-loose">
+    <li><a href="{{ url_for('index') }}" class="py-2 px-3 hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='index' %}text-red-600 border-red-600{% endif %}">INICIO</a></li>
+    <li><a href="{{ url_for('producto') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='producto' %}text-red-600 border-red-600{% endif %}">PRODUCTO</a></li>
+    <li><a href="{{ url_for('nosotros') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='nosotros' %}text-red-600 border-red-600{% endif %}">NOSOTROS</a></li>
+    <li><a href="{{ url_for('catalogo') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='catalogo' %}text-red-600 border-red-600{% endif %}">CATÁLOGO</a></li>
+    <li><a href="{{ url_for('marcas') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='marcas' %}text-red-600 border-red-600{% endif %}">MARCAS</a></li>
+    <li><a href="{{ url_for('contacto') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='contacto' %}text-red-600 border-red-600{% endif %}">CONTACTENOS</a></li>
+  </ul>
+</nav>
+
+
+  <!-- Contenido principal -->
+  <main class="max-w-7xl mx-auto px-6 py-10">
+    <h2 class="text-3xl font-bold text-gray-800 mb-8">Catálogo de Productos</h2>
+
+    <!-- Categorías -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Categoría -->
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-6 text-center">
+        <img src="{{ url_for('static', filename='image/cat1.png') }}" alt="Seguridad Industrial" class="w-full h-48 object-contain mb-4">
+        <h3 class="text-xl font-semibold text-gray-700">Seguridad Industrial</h3>
+        <p class="text-gray-500 mb-4">Protección para cada trabajador en el campo.</p>
+        <a href="#" class="inline-block bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">Ver productos</a>
+      </div>
+
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-6 text-center">
+        <img src="{{ url_for('static', filename='image/cat2.png') }}" alt="Herramientas" class="w-full h-48 object-contain mb-4">
+        <h3 class="text-xl font-semibold text-gray-700">Herramientas</h3>
+        <p class="text-gray-500 mb-4">Manual, eléctrica y para todo tipo de trabajo.</p>
+        <a href="#" class="inline-block bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">Ver productos</a>
+      </div>
+
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-6 text-center">
+        <img src="{{ url_for('static', filename='image/cat3.png') }}" alt="Materiales Eléctricos" class="w-full h-48 object-contain mb-4">
+        <h3 class="text-xl font-semibold text-gray-700">Eléctricos</h3>
+        <p class="text-gray-500 mb-4">Iluminación, cableado y accesorios eléctricos.</p>
+        <a href="#" class="inline-block bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">Ver productos</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="bg-gray-900 text-white py-8 mt-10">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-sm">
+      <div>
+        <h4 class="font-bold mb-2">FERRE-CHE</h4>
+        <p>Venta de artículos de seguridad industrial en Lima, Perú.</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">Datos de Contacto</h4>
+        <p>📞 +51 999 888 777</p>
+        <p>✉️ contacto@ferreche.com</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">Redes Sociales</h4>
+        <p>Facebook | Instagram | TikTok | WhatsApp</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">Bancos</h4>
+        <p>Visa | Mastercard | BCP</p>
+      </div>
+    </div>
+    <div class="text-center text-xs mt-6 border-t border-gray-700 pt-4">
+      © 2023 Ferre-Che. Todos los derechos reservados.
+    </div>
+  </footer>
+
+</body>
+</html>

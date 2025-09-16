@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos - Ferre-Che</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body class="w-full text-center bg-gray-100">
+
+  <!-- ================= ENCABEZADO ================= -->
+  <header class="w-full">
+    <!-- Franja superior -->
+    <div class="bg-red-900 py-4"></div>
+
+    <!-- Logo + buscador + opciones -->
+    <div class="bg-white shadow flex items-center justify-between px-6 py-3">
+      <!-- Logo -->
+      <div class="flex items-center gap-4">
+        <span class="material-icons-outlined">handyman</span>
+        <h1 class="text-4xl font-bold text-gray-800">FERRE-CHE</h1>
+      </div>
+
+      <!-- Buscador -->
+      <div class="flex-1 mx-6">
+        <div class="flex border rounded overflow-hidden w-full max-w-md mx-auto">
+          <input type="text" placeholder="¿Qué producto estás buscando?" class="flex-1 px-3 py-2 focus:outline-none">
+          <button class="bg-gray-300 px-4">
+            <span class="material-icons-outlined">search</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Accesos rápidos -->
+      <div class="flex items-center gap-6 text-gray-700">
+        <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+          <span class="material-symbols-outlined">person</span>
+          <span class="hidden sm:inline">Iniciar sesión</span>
+        </a>
+        <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+          <span class="material-symbols-outlined">local_shipping</span>
+          <span class="hidden sm:inline">Envío</span>
+        </a>
+        <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+          <span class="material-symbols-outlined">shopping_cart</span>
+          <span class="hidden sm:inline">Carrito S/0.00</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ================= MENÚ DE NAVEGACIÓN ================= -->
+    <nav class="bg-white border-t border-b px-8">
+  <ul class="flex justify-center gap-20 font-semibold text-gray-700 leading-loose">
+    <li><a href="{{ url_for('index') }}" class="py-2 px-3 hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='index' %}text-red-600 border-red-600{% endif %}">INICIO</a></li>
+    <li><a href="{{ url_for('producto') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='producto' %}text-red-600 border-red-600{% endif %}">PRODUCTO</a></li>
+    <li><a href="{{ url_for('nosotros') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='nosotros' %}text-red-600 border-red-600{% endif %}">NOSOTROS</a></li>
+    <li><a href="{{ url_for('catalogo') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='catalogo' %}text-red-600 border-red-600{% endif %}">CATÁLOGO</a></li>
+    <li><a href="{{ url_for('marcas') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='marcas' %}text-red-600 border-red-600{% endif %}">MARCAS</a></li>
+    <li><a href="{{ url_for('contacto') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='contacto' %}text-red-600 border-red-600{% endif %}">CONTACTENOS</a></li>
+  </ul>
+</nav>
+
+  <!-- ================= CONTENIDO PRINCIPAL ================= -->
+  <main class="max-w-7xl mx-auto px-6 py-10 flex gap-8">
+
+    <!-- Filtros -->
+    <aside class="w-1/4 bg-white p-6 rounded-lg shadow text-left">
+      <h2 class="font-bold text-gray-800 mb-4">Categoría de producto</h2>
+      <ul class="space-y-2">
+        <li><input type="checkbox"> Seguridad Industrial</li>
+        <li><input type="checkbox"> Protección Personal</li>
+        <li><input type="checkbox"> Eléctricos</li>
+        <li><input type="checkbox"> Herramientas Manuales</li>
+        <li><input type="checkbox"> Otros</li>
+      </ul>
+
+      <h2 class="font-bold text-gray-800 mt-6 mb-4">Filtrar por género</h2>
+      <select class="w-full border rounded px-3 py-2">
+        <option>Masculino</option>
+        <option>Femenino</option>
+      </select>
+
+      <h2 class="font-bold text-gray-800 mt-6 mb-4">Filtrar por color</h2>
+      <select class="w-full border rounded px-3 py-2">
+        <option>Amarillo</option>
+        <option>Rojo</option>
+        <option>Negro</option>
+      </select>
+    </aside>
+
+    <!-- Listado de productos -->
+    <section class="flex-1">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Productos disponibles</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Producto 1 -->
+        <div class="bg-white rounded-lg shadow p-4">
+          <img src="{{ url_for('static', filename='image/prod1.png') }}" alt="Producto 1" class="w-full h-40 object-contain mb-3">
+          <h3 class="font-semibold text-gray-700">Amoladora Angular 7"</h3>
+          <p class="text-gray-500 line-through text-sm">S/ 898.00</p>
+          <p class="text-gray-900 font-bold">S/ 699.00</p>
+          <button class="mt-2 w-full bg-black text-white py-2 rounded hover:bg-yellow-500 transition">Agregar al carrito</button>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="bg-white rounded-lg shadow p-4">
+          <img src="{{ url_for('static', filename='image/prod2.png') }}" alt="Producto 2" class="w-full h-40 object-contain mb-3">
+          <h3 class="font-semibold text-gray-700">Soldadura Inverter 160 AMP</h3>
+          <p class="text-gray-500 line-through text-sm">S/ 899.00</p>
+          <p class="text-gray-900 font-bold">S/ 750.00</p>
+          <button class="mt-2 w-full bg-black text-white py-2 rounded hover:bg-yellow-500 transition">Agregar al carrito</button>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="bg-white rounded-lg shadow p-4">
+          <img src="{{ url_for('static', filename='image/prod3.png') }}" alt="Producto 3" class="w-full h-40 object-contain mb-3">
+          <h3 class="font-semibold text-gray-700">Rotomartillo 850W</h3>
+          <p class="text-gray-500 line-through text-sm">S/ 1,055.00</p>
+          <p class="text-gray-900 font-bold">S/ 900.90</p>
+          <button class="mt-2 w-full bg-black text-white py-2 rounded hover:bg-yellow-500 transition">Agregar al carrito</button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= PIE DE PÁGINA ================= -->
+  <footer class="bg-gray-900 text-white py-8 mt-10">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-sm">
+      <div>
+        <h4 class="font-bold mb-2">FERRE-CHE</h4>
+        <p>Venta de artículos de seguridad industrial en Lima, Perú.</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">Datos de Contacto</h4>
+        <p>📞 +51 999 888 777</p>
+        <p>✉️ contacto@ferreche.com</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">Redes Sociales</h4>
+        <p>Facebook | Instagram | TikTok | WhatsApp</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">Bancos</h4>
+        <p>Visa | Mastercard | BCP</p>
+      </div>
+    </div>
+    <div class="text-center text-xs mt-6 border-t border-gray-700 pt-4">
+      © 2023 Ferre-Che. Todos los derechos reservados.
+    </div>
+  </footer>
+
+</body>
+</html>
