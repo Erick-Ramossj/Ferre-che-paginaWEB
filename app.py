@@ -38,11 +38,6 @@ def contacto():
 def formulario():
     return render_template('formulario.html')
 
-
-@app.route('/formulario')
-def formulario():
-    return render_template('formulario.html')
-
 @app.route('/carrito')
 def carrito():
     return render_template('carrito.html')

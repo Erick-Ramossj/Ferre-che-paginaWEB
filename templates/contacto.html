@@ -1,68 +1,89 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacto - LUNARA</title>
+  <title>Mi Sitio Web</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/slider.css') }}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
 </head>
-
 <body class="w-full text-center">
 
   <!-- Menú de navegación -->
   <header class="w-full">
 
-    <!-- Encabezado rojo (vacío) -->
-    <div class="bg-red-900 py-4"></div>
+  <!-- Encabezado rojo (vacío) -->
+  <div class="bg-red-900 py-4"></div>
 
-    <!-- Fila blanca con logo, buscador, iconos -->
-    <div class="bg-white shadow flex items-center justify-between px-6 py-3">
+  <!-- Fila blanca con logo, buscador, iconos -->
+  <div class="bg-white shadow flex items-center justify-between px-6 py-3">
+    
+    <!-- Izquierda: Logo + Nombre + Menu -->
+    <div class="flex items-center gap-4">
+      <!-- Logo -->
+      <span class="material-icons-outlined">handyman</span>
+      <!-- Nombre -->
+      <h1 class="text-4xl font-bold text-gray-800">FERRE-CHE</h1>
+      <!-- Botón menú hamburguesa (solo visible en móviles) -->
+      <button class="lg:hidden text-gray-700 border px-2 py-1 rounded">☰ Menu</button>
+    </div>
 
-      <!-- Izquierda: Logo + Nombre + Menu -->
-      <div class="flex items-center gap-4">
-        <!-- Logo -->
-        <span class="material-icons-outlined">handyman</span>
-        <!-- Nombre -->
-        <h1 class="text-4xl font-bold text-gray-800">FERRE-CHE</h1>
-        <!-- Botón menú hamburguesa (solo visible en móviles) -->
-        <button class="lg:hidden text-gray-700 border px-2 py-1 rounded">☰ Menu</button>
-      </div>
-
-      <!-- Centro: Buscador -->
-      <div class="flex-1 mx-6">
-        <div class="flex border rounded overflow-hidden w-full max-w-md mx-auto">
-          <input type="text" placeholder="¿Qué producto estás buscando?" class="flex-1 px-3 py-2 focus:outline-none">
-          <button class="bg-gray-300 px-4">
-            <span class="material-icons-outlined">search
-            </span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Derecha: Iconos -->
-      <div class="flex items-center gap-6 text-gray-700">
-        <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
-          <span class="material-symbols-outlined">person</span>
-          <span class="hidden sm:inline">Iniciar sesión </span></a>
-
-        <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
-          <span class="material-symbols-outlined">local_shipping</span>
-          <span class="hidden sm:inline">Envío</span></a>
-
-        <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
-          <span class="material-symbols-outlined">shopping_cart</span>
-          <span class="hidden sm:inline">Carrito S/0.00</span></a>
-
+    <!-- Centro: Buscador -->
+    <div class="flex-1 mx-6">
+      <div class="flex border rounded overflow-hidden w-full max-w-md mx-auto">
+        <input type="text" placeholder="¿Qué producto estás buscando?"
+               class="flex-1 px-3 py-2 focus:outline-none">
+        <button class="bg-gray-300 px-4">
+          <span class="material-icons-outlined">search
+          </span>
+        </button>
       </div>
     </div>
 
+   <!-- Contenedor (asegúrate de que no tenga overflow-hidden) -->
+<div class="flex items-center gap-4">
 
-    <!-- Menú de navegación -->
+  <!-- Menú desplegable (wrapper) -->
+  <div class="relative inline-block group">
+    <!-- Botón / disparador -->
+    <button id="userMenuButton" type="button"
+      class="flex items-center gap-1 hover:text-red-600 text-lg px-2 py-1 focus:outline-none"
+      aria-expanded="false" aria-controls="userMenu">
+      <span class="material-symbols-outlined">account_circle</span>
+      <span class="hidden sm:inline">Iniciar sesión</span>
+    </button>
+
+    <!-- Dropdown: usamos top-full para eliminar el gap, z-50 para que quede encima -->
+    <!-- Visible por hover en sm+; visible por focus-within siempre. -->
+    <div id="userMenu"
+         class="absolute left-0 top-full mt-0 w-44 bg-red-600 rounded shadow-lg hidden sm:group-hover:block group-focus-within:block z-50">
+      <a href="#" class="block px-4 py-2 text-white hover:bg-red-700">Iniciar sesión</a>
+      <a href="{{ url_for('formulario') }}" class="block px-4 py-2 text-white hover:bg-red-700">Regístrate</a>
+      <a href="#" class="block px-4 py-2 text-white hover:bg-red-700">Mi cuenta</a>
+    </div>
+  </div>
+
+  <!-- Otros botones -->
+  <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+    <span class="material-symbols-outlined">local_shipping</span>
+    <span class="hidden sm:inline">Envío</span>
+  </a>
+
+  <a href="{{ url_for('carrito') }}" class="flex items-center gap-1 hover:text-red-600 text-lg">
+    <span class="material-symbols-outlined">shopping_cart</span>
+    <span class="hidden sm:inline">Carrito S/0.00</span>
+  </a>
+</div>
+  </div>
+
+  <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-700 transition-all duration-300 group-hover:w-full"></span>
+
+  
+  <!-- Menú de navegación -->
 <nav class="bg-white border-t border-b px-8">
   <ul class="flex justify-center gap-20 font-semibold text-gray-700 leading-loose">
     <li><a href="{{ url_for('index') }}" class="py-2 px-3 hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='index' %}text-red-600 border-red-600{% endif %}">INICIO</a></li>
@@ -73,6 +94,7 @@
     <li><a href="{{ url_for('contacto') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='contacto' %}text-red-600 border-red-600{% endif %}">CONTACTENOS</a></li>
   </ul>
 </nav>
+  </header>
 
 
 

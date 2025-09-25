@@ -3,136 +3,195 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FERRE-CHE</title>
-
-  <!-- Tailwind CSS -->
+  <title>Mi Sitio Web</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Material Icons -->
+  <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/slider.css') }}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
-</head>
-<body class="bg-gray-50">
 
-  <!-- === INICIO: Header (igual al index.html) === -->
+</head>
+<body class="w-full text-center">
+
+  <!-- Menú de navegación -->
   <header class="w-full">
 
-    <!-- Encabezado rojo -->
-    <div class="bg-red-900 py-4"></div>
+  <!-- Encabezado rojo (vacío) -->
+  <div class="bg-red-900 py-4"></div>
 
-    <!-- Fila blanca con logo, buscador, iconos -->
-    <div class="bg-white shadow flex items-center justify-between px-6 py-3">
-      
-      <!-- Izquierda: Logo + Nombre + Menu -->
-      <div class="flex items-center gap-4">
-        <!-- Logo -->
-        <span class="material-icons-outlined">handyman</span>
-        <!-- Nombre -->
-        <h1 class="text-4xl font-bold text-gray-800">FERRE-CHE</h1>
-        <!-- Botón menú hamburguesa (móviles) -->
-        <button class="lg:hidden text-gray-700 border px-2 py-1 rounded">☰ Menu</button>
-      </div>
+  <!-- Fila blanca con logo, buscador, iconos -->
+  <div class="bg-white shadow flex items-center justify-between px-6 py-3">
+    
+    <!-- Izquierda: Logo + Nombre + Menu -->
+    <div class="flex items-center gap-4">
+      <!-- Logo -->
+      <span class="material-icons-outlined">handyman</span>
+      <!-- Nombre -->
+      <h1 class="text-4xl font-bold text-gray-800">FERRE-CHE</h1>
+      <!-- Botón menú hamburguesa (solo visible en móviles) -->
+      <button class="lg:hidden text-gray-700 border px-2 py-1 rounded">☰ Menu</button>
+    </div>
 
-      <!-- Centro: Buscador -->
-      <div class="flex-1 mx-6">
-        <div class="flex border rounded overflow-hidden w-full max-w-md mx-auto">
-          <input type="text" placeholder="¿Qué producto estás buscando?"
-                 class="flex-1 px-3 py-2 focus:outline-none">
-          <button class="bg-gray-300 px-4">
-            <span class="material-icons-outlined">search</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Derecha: Iconos -->
-      <div class="flex items-center gap-6 text-gray-700">
-        <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
-          <span class="material-symbols-outlined">person</span>
-          <span class="hidden sm:inline">Iniciar sesión</span>
-        </a>
-        <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
-          <span class="material-symbols-outlined">local_shipping</span>
-          <span class="hidden sm:inline">Envío</span>
-        </a>
-        <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
-          <span class="material-symbols-outlined">shopping_cart</span>
-          <span class="hidden sm:inline">Carrito S/0.00</span>
-        </a>
+    <!-- Centro: Buscador -->
+    <div class="flex-1 mx-6">
+      <div class="flex border rounded overflow-hidden w-full max-w-md mx-auto">
+        <input type="text" placeholder="¿Qué producto estás buscando?"
+               class="flex-1 px-3 py-2 focus:outline-none">
+        <button class="bg-gray-300 px-4">
+          <span class="material-icons-outlined">search
+          </span>
+        </button>
       </div>
     </div>
 
-    <!-- Menú de navegación -->
-    <nav class="bg-white border-t border-b px-8">
-      <ul class="flex justify-center gap-20 font-semibold text-gray-700 leading-loose">
-        <li><a href="{{ url_for('index') }}" 
-               class="py-2 px-3 hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='index' %}text-red-600 border-red-600{% endif %}">INICIO</a></li>
-        <li><a href="{{ url_for('producto') }}" 
-               class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='producto' %}text-red-600 border-red-600{% endif %}">PRODUCTO</a></li>
-        <li><a href="{{ url_for('nosotros') }}" 
-               class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='nosotros' %}text-red-600 border-red-600{% endif %}">NOSOTROS</a></li>
-        <li><a href="{{ url_for('catalogo') }}" 
-               class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='catalogo' %}text-red-600 border-red-600{% endif %}">CATÁLOGO</a></li>
-        <li><a href="{{ url_for('marcas') }}" 
-               class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='marcas' %}text-red-600 border-red-600{% endif %}">MARCAS</a></li>
-        <li><a href="{{ url_for('contacto') }}" 
-               class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='contacto' %}text-red-600 border-red-600{% endif %}">CONTACTENOS</a></li>
-      </ul>
-    </nav>
+   <!-- Contenedor (asegúrate de que no tenga overflow-hidden) -->
+<div class="flex items-center gap-4">
+
+  <!-- Menú desplegable (wrapper) -->
+  <div class="relative inline-block group">
+    <!-- Botón / disparador -->
+    <button id="userMenuButton" type="button"
+      class="flex items-center gap-1 hover:text-red-600 text-lg px-2 py-1 focus:outline-none"
+      aria-expanded="false" aria-controls="userMenu">
+      <span class="material-symbols-outlined">account_circle</span>
+      <span class="hidden sm:inline">Iniciar sesión</span>
+    </button>
+
+    <!-- Dropdown: usamos top-full para eliminar el gap, z-50 para que quede encima -->
+    <!-- Visible por hover en sm+; visible por focus-within siempre. -->
+    <div id="userMenu"
+         class="absolute left-0 top-full mt-0 w-44 bg-red-600 rounded shadow-lg hidden sm:group-hover:block group-focus-within:block z-50">
+      <a href="#" class="block px-4 py-2 text-white hover:bg-red-700">Iniciar sesión</a>
+      <a href="{{ url_for('formulario') }}" class="block px-4 py-2 text-white hover:bg-red-700">Regístrate</a>
+      <a href="#" class="block px-4 py-2 text-white hover:bg-red-700">Mi cuenta</a>
+    </div>
+  </div>
+
+  <!-- Otros botones -->
+  <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+    <span class="material-symbols-outlined">local_shipping</span>
+    <span class="hidden sm:inline">Envío</span>
+  </a>
+
+  <a href="{{ url_for('carrito') }}" class="flex items-center gap-1 hover:text-red-600 text-lg">
+    <span class="material-symbols-outlined">shopping_cart</span>
+    <span class="hidden sm:inline">Carrito S/0.00</span>
+  </a>
+</div>
+  </div>
+
+  <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-700 transition-all duration-300 group-hover:w-full"></span>
+
+  
+  <!-- Menú de navegación -->
+<nav class="bg-white border-t border-b px-8">
+  <ul class="flex justify-center gap-20 font-semibold text-gray-700 leading-loose">
+    <li><a href="{{ url_for('index') }}" class="py-2 px-3 hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='index' %}text-red-600 border-red-600{% endif %}">INICIO</a></li>
+    <li><a href="{{ url_for('producto') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='producto' %}text-red-600 border-red-600{% endif %}">PRODUCTO</a></li>
+    <li><a href="{{ url_for('nosotros') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='nosotros' %}text-red-600 border-red-600{% endif %}">NOSOTROS</a></li>
+    <li><a href="{{ url_for('catalogo') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='catalogo' %}text-red-600 border-red-600{% endif %}">CATÁLOGO</a></li>
+    <li><a href="{{ url_for('marcas') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='marcas' %}text-red-600 border-red-600{% endif %}">MARCAS</a></li>
+    <li><a href="{{ url_for('contacto') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='contacto' %}text-red-600 border-red-600{% endif %}">CONTACTENOS</a></li>
+  </ul>
+</nav>
   </header>
   <!-- === FIN: Header === -->
 
-  <!-- === CUERPO DEL FORMULARIO === -->
-  <main class="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-2 gap-10">
+<div class="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md">
+  <h2 class="text-2xl font-bold text-center mb-6">Regístrate para comprar</h2>
 
-    <!-- Lado izquierdo: formulario -->
-    <section class="bg-white p-8 rounded-lg shadow">
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">Crea tu cuenta</h2>
-      <form class="space-y-4">
-        <div>
-          <label class="block text-left text-sm font-medium text-gray-700">Nombre</label>
-          <input type="text" class="w-full border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500">
-        </div>
-        <div>
-          <label class="block text-left text-sm font-medium text-gray-700">Apellido</label>
-          <input type="text" class="w-full border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500">
-        </div>
-        <div>
-          <label class="block text-left text-sm font-medium text-gray-700">Correo electrónico</label>
-          <input type="email" class="w-full border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500">
-        </div>
-        <div>
-          <label class="block text-left text-sm font-medium text-gray-700">Contraseña</label>
-          <input type="password" class="w-full border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500">
-        </div>
-        <div>
-          <label class="block text-left text-sm font-medium text-gray-700">Confirmar contraseña</label>
-          <input type="password" class="w-full border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500">
-        </div>
-        <button type="submit" class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition">
-          Registrarse
-        </button>
-      </form>
-    </section>
+  <!-- Botón toggle -->
+  <div class="flex justify-center items-center mb-6">
+    <button id="btnUsuario" 
+            class="px-6 py-2 rounded-l-md bg-red-600 text-white font-semibold focus:outline-none">
+      Usuario
+    </button>
+    <button id="btnEmpresa" 
+            class="px-6 py-2 rounded-r-md bg-gray-200 text-gray-700 font-semibold focus:outline-none">
+      Empresa
+    </button>
+  </div>
 
-    <!-- Lado derecho: beneficios y pagos -->
-    <aside class="bg-white p-8 rounded-lg shadow">
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">Beneficios de registrarte</h2>
-      <ul class="list-disc pl-6 space-y-2 text-left text-gray-600">
-        <li>Accede a promociones exclusivas.</li>
-        <li>Historial de compras y seguimiento de pedidos.</li>
-        <li>Pagos seguros y rápidos.</li>
-        <li>Soporte personalizado.</li>
-      </ul>
-
-      <h2 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Métodos de pago</h2>
-      <div class="flex gap-4">
-        <img src="{{ url_for('static', filename='image/visa.png') }}" alt="Visa" class="h-10">
-        <img src="{{ url_for('static', filename='image/mastercard.png') }}" alt="Mastercard" class="h-10">
-        <img src="{{ url_for('static', filename='image/bcp.png') }}" alt="BCP" class="h-10">
-        <img src="{{ url_for('static', filename='image/yape.png') }}" alt="Yape" class="h-10">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Form Usuario -->
+    <form id="formUsuario" class="p-4 rounded-md bg-red-50">
+      <div class="mb-3">
+        <label class="block text-sm font-medium">Correo</label>
+        <input type="email" class="w-full border rounded p-2" placeholder="Ingresa un correo">
       </div>
-    </aside>
-  </main>
+      <div class="mb-3">
+        <label class="block text-sm font-medium">Nombre y Apellidos</label>
+        <input type="text" class="w-full border rounded p-2" placeholder="Ingresa tu nombre">
+      </div>
+      <div class="mb-3">
+        <label class="block text-sm font-medium">Información Profesional</label>
+        <select class="w-full border rounded p-2">
+          <option>Especialidad</option>
+          <option>Ingeniero</option>
+          <option>Técnico</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="block text-sm font-medium">Tipo de documento</label>
+        <input type="text" class="w-full border rounded p-2" placeholder="DNI">
+      </div>
+      <div class="mb-3">
+        <label class="block text-sm font-medium">Celular</label>
+        <input type="tel" class="w-full border rounded p-2" placeholder="+51">
+      </div>
+      <div class="mb-3">
+        <label class="block text-sm font-medium">Contraseña</label>
+        <input type="password" class="w-full border rounded p-2">
+      </div>
+      <div class="mb-3">
+        <label class="block text-sm font-medium">Confirmar Contraseña</label>
+        <input type="password" class="w-full border rounded p-2">
+      </div>
+      <button type="submit" class="w-full bg-red-600 text-white py-2 rounded-md">Registrarse</button>
+    </form>
+
+    <!-- Form Empresa -->
+    <form id="formEmpresa" class="p-4 rounded-md bg-gray-100 opacity-50 pointer-events-none">
+      <div class="mb-3">
+        <label class="block text-sm font-medium">Correo</label>
+        <input type="email" class="w-full border rounded p-2" placeholder="Ingresa un correo">
+      </div>
+      <div class="mb-3">
+        <label class="block text-sm font-medium">Razón Social</label>
+        <input type="text" class="w-full border rounded p-2" placeholder="Nombre legal de la empresa">
+      </div>
+      <div class="mb-3">
+        <label class="block text-sm font-medium">Dirección</label>
+        <input type="text" class="w-full border rounded p-2" placeholder="Dirección de la empresa">
+      </div>
+      <div class="mb-3">
+        <label class="block text-sm font-medium">Tipo de Empresa</label>
+        <select class="w-full border rounded p-2">
+          <option>Selecciona</option>
+          <option>Pyme</option>
+          <option>Corporativa</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="block text-sm font-medium">RUC</label>
+        <input type="text" class="w-full border rounded p-2" placeholder="Número de RUC">
+      </div>
+      <div class="mb-3">
+        <label class="block text-sm font-medium">Celular</label>
+        <input type="tel" class="w-full border rounded p-2" placeholder="+51">
+      </div>
+      <div class="mb-3">
+        <label class="block text-sm font-medium">Contraseña</label>
+        <input type="password" class="w-full border rounded p-2">
+      </div>
+      <div class="mb-3">
+        <label class="block text-sm font-medium">Confirmar Contraseña</label>
+        <input type="password" class="w-full border rounded p-2">
+      </div>
+      <button type="submit" class="w-full bg-red-600 text-white py-2 rounded-md">Registrarse</button>
+    </form>
+  </div>
+</div>
 
      <!-- === INICIO: Footer === -->
   <footer class="bg-gray-900 text-gray-200 py-10 mt-10">
@@ -187,7 +246,7 @@
     </div>
   </footer>
   <!-- === FIN: Footer === -->
-
+  <script src="{{ url_for('static', filename='js/boton.js') }}"></script>
 
 </body>
 </html>

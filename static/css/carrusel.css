@@ -1,53 +1,25 @@
-.carousel-container {
-    overflow: hidden;
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    position: relative;
-}
+@layer components {
+  .carousel-container {
+    @apply overflow-hidden w-full max-w-screen-xl mx-auto relative;
+  }
 
-.carousel-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
+  .carousel-track {
+    @apply flex transition-transform duration-500 ease-in-out;
+  }
 
-.carousel-item {
-    min-width: 100%; /* Cada slide ocupa todo el contenedor */
-    box-sizing: border-box;
-}
+  .carousel-item {
+    @apply w-full flex-shrink-0;
+  }
 
-.carousel-item img {
-    width: 100%;
-    display: block;
-}
+  .carousel-dot {
+    @apply w-3 h-3 rounded-full bg-gray-400 opacity-50 cursor-pointer transition-all duration-300;
+  }
 
-.carousel-indicator {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background: gray;
-    border-radius: 50%;
-    margin: 5px;
-    cursor: pointer;
-}
+  .carousel-dot-active {
+    @apply bg-gray-800 opacity-100;
+  }
 
-.carousel-indicator.active {
-    background: black;
-}
-
-/* Botones de navegación */
-#prev, #next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-#prev { left: 10px; }
-#next {right:10px;
+  .carousel-btn {
+    @apply bg-gray-800 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75;
+  }
 }
