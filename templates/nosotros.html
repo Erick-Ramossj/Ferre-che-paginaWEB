@@ -168,41 +168,55 @@
 </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-8 px-6">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-sm">
-      <!-- Empresa -->
+  <footer class="bg-gray-900 text-gray-200 py-10 mt-10">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <!-- Logo y descripción -->
       <div>
-        <h4 class="font-bold mb-2">FERRE-CHE</h4>
-        <p>Venta de artículos de seguridad industrial en Lima, Perú.</p>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="material-icons-outlined text-red-600">handyman</span>
+          <h2 class="text-2xl font-bold">FERRE-CHE</h2>
+        </div>
+        <p class="text-gray-400 text-sm">
+          Tu ferretería de confianza, ofreciendo calidad y compromiso en cada producto para tu hogar y proyectos.
+        </p>
       </div>
-      <!-- Contactos -->
+
+      <!-- Enlaces rápidos -->
       <div>
-        <h4 class="font-bold mb-2">Datos de Contacto</h4>
-        <p><i class="fa-solid fa-phone mr-2"></i> +51 999 888 777</p>
-        <p><i class="fa-solid fa-envelope mr-2"></i> contacto@ferreche.com</p>
+        <h3 class="text-lg font-semibold mb-3">Enlaces rápidos</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="{{ url_for('index') }}" class="hover:text-red-500">Inicio</a></li>
+          <li><a href="{{ url_for('producto') }}" class="hover:text-red-500">Producto</a></li>
+          <li><a href="{{ url_for('catalogo') }}" class="hover:text-red-500">Catálogo</a></li>
+          <li><a href="{{ url_for('marcas') }}" class="hover:text-red-500">Marcas</a></li>
+          <li><a href="{{ url_for('contacto') }}" class="hover:text-red-500">Contáctenos</a></li>
+        </ul>
       </div>
+
+      <!-- Información de contacto -->
+      <div>
+        <h3 class="text-lg font-semibold mb-3">Contáctanos</h3>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li><span class="material-icons-outlined text-red-600 align-middle">location_on</span> Av. Principal #123 - Lima</li>
+          <li><span class="material-icons-outlined text-red-600 align-middle">call</span> +51 987 654 321</li>
+          <li><span class="material-icons-outlined text-red-600 align-middle">email</span> ferreche@empresa.com</li>
+        </ul>
+      </div>
+
       <!-- Redes sociales -->
       <div>
-        <h4 class="font-bold mb-2">Redes Sociales</h4>
-        <div class="flex gap-3 text-xl">
-          <i class="fa-brands fa-facebook"></i>
-          <i class="fa-brands fa-instagram"></i>
-          <i class="fa-brands fa-tiktok"></i>
-          <i class="fa-brands fa-whatsapp"></i>
-        </div>
-      </div>
-      <!-- Bancos -->
-      <div>
-        <h4 class="font-bold mb-2">Bancos</h4>
-        <div class="flex gap-3">
-          <img src="{{ url_for('static', filename='imagenes/visa.png') }}" class="h-6" alt="Visa">
-          <img src="{{ url_for('static', filename='imagenes/mastercard.png') }}" class="h-6" alt="Mastercard">
-          <img src="{{ url_for('static', filename='imagenes/bcp.png') }}" class="h-6" alt="BCP">
+        <h3 class="text-lg font-semibold mb-3">Síguenos</h3>
+        <div class="flex gap-4 text-xl">
+          <a href="#" class="hover:text-red-500"><span class="material-icons-outlined">facebook</span></a>
+          <a href="#" class="hover:text-red-500"><span class="material-icons-outlined">photo_camera</span></a>
+          <a href="#" class="hover:text-red-500"><span class="material-icons-outlined">alternate_email</span></a>
         </div>
       </div>
     </div>
-    <div class="text-center text-xs mt-6 border-t border-gray-700 pt-4">
-      © 2023 Ferre-Che. Todos los derechos reservados.
+
+    <div class="text-center text-gray-500 text-sm mt-8 border-t border-gray-700 pt-4">
+      © 2025 FERRE-CHE. Todos los derechos reservados.
     </div>
   </footer>
 
