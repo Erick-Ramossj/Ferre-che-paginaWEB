@@ -7,6 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
   <link href="{{ url_for('static', filename='css/slider.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/chat.css') }}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
@@ -128,30 +129,135 @@
   </main>
 
   <!-- Pie de página -->
-  <footer class="bg-gray-900 text-white py-8 mt-10">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-sm">
+  <footer class="bg-gray-900 text-gray-200 py-10 mt-10">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <!-- Logo y descripción -->
       <div>
-        <h4 class="font-bold mb-2">FERRE-CHE</h4>
-        <p>Venta de artículos de seguridad industrial en Lima, Perú.</p>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="material-icons-outlined text-red-600">handyman</span>
+          <h2 class="text-2xl font-bold">FERRE-CHE</h2>
+        </div>
+        <p class="text-gray-400 text-sm">
+          Tu ferretería de confianza, ofreciendo calidad y compromiso en cada producto para tu hogar y proyectos.
+        </p>
       </div>
+
+      <!-- Enlaces rápidos -->
       <div>
-        <h4 class="font-bold mb-2">Datos de Contacto</h4>
-        <p>📞 +51 999 888 777</p>
-        <p>✉️ contacto@ferreche.com</p>
+        <h3 class="text-lg font-semibold mb-3">Enlaces rápidos</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="{{ url_for('index') }}" class="hover:text-red-500">Inicio</a></li>
+          <li><a href="{{ url_for('producto') }}" class="hover:text-red-500">Producto</a></li>
+          <li><a href="{{ url_for('catalogo') }}" class="hover:text-red-500">Catálogo</a></li>
+          <li><a href="{{ url_for('marcas') }}" class="hover:text-red-500">Marcas</a></li>
+          <li><a href="{{ url_for('contacto') }}" class="hover:text-red-500">Contáctenos</a></li>
+        </ul>
       </div>
+
+      <!-- Información de contacto -->
       <div>
-        <h4 class="font-bold mb-2">Redes Sociales</h4>
-        <p>Facebook | Instagram | TikTok | WhatsApp</p>
+        <h3 class="text-lg font-semibold mb-3">Contáctanos</h3>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li><span class="material-icons-outlined text-red-600 align-middle">location_on</span> Av. Principal #123 - Lima</li>
+          <li><span class="material-icons-outlined text-red-600 align-middle">call</span> +51 987 654 321</li>
+          <li><span class="material-icons-outlined text-red-600 align-middle">email</span> ferreche@empresa.com</li>
+        </ul>
       </div>
+
+      <!-- Redes sociales -->
       <div>
-        <h4 class="font-bold mb-2">Bancos</h4>
-        <p>Visa | Mastercard | BCP</p>
+        <h3 class="text-lg font-semibold mb-3">Síguenos</h3>
+        <div class="flex gap-4 text-xl">
+          <a href="#" class="hover:text-red-500"><span class="material-icons-outlined">facebook</span></a>
+          <a href="#" class="hover:text-red-500"><span class="material-icons-outlined">photo_camera</span></a>
+          <a href="#" class="hover:text-red-500"><span class="material-icons-outlined">alternate_email</span></a>
+        </div>
       </div>
     </div>
-    <div class="text-center text-xs mt-6 border-t border-gray-700 pt-4">
-      © 2023 Ferre-Che. Todos los derechos reservados.
+
+    <div class="text-center text-gray-500 text-sm mt-8 border-t border-gray-700 pt-4">
+      © 2025 FERRE-CHE. Todos los derechos reservados.
     </div>
   </footer>
+
+   <!-- 🚀 CHAT FLOTANTE MEJORADO -->
+  <!-- Botón flotante -->
+  <div class="fixed bottom-20 right-6 z-50">
+    <button id="openChat" class="chatbot-robot float-animation">
+      <div class="relative">
+        <!-- Robot SVG con llave inglesa -->
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Cabeza del robot -->
+          <circle cx="20" cy="12" r="8" fill="#4B5563"/>
+          
+          <!-- Ojos -->
+          <circle cx="17" cy="10" r="1.5" fill="#FFFFFF"/>
+          <circle cx="23" cy="10" r="1.5" fill="#FFFFFF"/>
+          
+          <!-- Cuerpo -->
+          <rect x="14" y="20" width="12" height="12" rx="2" fill="#6B7280"/>
+          
+          <!-- Brazos -->
+          <rect x="8" y="22" width="6" height="2" rx="1" fill="#6B7280"/>
+          <rect x="26" y="22" width="6" height="2" rx="1" fill="#6B7280"/>
+          
+          <!-- Piernas -->
+          <rect x="16" y="32" width="3" height="4" rx="1" fill="#6B7280"/>
+          <rect x="21" y="32" width="3" height="4" rx="1" fill="#6B7280"/>
+          
+          <!-- Llave inglesa en la mano -->
+          <g class="wrench">
+            <rect x="32" y="20" width="6" height="1" rx="0.5" fill="#F59E0B" transform="rotate(45 32 20)"/>
+            <rect x="35" y="17" width="1" height="6" rx="0.5" fill="#F59E0B" transform="rotate(45 35 17)"/>
+            <circle cx="37.5" cy="14.5" r="1.5" fill="#F59E0B"/>
+          </g>
+        </svg>
+      </div>
+    </button>
+  </div>
+
+  <!-- Ventana del chat -->
+  <div id="chatWindow" class="chat-window">
+    
+    <!-- Header -->
+    <div class="chat-header">
+      <div class="flex items-center gap-2">
+        <div class="robot-icon">
+          <div class="robot-eye"></div>
+        </div>
+        <span>RoboAsistente FERRE-CHE</span>
+      </div>
+      <button id="closeChat" class="close-button">✖</button>
+    </div>
+
+    <!-- Cuerpo (mensajes) -->
+    <div id="chatBody" class="chat-body">
+      <div class="chat-message flex justify-start">
+        <div class="bot-message">
+          <div class="message-sender">RoboAsistente:</div>
+          ¡Hola! 👋 Soy tu asistente virtual de FERRE-CHE. ¿En qué puedo ayudarte hoy?
+        </div>
+      </div>
+      <div class="chat-message flex justify-start">
+        <div class="bot-message">
+          <div class="message-sender">RoboAsistente:</div>
+          Puedo ayudarte a encontrar herramientas, materiales eléctricos, productos de seguridad industrial y más.
+        </div>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <div class="chat-input-container">
+      <input id="chatInput" type="text" placeholder="Escribe tu mensaje..." class="chat-input">
+      <button id="sendBtn" class="send-button pulse-animation">Enviar</button>
+    </div>
+  </div>
+
+
+  <!-- Script del chat -->
+  <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+
 
 </body>
 </html>
