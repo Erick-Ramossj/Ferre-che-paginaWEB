@@ -1,226 +1,335 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Sitio Web</title>
+  <title>Contacto - FERRE-CHE</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static', filename='css/slider.css') }}" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/chatbot.css') }}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='css/contacto.css') }}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 
 </head>
-<body class="w-full text-center">
 
-  <!-- Menú de navegación -->
+<body class="bg-gray-100">
+    <!-- Menú de navegación -->
   <header class="w-full">
 
-  <!-- Encabezado rojo (vacío) -->
-  <div class="bg-red-900 py-4"></div>
+    <!-- Encabezado rojo -->
+    <div class="bg-red-900 py-4"></div>
 
-  <!-- Fila blanca con logo, buscador, iconos -->
-  <div class="bg-white shadow flex items-center justify-between px-6 py-3">
-    
-    <!-- Izquierda: Logo + Nombre + Menu -->
-    <div class="flex items-center gap-4">
-      <!-- Logo -->
-      <span class="material-icons-outlined">handyman</span>
-      <!-- Nombre -->
-      <h1 class="text-4xl font-bold text-gray-800">FERRE-CHE</h1>
-      <!-- Botón menú hamburguesa (solo visible en móviles) -->
-      <button class="lg:hidden text-gray-700 border px-2 py-1 rounded">☰ Menu</button>
-    </div>
+    <!-- Fila blanca con logo, buscador, iconos -->
+    <div class="bg-white shadow flex flex-col sm:flex-row items-center justify-between px-4 sm:px-6 py-3 gap-4">
 
-    <!-- Centro: Buscador -->
-    <div class="flex-1 mx-6">
-      <div class="flex border rounded overflow-hidden w-full max-w-md mx-auto">
-        <input type="text" placeholder="¿Qué producto estás buscando?"
-               class="flex-1 px-3 py-2 focus:outline-none">
-        <button class="bg-gray-300 px-4">
-          <span class="material-icons-outlined">search
-          </span>
+      <!-- Izquierda: Logo + Nombre + Botón menú -->
+      <div class="flex items-center gap-3 w-full sm:w-auto justify-between">
+        <div class="flex items-center gap-2">
+          <span class="material-icons-outlined text-3xl text-red-700">handyman</span>
+          <h1 class="text-2xl md:text-3xl font-bold text-gray-800">FERRE-CHE</h1>
+        </div>
+
+        <!-- Botón menú hamburguesa -->
+        <button id="menu-toggle" class="lg:hidden text-gray-700">
+          ☰
         </button>
+      </div>
+
+      <!-- Centro: Buscador -->
+      <div class="w-full sm:flex-1 sm:mx-6">
+        <div class="flex border rounded overflow-hidden w-full max-w-md mx-auto">
+          <input type="text" placeholder="¿Qué producto estás buscando?"
+            class="flex-1 px-3 py-2 focus:outline-none text-sm md:text-base">
+          <button class="bg-gray-300 px-3 sm:px-4">
+            <span class="material-icons-outlined">search</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Derecha: Dropdown + Botones -->
+      <div class="flex items-center gap-4 w-full sm:w-auto justify-center sm:justify-end">
+
+        <!-- Menú desplegable usuario -->
+        <div class="relative inline-block group">
+          <button id="userMenuButton" type="button"
+            class="flex items-center gap-1 hover:text-red-600 text-lg px-2 py-1 focus:outline-none"
+            aria-expanded="false" aria-controls="userMenu">
+            <span class="material-symbols-outlined">account_circle</span>
+            <span class="hidden sm:inline">Iniciar sesión</span>
+          </button>
+          <div id="userMenu"
+            class="absolute left-0 top-full mt-0 w-44 bg-red-600 rounded shadow-lg hidden group-hover:block group-focus-within:block z-50">
+            <a href="#" class="block px-4 py-2 text-white hover:bg-red-700">Iniciar sesión</a>
+            <a href="{{ url_for('formulario') }}" class="block px-4 py-2 text-white hover:bg-red-700">Regístrate</a>
+            <a href="#" class="block px-4 py-2 text-white hover:bg-red-700">Mi cuenta</a>
+          </div>
+        </div>
+
+        <!-- Otros botones -->
+        <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+          <span class="material-symbols-outlined">local_shipping</span>
+          <span class="hidden sm:inline">Envío</span>
+        </a>
+
+        <a href="{{ url_for('carrito') }}" class="flex items-center gap-1 hover:text-red-600 text-lg">
+          <span class="material-symbols-outlined">shopping_cart</span>
+          <span class="hidden sm:inline">Carrito S/0.00</span>
+        </a>
       </div>
     </div>
 
-   <!-- Contenedor (asegúrate de que no tenga overflow-hidden) -->
-<div class="flex items-center gap-4">
+     <!-- Menú de navegación -->
+    <nav class="bg-white border-t border-b px-4 sm:px-8">
+      <ul
+        class="hidden lg:flex justify-center gap-10 xl:gap-20 font-semibold text-gray-700 leading-loose text-sm md:text-base">
+        <li><a href="{{ url_for('index') }}"
+            class="py-2 px-3 hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='index' %}text-red-600 border-red-600{% endif %}">INICIO</a>
+        </li>
+        <li><a href="{{ url_for('producto') }}"
+            class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='producto' %}text-red-600 border-red-600{% endif %}">PRODUCTO</a>
+        </li>
+        <li><a href="{{ url_for('nosotros') }}"
+            class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='nosotros' %}text-red-600 border-red-600{% endif %}">NOSOTROS</a>
+        </li>
+        <li><a href="{{ url_for('catalogo') }}"
+            class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='catalogo' %}text-red-600 border-red-600{% endif %}">CATÁLOGO</a>
+        </li>
+        <li><a href="{{ url_for('marcas') }}"
+            class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='marcas' %}text-red-600 border-red-600{% endif %}">MARCAS</a>
+        </li>
+        <li><a href="{{ url_for('contacto') }}"
+            class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='contacto' %}text-red-600 border-red-600{% endif %}">CONTACTENOS</a>
+        </li>
+      </ul>
 
-  <!-- Menú desplegable (wrapper) -->
-  <div class="relative inline-block group">
-    <!-- Botón / disparador -->
-    <button id="userMenuButton" type="button"
-      class="flex items-center gap-1 hover:text-red-600 text-lg px-2 py-1 focus:outline-none"
-      aria-expanded="false" aria-controls="userMenu">
-      <span class="material-symbols-outlined">account_circle</span>
-      <span class="hidden sm:inline">Iniciar sesión</span>
-    </button>
-
-    <!-- Dropdown: usamos top-full para eliminar el gap, z-50 para que quede encima -->
-    <!-- Visible por hover en sm+; visible por focus-within siempre. -->
-    <div id="userMenu"
-         class="absolute left-0 top-full mt-0 w-44 bg-red-600 rounded shadow-lg hidden sm:group-hover:block group-focus-within:block z-50">
-      <a href="#" class="block px-4 py-2 text-white hover:bg-red-700">Iniciar sesión</a>
-      <a href="{{ url_for('formulario') }}" class="block px-4 py-2 text-white hover:bg-red-700">Regístrate</a>
-      <a href="#" class="block px-4 py-2 text-white hover:bg-red-700">Mi cuenta</a>
-    </div>
-  </div>
-
-  <!-- Otros botones -->
-  <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
-    <span class="material-symbols-outlined">local_shipping</span>
-    <span class="hidden sm:inline">Envío</span>
-  </a>
-
-  <a href="{{ url_for('carrito') }}" class="flex items-center gap-1 hover:text-red-600 text-lg">
-    <span class="material-symbols-outlined">shopping_cart</span>
-    <span class="hidden sm:inline">Carrito S/0.00</span>
-  </a>
-</div>
-  </div>
-
-  <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-700 transition-all duration-300 group-hover:w-full"></span>
-
-  
-  <!-- Menú de navegación -->
-<nav class="bg-white border-t border-b px-8">
-  <ul class="flex justify-center gap-20 font-semibold text-gray-700 leading-loose">
-    <li><a href="{{ url_for('index') }}" class="py-2 px-3 hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='index' %}text-red-600 border-red-600{% endif %}">INICIO</a></li>
-    <li><a href="{{ url_for('producto') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='producto' %}text-red-600 border-red-600{% endif %}">PRODUCTO</a></li>
-    <li><a href="{{ url_for('nosotros') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='nosotros' %}text-red-600 border-red-600{% endif %}">NOSOTROS</a></li>
-    <li><a href="{{ url_for('catalogo') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='catalogo' %}text-red-600 border-red-600{% endif %}">CATÁLOGO</a></li>
-    <li><a href="{{ url_for('marcas') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='marcas' %}text-red-600 border-red-600{% endif %}">MARCAS</a></li>
-    <li><a href="{{ url_for('contacto') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='contacto' %}text-red-600 border-red-600{% endif %}">CONTACTENOS</a></li>
-  </ul>
-</nav>
-  </header>
-
-
-
+      <!-- Menú móvil (oculto por defecto) -->
+      <ul id="mobile-menu" class="hidden flex-col items-center gap-2 font-semibold text-gray-700 lg:hidden py-4">
+        <li><a href="{{ url_for('index') }}">INICIO</a></li>
+        <li><a href="{{ url_for('producto') }}">PRODUCTO</a></li>
+        <li><a href="{{ url_for('nosotros') }}">NOSOTROS</a></li>
+        <li><a href="{{ url_for('catalogo') }}">CATÁLOGO</a></li>
+        <li><a href="{{ url_for('marcas') }}">MARCAS</a></li>
+        <li><a href="{{ url_for('contacto') }}">CONTACTENOS</a></li>
+      </ul>
+    </nav>
+ 
   <!--MAPS -->
- <div style="width: 100%; max-width: 900px; margin: 20px auto;">
-  <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d486.6457109112046!2d-76.65369875125899!3d-12.63713312210988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91057137a0a9203d%3A0x396520f5c3561104!2sFerreter%C3%ADa%20FERRE-CHE!5e0!3m2!1ses!2spe!4v1757971613305!5m2!1ses!2spe" 
-    width="100%" 
-    height="450" 
-    style="border:0; display:block;" 
-    allowfullscreen="" 
-    loading="lazy" 
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-</div>
+  <div style="width: 100; margin:0; padding: 0;">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d486.6457109112046!2d-76.65369875125899!3d-12.63713312210988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91057137a0a9203d%3A0x396520f5c3561104!2sFerreter%C3%ADa%20FERRE-CHE!5e0!3m2!1ses!2spe!4v1757971613305!5m2!1ses!2spe"
+      width="100%" height="450" style="border:0; display:block;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+  <!-- INICIO DE CUADROS-->
+  <main class="w-full text-left">
+    <div class="max-w-6xl mx-auto px-4 relative">
+      <div class="grid grid-cols-1 md:grid-cols-2 shadow-lg rounded-b-lg">
+
+        <!-- CUADRO IZQUIERDO: DETALLES DE CONTACTOS -->
+        <div class="bg-white p-8 md:p-10">
+          <h2 class="text-2xl font-bold text-gray-800 mb-8 text-left">CONTÁCTANOS</h2>
+
+          <div class="space-y-6">
+            <!-- Correo -->
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-red-700 text-4xl">mail</span>
+              <div>
+                <h3 class="font-bold text-gray-900">CORREO:</h3>
+                <p class="text-gray-600">ferre.che@gmail.com</p>
+              </div>
+            </div>
+
+            <!-- Teléfono -->
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-red-700 text-4xl">call</span>
+              <div>
+                <h3 class="font-bold text-gray-900">TELÉFONO:</h3>
+                <p class="text-gray-600">+51 988 184 554</p>
+              </div>
+            </div>
+
+            <!-- WhatsApp -->
+            <div class="flex items-start gap-4">
+              <i class="fab fa-whatsapp text-green-500 text-4xl"></i>
+              <div>
+                <h3 class="font-bold text-gray-900">WHATSAPP:</h3>
+                <p class="text-gray-600">+51 988 184 554</p>
+              </div>
+            </div>
+
+            <!-- Ubicación -->
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-red-700 text-4xl">location_on</span>
+              <div>
+                <h3 class="font-bold text-gray-900">UBICACIÓN:</h3>
+                <p class="text-gray-600">Av. Libertad 101 , San Antonio - Cañete </p>
+              </div>
+            </div>
+
+            <!-- Horario -->
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-red-700 text-4xl">schedule</span>
+              <div>
+                <h3 class="font-bold text-gray-900">HORARIO DE ATENCIÓN:</h3>
+                <p class="text-gray-600">Lunes a Viernes: 07:00 am a 7:00 pm</p>
+                <p class="text-gray-600">Sábados: 07:00 am a 02:00 pm</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- FIN CUADRO IZQUIERDO -->
+
+        <!-- CUADRO DERECHO: CHAT -->
+        <div class="bg-gray-400 p-6 pb-24 relative rounded-b-lg md:rounded-bl-none md:rounded-br-lg pt-12">
+
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+            <h2 class="bg-white text-gray-800 font-bold px-5 py-2 rounded-lg shadow-md whitespace-nowrap text-sm">
+              CHATEA CON NOSOTROS
+            </h2>
+          </div>
+
+          <div class="space-y-3">
+            <div class="w-3/5 h-8 border border-gray-500 rounded-full"></div>
+            <div class="w-1/2 h-8 border border-gray-500 rounded-full ml-auto"></div>
+            <div class="w-4/5 h-8 border border-gray-500 rounded-full"></div>
+            <div class="w-2/5 h-8 border border-gray-500 rounded-full"></div>
+          </div>
+
+          <div class="absolute bottom-6 left-6 right-6">
+            <div class="flex items-center gap-2">
+              <div class="flex-grow h-12 border border-gray-500 rounded-full flex items-center px-6">
+                <span class="text-gray-600">Mensaje</span>
+              </div>
+              <div class="w-12 h-12 bg-red-800 rounded-full flex-shrink-0 flex items-center justify-center">
+                <span class="material-symbols-outlined text-white">send</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="absolute inset-0 bg-black bg-opacity-25 flex items-center justify-center z-10">
+
+            <button type="button" id="chat-button" class="bg-red-800 text-white font-bold text-2xl py-4 px-8 rounded-lg shadow-lg
+                   hover:bg-red-900 hover:scale-105 transition-transform duration-300">
+              PULSA PARA CHATEAR
+            </button>
+
+          </div>
+
+        </div>
+        <!-- FIN CUADRO DERECHO -->
+
+      </div>
+    </div>
+  </main>
+  <!--FIN DE CUADROS DE INFO-->
 
 
+  <!-- Pie de página -->
+  <footer class="bg-gray-900 text-gray-200 py-10 mt-10">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
-  <!-- Sección Contacto -->
-  <section class="max-w-6xl mx-auto mt-12 px-6">
-    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Logo y descripción -->
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="material-icons-outlined text-red-600">handyman</span>
+          <h2 class="text-2xl font-bold">FERRE-CHE</h2>
+        </div>
+        <p class="text-gray-400 text-sm">
+          Tu ferretería de confianza, ofreciendo calidad y compromiso en cada producto para tu hogar y proyectos.
+        </p>
+      </div>
 
-      <!-- Columna izquierda: Info de la empresa -->
-      <div class="bg-gray-100 p-8 rounded-2xl shadow-lg md:col-span-1">
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Información de Contacto</h2>
-        <ul class="space-y-4 text-gray-700">
-          <li class="flex items-center gap-3">
-            <i class="fa-solid fa-phone text-pink-600"></i>
-            <span>+51 999 888 777</span>
-          </li>
-          <li class="flex items-center gap-3">
-            <i class="fa-brands fa-whatsapp text-green-600"></i>
-            <span>+51 999 555 444</span>
-          </li>
-          <li class="flex items-center gap-3">
-            <i class="fa-solid fa-envelope text-pink-600"></i>
-            <span>contacto@ferreche.com</span>
-          </li>
-          <li class="flex items-center gap-3">
-            <i class="fa-solid fa-location-dot text-pink-600"></i>
-            <span>Libertad 101, San Vicente de Cañete</span>
-          </li>
-          <li class="flex items-center gap-3">
-            <i class="fa-solid fa-clock text-pink-600"></i>
-            <span>Lunes - Sábado: 9am - 7pm</span>
-          </li>
+      <!-- Enlaces rápidos -->
+      <div>
+        <h3 class="text-lg font-semibold mb-3">Enlaces rápidos</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="{{ url_for('index') }}" class="hover:text-red-500">Inicio</a></li>
+          <li><a href="{{ url_for('producto') }}" class="hover:text-red-500">Producto</a></li>
+          <li><a href="{{ url_for('catalogo') }}" class="hover:text-red-500">Catálogo</a></li>
+          <li><a href="{{ url_for('marcas') }}" class="hover:text-red-500">Marcas</a></li>
+          <li><a href="{{ url_for('contacto') }}" class="hover:text-red-500">Contáctenos</a></li>
         </ul>
       </div>
 
-      <!-- Columna derecha: Formulario -->
-      <div class="bg-white p-8 rounded-2xl shadow-lg md:col-span-2">
-        <h2 class="text-3xl font-bold text-gray-800 mb-6">Contáctanos</h2>
-        <p class="text-gray-600 mb-8">
-          Completa el formulario y nos pondremos en contacto contigo lo antes posible.
-        </p>
+      <!-- Información de contacto -->
+      <div>
+        <h3 class="text-lg font-semibold mb-3">Contáctanos</h3>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li><span class="material-icons-outlined text-red-600 align-middle">location_on</span> Av. Principal #123 -
+            Lima</li>
+          <li><span class="material-icons-outlined text-red-600 align-middle">call</span> +51 987 654 321</li>
+          <li><span class="material-icons-outlined text-red-600 align-middle">email</span> ferreche@empresa.com</li>
+        </ul>
+      </div>
 
-        <form action="#" method="POST" class="space-y-6">
-          <div>
-            <label for="nombre" class="block text-left text-gray-700 font-medium">Nombre</label>
-            <input type="text" id="nombre" name="nombre" required
-              class="w-full mt-2 p-3 border rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none">
-          </div>
+      <!-- Redes sociales -->
+      <div>
+        <h3 class="text-lg font-semibold mb-3">Síguenos</h3>
+        <div class="flex gap-4 text-xl">
+          <a href="#" class="hover:text-red-500"><span class="material-icons-outlined">facebook</span></a>
+          <a href="#" class="hover:text-red-500"><span class="material-icons-outlined">photo_camera</span></a>
+          <a href="#" class="hover:text-red-500"><span class="material-icons-outlined">alternate_email</span></a>
+        </div>
+      </div>
+    </div>
 
-          <div>
-            <label for="email" class="block text-left text-gray-700 font-medium">Correo electrónico</label>
-            <input type="email" id="email" name="email" required
-              class="w-full mt-2 p-3 border rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none">
-          </div>
+    <div class="text-center text-gray-500 text-sm mt-8 border-t border-gray-700 pt-4">
+      © 2025 FERRE-CHE. Todos los derechos reservados.
+    </div>
+  </footer>
+  <!--INICIO DE CHATBOT-->
+  <div id="chatbot-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div id="chatbot-window"
+      class="relative bg-white rounded-lg shadow-xl w-11/12 max-w-lg flex flex-col max-h-[90vh] overflow-hidden">
 
-          <div>
-            <label for="mensaje" class="block text-left text-gray-700 font-medium">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" rows="4" required
-              class="w-full mt-2 p-3 border rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none"></textarea>
-          </div>
+      <div class="bg-red-800 text-white p-4 rounded-t-lg flex items-center justify-center relative pb-8">
+        <div class="absolute left-4 top-1/2 -translate-y-1/2 z-20"> <img
+            src="{{ url_for('static', filename='image/robot-icon.png') }}" alt="Icono del Chatbot"
+            class="chatbot-header-icon w-20 h-20 bg-red-800 p-2 rounded-full border-4 border-white shadow-lg object-contain -mt-4">
+        </div>
 
+        <h3 class="font-bold text-lg text-center flex-grow">Ferre-Bot Asistente</h3>
+
+        <button id="close-chat-btn"
+          class="hover:text-gray-300 text-2xl absolute right-4 top-1/2 -translate-y-1/2 z-20">&times;</button>
+      </div>
+
+      <div id="chat-messages" class="flex-1 p-4 space-y-4 overflow-y-auto">
+      </div>
+
+      <div id="quick-actions" class="p-4 bg-gray-100 border-t border-gray-200 flex flex-wrap gap-2 justify-center">
+        <button
+          class="quick-action-btn bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full text-sm">Horarios</button>
+        <button
+          class="quick-action-btn bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full text-sm">Ubicacion</button>
+        <button
+          class="quick-action-btn bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full text-sm">Telefonos</button>
+        <button
+          class="quick-action-btn bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full text-sm">Categorias</button>
+      </div>
+
+      <div class="p-4 border-t border-gray-200 bg-gray-50">
+        <form id="chat-form" class="flex gap-2">
+          <input type="text" id="chat-input" placeholder="Escribe un mensaje..." autocomplete="off"
+            class="flex-1 px-3 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-red-500">
           <button type="submit"
-            class="w-full bg-pink-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-pink-700 transition">
-            Enviar mensaje
+            class="bg-orange-500 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-orange-600 shadow-md">
+            <span class="material-symbols-outlined">send</span>
           </button>
         </form>
       </div>
-
     </div>
-  </section>
+  </div>
+  <!--FIN DE CHATBOT-->
 
-
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-8 px-6 mt-10">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-sm">
-      <!-- Empresa -->
-      <div>
-        <h4 class="font-bold mb-2">FERRE-CHE</h4>
-        <p>Venta de artículos de seguridad industrial en Lima, Perú.</p>
-      </div>
-      <!-- Contactos -->
-      <div>
-        <h4 class="font-bold mb-2">Datos de Contacto</h4>
-        <p><i class="fa-solid fa-phone mr-2"></i> +51 999 888 777</p>
-        <p><i class="fa-solid fa-envelope mr-2"></i> contacto@ferreche.com</p>
-      </div>
-      <!-- Redes sociales -->
-      <div>
-        <h4 class="font-bold mb-2">Redes Sociales</h4>
-        <div class="flex gap-3 text-xl">
-          <i class="fa-brands fa-facebook"></i>
-          <i class="fa-brands fa-instagram"></i>
-          <i class="fa-brands fa-tiktok"></i>
-          <i class="fa-brands fa-whatsapp"></i>
-        </div>
-      </div>
-      <!-- Bancos -->
-      <div>
-        <h4 class="font-bold mb-2">Bancos</h4>
-        <div class="flex gap-3">
-          <img src="{{ url_for('static', filename='imagenes/visa.png') }}" class="h-6" alt="Visa">
-          <img src="{{ url_for('static', filename='imagenes/mastercard.png') }}" class="h-6" alt="Mastercard">
-          <img src="{{ url_for('static', filename='imagenes/bcp.png') }}" class="h-6" alt="BCP">
-        </div>
-      </div>
-    </div>
-    <div class="text-center text-xs mt-6 border-t border-gray-700 pt-4">
-      © 2023 Ferre-Che. Todos los derechos reservados.
-    </div>
-  </footer>
-
+  <script src="{{ url_for('static', filename='js/contacto.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
 </body>
 
 </html>

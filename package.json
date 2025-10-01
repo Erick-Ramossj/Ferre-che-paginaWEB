@@ -1,7 +1,6 @@
 {
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.13",
-    "tailwindcss": "^4.1.13"
+    "@tailwindcss/cli": "^4.1.13"
   },
   "name": "pagina-web-grupo-1",
   "version": "1.0.0",
@@ -12,5 +11,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "tailwindcss": "^4.1.13"
+  }
 }

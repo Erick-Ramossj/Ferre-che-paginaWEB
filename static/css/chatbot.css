@@ -1,0 +1,129 @@
+/* Estilos para las burbujas de mensajes del chatbot */
+
+/* Contenedor para auto-scroll */
+#chat-messages {
+    scroll-behavior: smooth;
+    background-image: url('https://i.imgur.com/7g4iXy7.png'); /* Fondo de mapa */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    filter: grayscale(80%);
+    position: relative;
+    z-index: 0;
+}
+
+/* Efecto para oscurecer el fondo del mapa */
+#chat-messages::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* CÓDIGO CORREGIDO */
+.chat-bubble {
+    padding: 10px 15px;
+    border-radius: 18px;
+    max-width: 85%;
+    word-wrap: break-word;
+    font-size: 0.95rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2;
+    text-align: left; /* <-- LÍNEA AÑADIDA */
+}
+
+/* Burbuja del usuario (derecha) */
+.user-message {
+    background-color: #ef4444; /* Rojo Ferre-Che */
+    color: white;
+    margin-left: auto;
+    border-bottom-right-radius: 5px;
+}
+
+/* Burbuja del bot (izquierda) */
+.bot-message {
+    background-color: #e5e7eb; /* Gris claro */
+    color: #1f2937; /* Gris oscuro */
+    margin-right: auto;
+    border-bottom-left-radius: 5px;
+}
+
+/* Contenedor de mensajes para alinear las burbujas */
+#chat-messages .message-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo para el ícono del bot en el mensaje inicial (la versión correcta) */
+.bot-message-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #ef4444; /* Fondo rojo del círculo */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Asegura que la imagen no se salga */
+    flex-shrink: 0; /* Evita que el icono se encoja */
+}
+
+.bot-message-icon img {
+    width: 80%; /* Ajusta el tamaño de la imagen dentro del círculo */
+    height: 80%;
+    object-fit: contain; /* Mantiene la proporción de la imagen */
+}
+
+/* Estilos para la burbuja inicial del bot con icono */
+.bot-initial-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+.bot-initial-message .chat-bubble {
+    margin-top: 0;
+}
+/* Estilos para el botón flotante del chatbot */
+
+#floating-chat-button {
+    transition: transform 0.2s ease-in-out;
+}
+
+#floating-chat-button:hover {
+    transform: scale(1.05); /* Agranda un poco el botón al pasar el cursor */
+}
+
+/* Animación para el ícono dentro del botón */
+#floating-chat-button .material-symbols-outlined {
+    animation: wiggle 2s linear infinite;
+}
+
+/* Definición de la animación 'wiggle' */
+@keyframes wiggle {
+    0%, 7% {
+        transform: rotateZ(0);
+    }
+    15% {
+        transform: rotateZ(-15deg);
+    }
+    20% {
+        transform: rotateZ(10deg);
+    }
+    25% {
+        transform: rotateZ(-10deg);
+    }
+    30% {
+        transform: rotateZ(6deg);
+    }
+    35% {
+        transform: rotateZ(-4deg);
+    }
+    40%, 100% {
+        transform: rotateZ(0);
+    }
+}
