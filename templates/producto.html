@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
   <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
   <link href="{{ url_for('static', filename='css/slider.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/chatbot.css') }}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
@@ -204,6 +205,66 @@
       © 2025 FERRE-CHE. Todos los derechos reservados.
     </div>
   </footer>
+  <!--CHATBOT PARA TODAS LAS PAGINAS-->
+  <div id="floating-chat-button" class="fixed bottom-6 right-6 z-40 cursor-pointer">
+    <div class="flex items-center gap-3">
+      <span class="bg-white text-gray-800 px-4 py-2 rounded-full shadow-lg text-lg font-semibold hidden md:block">
+        Hola, ¿necesitas ayuda?
+      </span>
+      <div class="w-16 h-16 bg-red-800 rounded-full flex items-center justify-center shadow-lg p-2">
+        <img src="{{ url_for('static', filename='image/robot-icon.png') }}" alt="Abrir chat"
+          class="w-full h-full object-contain">
+      </div>
+    </div>
+  </div>
+
+   <!--INICIO DE CHATBOT-->
+  <div id="chatbot-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div id="chatbot-window"
+      class="relative bg-white rounded-lg shadow-xl w-11/12 max-w-lg flex flex-col max-h-[90vh] overflow-hidden">
+
+      <div class="bg-red-800 text-white p-4 rounded-t-lg flex items-center justify-center relative pb-8">
+        <div class="absolute left-4 top-1/2 -translate-y-1/2 z-20"> <img
+            src="{{ url_for('static', filename='image/robot-icon.png') }}" alt="Icono del Chatbot"
+            class="chatbot-header-icon w-20 h-20 bg-red-800 p-2 rounded-full border-4 border-white shadow-lg object-contain -mt-4">
+        </div>
+
+        <h3 class="font-bold text-lg text-center flex-grow">Ferre-Bot Asistente</h3>
+
+        <button id="close-chat-btn"
+          class="hover:text-gray-300 text-2xl absolute right-4 top-1/2 -translate-y-1/2 z-20">&times;</button>
+      </div>
+
+      <div id="chat-messages" class="flex-1 p-4 space-y-4 overflow-y-auto">
+      </div>
+
+      <div id="quick-actions" class="p-4 bg-gray-100 border-t border-gray-200 flex flex-wrap gap-2 justify-center">
+        <button
+          class="quick-action-btn bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full text-sm">Horarios</button>
+        <button
+          class="quick-action-btn bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full text-sm">Ubicacion</button>
+        <button
+          class="quick-action-btn bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full text-sm">Telefonos</button>
+        <button
+          class="quick-action-btn bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full text-sm">Categorias</button>
+      </div>
+
+      <div class="p-4 border-t border-gray-200 bg-gray-50">
+        <form id="chat-form" class="flex gap-2">
+          <input type="text" id="chat-input" placeholder="Escribe un mensaje..." autocomplete="off"
+            class="flex-1 px-3 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-red-500">
+          <button type="submit"
+            class="bg-orange-500 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-orange-600 shadow-md">
+            <span class="material-symbols-outlined">send</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--FIN DE CHATBOT-->
+  <!--CHATBOT PARA TODAS LAS PAGINAS-->
+
+  <script src="{{ url_for('static', filename='js/contacto.js') }}"></script>
 
 </body>
 </html>
