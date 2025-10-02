@@ -17,8 +17,9 @@
 
 </head>
 
-<body class="bg-gray-100">
-    <!-- Menú de navegación -->
+<body class="w-full text-center">
+
+  <!-- Menú de navegación -->
   <header class="w-full">
 
     <!-- Encabezado rojo -->
@@ -64,7 +65,7 @@
           </button>
           <div id="userMenu"
             class="absolute left-0 top-full mt-0 w-44 bg-red-600 rounded shadow-lg hidden group-hover:block group-focus-within:block z-50">
-            <a href="#" class="block px-4 py-2 text-white hover:bg-red-700">Iniciar sesión</a>
+            <a href="#" id="openLoginModal" class="block px-4 py-2 text-white hover:bg-red-700">Iniciar sesión</a>
             <a href="{{ url_for('formulario') }}" class="block px-4 py-2 text-white hover:bg-red-700">Regístrate</a>
             <a href="#" class="block px-4 py-2 text-white hover:bg-red-700">Mi cuenta</a>
           </div>
@@ -83,7 +84,7 @@
       </div>
     </div>
 
-     <!-- Menú de navegación -->
+    <!-- Menú de navegación -->
     <nav class="bg-white border-t border-b px-4 sm:px-8">
       <ul
         class="hidden lg:flex justify-center gap-10 xl:gap-20 font-semibold text-gray-700 leading-loose text-sm md:text-base">
@@ -108,7 +109,7 @@
       </ul>
 
       <!-- Menú móvil (oculto por defecto) -->
-      <ul id="mobile-menu" class="hidden flex-col items-center gap-2 font-semibold text-gray-700 lg:hidden py-4">
+      <ul id="mobile-menu" class="hidden flex-col gap-2 font-semibold text-gray-700 lg:hidden py-4">
         <li><a href="{{ url_for('index') }}">INICIO</a></li>
         <li><a href="{{ url_for('producto') }}">PRODUCTO</a></li>
         <li><a href="{{ url_for('nosotros') }}">NOSOTROS</a></li>
@@ -117,6 +118,7 @@
         <li><a href="{{ url_for('contacto') }}">CONTACTENOS</a></li>
       </ul>
     </nav>
+  </header>
  
   <!--MAPS -->
   <div style="width: 100; margin:0; padding: 0;">
@@ -326,8 +328,73 @@
       </div>
     </div>
   </div>
-  <!--FIN DE CHATBOT-->
+  
+   <!-- Modal de Inicio de Sesión -->
+<div id="loginModal" class="fixed inset-0 flex items-center justify-center hidden z-50">
 
+  <!-- Capa de fondo negro semi-transparente -->
+  <div class="absolute inset-0 bg-black opacity-50"></div>
+
+  <!-- Capa con desenfoque -->
+  <div class="absolute inset-0 backdrop-blur-sm"></div>
+
+  <!-- Contenido del modal -->
+  <div class="relative bg-white w-full max-w-md p-6 rounded-lg shadow-xl z-10">
+
+    <!-- Botón cerrar -->
+    <button id="closeLoginModal" class="absolute top-3 right-4 text-gray-500 hover:text-black text-xl">
+      &times;
+    </button>
+
+
+    <h2 class="text-2xl font-bold mb-4 text-center">Iniciar sesión</h2>
+
+
+    <form class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Correo</label>
+        <input type="email" placeholder="Escribe tu correo"
+               class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" required>
+      </div>
+
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Contraseña</label>
+        <input type="password" placeholder="Escribe tu contraseña"
+               class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" required>
+      </div>
+
+
+      <div class="text-right text-sm">
+        <a href="#" class="text-red-600 hover:underline">¿Olvidaste tu contraseña?</a>
+      </div>
+
+
+      <button type="submit"
+              class="w-full bg-red-700 text-white py-2 rounded-md hover:bg-red-800 transition">
+        Ingresar
+      </button>
+
+
+      <div class="text-center text-gray-500 text-sm mt-4">O inicia sesión con</div>
+
+
+      <button type="button"
+              class="w-full border border-gray-300 py-2 rounded-md mt-2 hover:bg-gray-100 transition">
+        Google
+      </button>
+
+
+      <p class="text-sm text-center mt-4">
+        ¿No tienes una cuenta?
+        <a href="#" class="text-red-700 font-semibold hover:underline">Registrarme</a>
+      </p>
+    </form>
+  </div>
+</div>
+
+
+  <script src="{{ url_for('static', filename='js/boton.js') }}"></script>
   <script src="{{ url_for('static', filename='js/contacto.js') }}"></script>
   <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
 </body>

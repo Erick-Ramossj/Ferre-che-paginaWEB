@@ -12,89 +12,108 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
 </head>
+
 <body class="w-full text-center">
 
   <!-- Menú de navegación -->
   <header class="w-full">
 
-  <!-- Encabezado rojo (vacío) -->
-  <div class="bg-red-900 py-4"></div>
+    <!-- Encabezado rojo -->
+    <div class="bg-red-900 py-4"></div>
 
-  <!-- Fila blanca con logo, buscador, iconos -->
-  <div class="bg-white shadow flex items-center justify-between px-6 py-3">
-    
-    <!-- Izquierda: Logo + Nombre + Menu -->
-    <div class="flex items-center gap-4">
-      <!-- Logo -->
-      <span class="material-icons-outlined">handyman</span>
-      <!-- Nombre -->
-      <h1 class="text-4xl font-bold text-gray-800">FERRE-CHE</h1>
-      <!-- Botón menú hamburguesa (solo visible en móviles) -->
-      <button class="lg:hidden text-gray-700 border px-2 py-1 rounded">☰ Menu</button>
-    </div>
+    <!-- Fila blanca con logo, buscador, iconos -->
+    <div class="bg-white shadow flex flex-col sm:flex-row items-center justify-between px-4 sm:px-6 py-3 gap-4">
 
-    <!-- Centro: Buscador -->
-    <div class="flex-1 mx-6">
-      <div class="flex border rounded overflow-hidden w-full max-w-md mx-auto">
-        <input type="text" placeholder="¿Qué producto estás buscando?"
-               class="flex-1 px-3 py-2 focus:outline-none">
-        <button class="bg-gray-300 px-4">
-          <span class="material-icons-outlined">search
-          </span>
+      <!-- Izquierda: Logo + Nombre + Botón menú -->
+      <div class="flex items-center gap-3 w-full sm:w-auto justify-between">
+        <div class="flex items-center gap-2">
+          <span class="material-icons-outlined text-3xl text-red-700">handyman</span>
+          <h1 class="text-2xl md:text-3xl font-bold text-gray-800">FERRE-CHE</h1>
+        </div>
+
+        <!-- Botón menú hamburguesa -->
+        <button id="menu-toggle" class="lg:hidden text-gray-700">
+          ☰
         </button>
+      </div>
+
+      <!-- Centro: Buscador -->
+      <div class="w-full sm:flex-1 sm:mx-6">
+        <div class="flex border rounded overflow-hidden w-full max-w-md mx-auto">
+          <input type="text" placeholder="¿Qué producto estás buscando?"
+            class="flex-1 px-3 py-2 focus:outline-none text-sm md:text-base">
+          <button class="bg-gray-300 px-3 sm:px-4">
+            <span class="material-icons-outlined">search</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Derecha: Dropdown + Botones -->
+      <div class="flex items-center gap-4 w-full sm:w-auto justify-center sm:justify-end">
+
+        <!-- Menú desplegable usuario -->
+        <div class="relative inline-block group">
+          <button id="userMenuButton" type="button"
+            class="flex items-center gap-1 hover:text-red-600 text-lg px-2 py-1 focus:outline-none"
+            aria-expanded="false" aria-controls="userMenu">
+            <span class="material-symbols-outlined">account_circle</span>
+            <span class="hidden sm:inline">Iniciar sesión</span>
+          </button>
+          <div id="userMenu"
+            class="absolute left-0 top-full mt-0 w-44 bg-red-600 rounded shadow-lg hidden group-hover:block group-focus-within:block z-50">
+            <a href="#" id="openLoginModal" class="block px-4 py-2 text-white hover:bg-red-700">Iniciar sesión</a>
+            <a href="{{ url_for('formulario') }}" class="block px-4 py-2 text-white hover:bg-red-700">Regístrate</a>
+            <a href="#" class="block px-4 py-2 text-white hover:bg-red-700">Mi cuenta</a>
+          </div>
+        </div>
+
+        <!-- Otros botones -->
+        <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+          <span class="material-symbols-outlined">local_shipping</span>
+          <span class="hidden sm:inline">Envío</span>
+        </a>
+
+        <a href="{{ url_for('carrito') }}" class="flex items-center gap-1 hover:text-red-600 text-lg">
+          <span class="material-symbols-outlined">shopping_cart</span>
+          <span class="hidden sm:inline">Carrito S/0.00</span>
+        </a>
       </div>
     </div>
 
-   <!-- Contenedor (asegúrate de que no tenga overflow-hidden) -->
-<div class="flex items-center gap-4">
+    <!-- Menú de navegación -->
+    <nav class="bg-white border-t border-b px-4 sm:px-8">
+      <ul
+        class="hidden lg:flex justify-center gap-10 xl:gap-20 font-semibold text-gray-700 leading-loose text-sm md:text-base">
+        <li><a href="{{ url_for('index') }}"
+            class="py-2 px-3 hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='index' %}text-red-600 border-red-600{% endif %}">INICIO</a>
+        </li>
+        <li><a href="{{ url_for('producto') }}"
+            class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='producto' %}text-red-600 border-red-600{% endif %}">PRODUCTO</a>
+        </li>
+        <li><a href="{{ url_for('nosotros') }}"
+            class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='nosotros' %}text-red-600 border-red-600{% endif %}">NOSOTROS</a>
+        </li>
+        <li><a href="{{ url_for('catalogo') }}"
+            class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='catalogo' %}text-red-600 border-red-600{% endif %}">CATÁLOGO</a>
+        </li>
+        <li><a href="{{ url_for('marcas') }}"
+            class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='marcas' %}text-red-600 border-red-600{% endif %}">MARCAS</a>
+        </li>
+        <li><a href="{{ url_for('contacto') }}"
+            class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='contacto' %}text-red-600 border-red-600{% endif %}">CONTACTENOS</a>
+        </li>
+      </ul>
 
-  <!-- Menú desplegable (wrapper) -->
-  <div class="relative inline-block group">
-    <!-- Botón / disparador -->
-    <button id="userMenuButton" type="button"
-      class="flex items-center gap-1 hover:text-red-600 text-lg px-2 py-1 focus:outline-none"
-      aria-expanded="false" aria-controls="userMenu">
-      <span class="material-symbols-outlined">account_circle</span>
-      <span class="hidden sm:inline">Iniciar sesión</span>
-    </button>
-
-    <!-- Dropdown: usamos top-full para eliminar el gap, z-50 para que quede encima -->
-    <!-- Visible por hover en sm+; visible por focus-within siempre. -->
-    <div id="userMenu"
-         class="absolute left-0 top-full mt-0 w-44 bg-red-600 rounded shadow-lg hidden sm:group-hover:block group-focus-within:block z-50">
-      <a href="#" class="block px-4 py-2 text-white hover:bg-red-700">Iniciar sesión</a>
-      <a href="{{ url_for('formulario') }}" class="block px-4 py-2 text-white hover:bg-red-700">Regístrate</a>
-      <a href="#" class="block px-4 py-2 text-white hover:bg-red-700">Mi cuenta</a>
-    </div>
-  </div>
-
-  <!-- Otros botones -->
-  <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
-    <span class="material-symbols-outlined">local_shipping</span>
-    <span class="hidden sm:inline">Envío</span>
-  </a>
-
-  <a href="{{ url_for('carrito') }}" class="flex items-center gap-1 hover:text-red-600 text-lg">
-    <span class="material-symbols-outlined">shopping_cart</span>
-    <span class="hidden sm:inline">Carrito S/0.00</span>
-  </a>
-</div>
-  </div>
-
-  <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-700 transition-all duration-300 group-hover:w-full"></span>
-
-  
-  <!-- Menú de navegación -->
-<nav class="bg-white border-t border-b px-8">
-  <ul class="flex justify-center gap-20 font-semibold text-gray-700 leading-loose">
-    <li><a href="{{ url_for('index') }}" class="py-2 px-3 hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='index' %}text-red-600 border-red-600{% endif %}">INICIO</a></li>
-    <li><a href="{{ url_for('producto') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='producto' %}text-red-600 border-red-600{% endif %}">PRODUCTO</a></li>
-    <li><a href="{{ url_for('nosotros') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='nosotros' %}text-red-600 border-red-600{% endif %}">NOSOTROS</a></li>
-    <li><a href="{{ url_for('catalogo') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='catalogo' %}text-red-600 border-red-600{% endif %}">CATÁLOGO</a></li>
-    <li><a href="{{ url_for('marcas') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='marcas' %}text-red-600 border-red-600{% endif %}">MARCAS</a></li>
-    <li><a href="{{ url_for('contacto') }}" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='contacto' %}text-red-600 border-red-600{% endif %}">CONTACTENOS</a></li>
-  </ul>
-</nav>
+      <!-- Menú móvil (oculto por defecto) -->
+      <ul id="mobile-menu" class="hidden flex-col gap-2 font-semibold text-gray-700 lg:hidden py-4">
+        <li><a href="{{ url_for('index') }}">INICIO</a></li>
+        <li><a href="{{ url_for('producto') }}">PRODUCTO</a></li>
+        <li><a href="{{ url_for('nosotros') }}">NOSOTROS</a></li>
+        <li><a href="{{ url_for('catalogo') }}">CATÁLOGO</a></li>
+        <li><a href="{{ url_for('marcas') }}">MARCAS</a></li>
+        <li><a href="{{ url_for('contacto') }}">CONTACTENOS</a></li>
+      </ul>
+    </nav>
   </header>
 
   <!-- Hero Nosotros -->
@@ -276,10 +295,74 @@
       </div>
     </div>
   </div>
-  <!--FIN DE CHATBOT-->
-  <!--CHATBOT PARA TODAS LAS PAGINAS-->
+  
+   <!-- Modal de Inicio de Sesión -->
+<div id="loginModal" class="fixed inset-0 flex items-center justify-center hidden z-50">
 
-  <script src="{{ url_for('static', filename='js/contacto.js') }}"></script>
+  <!-- Capa de fondo negro semi-transparente -->
+  <div class="absolute inset-0 bg-black opacity-50"></div>
+
+  <!-- Capa con desenfoque -->
+  <div class="absolute inset-0 backdrop-blur-sm"></div>
+
+  <!-- Contenido del modal -->
+  <div class="relative bg-white w-full max-w-md p-6 rounded-lg shadow-xl z-10">
+
+    <!-- Botón cerrar -->
+    <button id="closeLoginModal" class="absolute top-3 right-4 text-gray-500 hover:text-black text-xl">
+      &times;
+    </button>
+
+
+    <h2 class="text-2xl font-bold mb-4 text-center">Iniciar sesión</h2>
+
+
+    <form class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Correo</label>
+        <input type="email" placeholder="Escribe tu correo"
+               class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" required>
+      </div>
+
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Contraseña</label>
+        <input type="password" placeholder="Escribe tu contraseña"
+               class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" required>
+      </div>
+
+
+      <div class="text-right text-sm">
+        <a href="#" class="text-red-600 hover:underline">¿Olvidaste tu contraseña?</a>
+      </div>
+
+
+      <button type="submit"
+              class="w-full bg-red-700 text-white py-2 rounded-md hover:bg-red-800 transition">
+        Ingresar
+      </button>
+
+
+      <div class="text-center text-gray-500 text-sm mt-4">O inicia sesión con</div>
+
+
+      <button type="button"
+              class="w-full border border-gray-300 py-2 rounded-md mt-2 hover:bg-gray-100 transition">
+        Google
+      </button>
+
+
+      <p class="text-sm text-center mt-4">
+        ¿No tienes una cuenta?
+        <a href="#" class="text-red-700 font-semibold hover:underline">Registrarme</a>
+      </p>
+    </form>
+  </div>
+</div>
+
+
+ <script src="{{ url_for('static', filename='js/boton.js') }}"></script>
+ <script src="{{ url_for('static', filename='js/contacto.js') }}"></script>
 
 </body>
 </html>
