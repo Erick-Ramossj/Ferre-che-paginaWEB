@@ -39,7 +39,7 @@
 
       <!-- Centro: Buscador -->
       <div class="w-full sm:flex-1 sm:mx-6">
-        <div class="flex border rounded overflow-hidden w-full max-w-md mx-auto">
+       <div class="flex border border-gray-300 rounded overflow-hidden w-full max-w-md mx-auto">
           <input type="text" placeholder="¿Qué producto estás buscando?"
             class="flex-1 px-3 py-2 focus:outline-none text-sm md:text-base">
           <button class="bg-gray-300 px-3 sm:px-4">
@@ -63,7 +63,7 @@
             class="absolute left-0 top-full mt-0 w-44 bg-red-600 rounded shadow-lg hidden group-hover:block group-focus-within:block z-50">
             <a href="#" id="openLoginModal" class="block px-4 py-2 text-white hover:bg-red-700">Iniciar sesión</a>
             <a href="{{ url_for('formulario') }}" class="block px-4 py-2 text-white hover:bg-red-700">Regístrate</a>
-            <a href="#" class="block px-4 py-2 text-white hover:bg-red-700">Mi cuenta</a>
+            <a href="{{ url_for('micuenta') }}" class="block px-4 py-2 text-white hover:bg-red-700">Mi cuenta</a>
           </div>
         </div>
 
@@ -81,7 +81,7 @@
     </div>
 
     <!-- Menú de navegación -->
-    <nav class="bg-white border-t border-b px-4 sm:px-8">
+    <nav class="bg-white border-t border-b border-gray-300 px-4 sm:px-8">
       <ul
         class="hidden lg:flex justify-center gap-10 xl:gap-20 font-semibold text-gray-700 leading-loose text-sm md:text-base">
         <li><a href="{{ url_for('index') }}"
@@ -134,35 +134,57 @@
     </div>
   </section>
 
-  <!-- Propósito -->
-  <section class="bg-white py-12 px-6 text-center">
-    <h2 class="text-2xl font-bold mb-8">Trabajamos con un propósito</h2>
-    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-      <!-- Misión -->
-      <div class="bg-blue-50 p-6 rounded-lg shadow-md">
-        <i class="fa-solid fa-bullseye text-3xl text-blue-600 mb-4"></i>
-        <h3 class="font-bold text-lg mb-2">Misión</h3>
-        <p>Brindar a nuestros clientes productos de calidad en artículos de seguridad industrial con atención personalizada y precios competitivos.</p>
+ <section class="max-w-6xl mx-auto py-12 px-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 relative">
+      <span class="before:content-[''] before:absolute before:w-20 before:h-[2px] before:bg-gray-400 before:left-0 before:top-1/2 
+      after:content-[''] after:absolute after:w-20 after:h-[2px] after:bg-gray-400 after:right-0 after:top-1/2">
+        Trabajamos con un propósito
+      </span>
+    </h2>
+
+    <!-- Grid principal -->
+    <div class="grid md:grid-cols-2 gap-6 items-stretch">
+      
+      <!-- Imagen -->
+      <div class="overflow-hidden rounded-xl shadow-lg">
+        <img src="{{ url_for('static', filename='image/nosotros.png') }}" 
+             alt="Construcción" 
+             class="w-full h-full object-cover transform hover:scale-105 transition duration-700">
       </div>
-      <!-- Visión -->
-      <div class="bg-yellow-50 p-6 rounded-lg shadow-md">
-        <i class="fa-solid fa-eye text-3xl text-yellow-600 mb-4"></i>
-        <h3 class="font-bold text-lg mb-2">Visión</h3>
-        <p>Ser referentes a nivel nacional en la venta de artículos de seguridad industrial, reconocidos por nuestra confiabilidad y excelencia.</p>
-      </div>
-      <!-- Valores -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-        <i class="fa-solid fa-handshake text-3xl text-gray-700 mb-4"></i>
-        <h3 class="font-bold text-lg mb-2">Valores</h3>
-        <ul class="text-left list-disc list-inside">
-          <li>Honestidad</li>
-          <li>Responsabilidad</li>
-          <li>Compromiso</li>
-          <li>Calidad</li>
-        </ul>
+
+      <!-- Misión y visión -->
+      <div class="grid grid-cols-1 md:grid-cols-2 rounded-xl overflow-hidden shadow-lg">
+        
+        <!-- Misión -->
+        <div class="bg-blue-500 text-white p-6 flex flex-col items-center justify-center text-center transition transform hover:-translate-y-2 hover:shadow-xl duration-500">
+          <div class="text-4xl mb-3">🌐</div>
+          <h3 class="text-xl font-bold mb-2">MISIÓN</h3>
+          <p class="text-sm">Brindar a nuestros clientes productos de ferretería de calidad, con un servicio cercano y confiable que ofrezca soluciones prácticas en construcción, reparación y mantenimiento.</p>
+        </div>
+
+        <!-- Visión -->
+        <div class="bg-yellow-500 text-white p-6 flex flex-col items-center justify-center text-center transition transform hover:-translate-y-2 hover:shadow-xl duration-500">
+          <div class="text-4xl mb-3">👁️</div>
+          <h3 class="text-xl font-bold mb-2">VISIÓN</h3>
+          <p class="text-sm">Ser la ferretería familiar de referencia, reconocida por su confianza, compromiso y calidad en el servicio, adaptándonos a las necesidades del mercado.</p>
+        </div>
       </div>
     </div>
+
+    <!-- Valores -->
+    <div class="bg-gray-300 text-gray-800 mt-8 p-8 rounded-xl shadow-lg text-center transition hover:scale-[1.02] duration-500">
+      <div class="text-3xl mb-4">🤝</div>
+      <h3 class="text-xl font-bold mb-4">VALORES</h3>
+      <ul class="text-sm space-y-2">
+        <li><strong>Honestidad:</strong> Actuar con transparencia y responsabilidad.</li>
+        <li><strong>Compromiso:</strong> Siempre disponibles para apoyar a nuestros clientes.</li>
+        <li><strong>Cercanía:</strong> Mantener un trato amable y familiar.</li>
+        <li><strong>Calidad:</strong> Ofrecer productos confiables y duraderos.</li>
+      </ul>
+    </div>
+
   </section>
+
 
 <!-- Únete -->
 <section class="bg-red-900 text-white py-12 px-6 relative">
@@ -239,6 +261,8 @@
       © 2025 FERRE-CHE. Todos los derechos reservados.
     </div>
   </footer>
+
+  
   <!--CHATBOT PARA TODAS LAS PAGINAS-->
   <div id="floating-chat-button" class="fixed bottom-6 right-6 z-40 cursor-pointer">
     <div class="flex items-center gap-3">

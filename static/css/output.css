@@ -21,7 +21,7 @@
     --color-yellow-600: oklch(68.1% 0.162 75.834);
     --color-green-500: oklch(72.3% 0.219 149.579);
     --color-blue-50: oklch(97% 0.014 254.604);
-    --color-blue-500: oklch(62.3% 0.214 259.815);
+    --color-blue-500: oklch(62.3% 0.214 259.815); 
     --color-blue-600: oklch(54.6% 0.245 262.881);
     --color-purple-500: oklch(62.7% 0.265 303.9);
     --color-pink-300: oklch(82.3% 0.12 346.018);
@@ -1812,3 +1812,4 @@ button:hover {
     }
   }
 }
+

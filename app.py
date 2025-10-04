@@ -42,5 +42,9 @@ def formulario():
 def carrito():
     return render_template('carrito.html')
 
+@app.route('/micuenta')
+def micuenta():
+    return render_template('micuenta.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
