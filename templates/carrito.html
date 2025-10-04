@@ -39,7 +39,7 @@
 
       <!-- Centro: Buscador -->
       <div class="w-full sm:flex-1 sm:mx-6">
-       <div class="flex border border-gray-300 rounded overflow-hidden w-full max-w-md mx-auto">
+        <div class="flex border rounded overflow-hidden w-full max-w-md mx-auto">
           <input type="text" placeholder="¿Qué producto estás buscando?"
             class="flex-1 px-3 py-2 focus:outline-none text-sm md:text-base">
           <button class="bg-gray-300 px-3 sm:px-4">
@@ -63,7 +63,7 @@
             class="absolute left-0 top-full mt-0 w-44 bg-red-600 rounded shadow-lg hidden group-hover:block group-focus-within:block z-50">
             <a href="#" id="openLoginModal" class="block px-4 py-2 text-white hover:bg-red-700">Iniciar sesión</a>
             <a href="{{ url_for('formulario') }}" class="block px-4 py-2 text-white hover:bg-red-700">Regístrate</a>
-            <a href="{{ url_for('micuenta') }}" class="block px-4 py-2 text-white hover:bg-red-700">Mi cuenta</a>
+            <a href="#" class="block px-4 py-2 text-white hover:bg-red-700">Mi cuenta</a>
           </div>
         </div>
 
@@ -72,16 +72,15 @@
           <span class="material-symbols-outlined">local_shipping</span>
           <span class="hidden sm:inline">Envío</span>
         </a>
-
         <a href="{{ url_for('carrito') }}" class="flex items-center gap-1 hover:text-red-600 text-lg">
           <span class="material-symbols-outlined">shopping_cart</span>
-          <span class="hidden sm:inline">Carrito S/0.00</span>
+          <span class="hidden sm:inline" id="cart-header-total">Carrito S/0.00</span>
         </a>
       </div>
     </div>
 
     <!-- Menú de navegación -->
-    <nav class="bg-white border-t border-b border-gray-300 px-4 sm:px-8">
+    <nav class="bg-white border-t border-b px-4 sm:px-8">
       <ul
         class="hidden lg:flex justify-center gap-10 xl:gap-20 font-semibold text-gray-700 leading-loose text-sm md:text-base">
         <li><a href="{{ url_for('index') }}"
@@ -116,52 +115,51 @@
     </nav>
   </header>
 
-    <main class="container mx-auto p-6 mt-10">
-        <div class="flex flex-col lg:flex-row gap-8">
-            <div class="flex-1">
-                <h2 class="text-3xl font-bold text-gray-800 mb-6">Carrito de Compras</h2>
-                <div class="flex items-center bg-white rounded-lg shadow p-4 mb-4">
-                    <img src="https://via.placeholder.com/100" alt="Producto 1" class="w-24 h-24 object-contain mr-6">
-                    <div class="flex-1">
-                        <h3 class="font-semibold text-gray-800">Producto de Seguridad Industrial</h3>
-                        <p class="text-gray-600 text-sm mt-1">S/ 45.00</p>
-                    </div>
-                    <div class="flex items-center gap-2 mx-6">
-                        <button class="bg-gray-200 text-gray-700 w-8 h-8 rounded">-</button>
-                        <span class="text-lg">1</span>
-                        <button class="bg-gray-200 text-gray-700 w-8 h-8 rounded">+</button>
-                    </div>
-                    <p class="font-bold text-lg text-gray-900 w-20 text-right">S/ 45.00</p>
-                    <button class="ml-4 text-gray-400 hover:text-red-600">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="w-full lg:w-1/3 bg-white p-6 rounded-lg shadow-lg h-fit">
-                <h3 class="text-2xl font-bold text-gray-800 mb-4">Resumen del Pedido</h3>
-                <div class="flex justify-between items-center mb-2">
-                    <span class="text-gray-700">Subtotal:</span>
-                    <span class="font-semibold">S/ 45.00</span>
-                </div>
-                <div class="flex justify-between items-center border-b pb-2 mb-2">
-                    <span class="text-gray-700">Envío:</span>
-                    <span class="font-semibold">S/ 15.00</span>
-                </div>
-                <div class="flex justify-between items-center font-bold text-xl pt-2">
-                    <span>Total:</span>
-                    <span>S/ 60.00</span>
-                </div>
-                <button class="mt-6 w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition duration-300">
-                    Proceder al Pago
-                </button>
-            </div>
+      <!-- MAIN: Contenido principal con lista de productos en el carrito y el resumen -->
+  <main class="container mx-auto p-6 mt-10">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <div class="flex-1">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Carrito de Compras</h2>
+        <!-- Contenedor dinámico: aquí se renderizan los items desde localStorage -->
+        <div id="carrito-items"></div>
+      </div>
+      <!-- Panel derecho: resumen del pedido, envío y total -->
+      <div class="w-full lg:w-1/3 bg-white p-6 rounded-lg shadow-lg h-fit">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Resumen del Pedido</h3>
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-gray-700">Subtotal:</span>
+          <span class="font-semibold" id="subtotal">S/ 0.00</span>
         </div>
-    </main>
+        <div class="flex justify-between items-center border-b pb-2 mb-2">
+          <span class="text-gray-700">Envío:</span>
+          <span class="font-semibold" id="envio">S/ 0.00</span>
+        </div>
+        <div class="flex justify-between items-center font-bold text-xl pt-2">
+          <span>Total:</span>
+          <span id="total">S/ 0.00</span>
+        </div>
+        <!-- Botón de acción: en producción debería redirigir a la pasarela de pago -->
+        <button class="mt-6 w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition duration-300">
+          Proceder al Pago
+        </button>
+      </div>
+    </div>
+  </main>
+      <!-- Logo y descripción -->
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="material-icons-outlined text-red-600">handyman</span>
+          <h2 class="text-2xl font-bold">FERRE-CHE</h2>
+        </div>
+        <p class="text-gray-400 text-sm">
+          Tu ferretería de confianza, ofreciendo calidad y compromiso en cada producto para tu hogar y proyectos.
+        </p>
+      </div>
 
-    <footer class="bg-gray-900 text-gray-200 py-10 mt-10">
+<!-- === INICIO: Footer === -->
+  <footer class="bg-gray-900 text-gray-200 py-10 mt-10">
     <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
-      <!-- Logo y descripción -->
       <div>
         <div class="flex items-center gap-2 mb-3">
           <span class="material-icons-outlined text-red-600">handyman</span>
@@ -209,62 +207,6 @@
       © 2025 FERRE-CHE. Todos los derechos reservados.
     </div>
   </footer>
-   <!--CHATBOT PARA TODAS LAS PAGINAS-->
-  <div id="floating-chat-button" class="fixed bottom-6 right-6 z-40 cursor-pointer">
-    <div class="flex items-center gap-3">
-      <span class="bg-white text-gray-800 px-4 py-2 rounded-full shadow-lg text-lg font-semibold hidden md:block">
-        Hola, ¿necesitas ayuda?
-      </span>
-      <div class="w-16 h-16 bg-red-800 rounded-full flex items-center justify-center shadow-lg p-2">
-        <img src="{{ url_for('static', filename='image/robot-icon.png') }}" alt="Abrir chat"
-          class="w-full h-full object-contain">
-      </div>
-    </div>
-  </div>
-
-   <!--INICIO DE CHATBOT-->
-  <div id="chatbot-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div id="chatbot-window"
-      class="relative bg-white rounded-lg shadow-xl w-11/12 max-w-lg flex flex-col max-h-[90vh] overflow-hidden">
-
-      <div class="bg-red-800 text-white p-4 rounded-t-lg flex items-center justify-center relative pb-8">
-        <div class="absolute left-4 top-1/2 -translate-y-1/2 z-20"> <img
-            src="{{ url_for('static', filename='image/robot-icon.png') }}" alt="Icono del Chatbot"
-            class="chatbot-header-icon w-20 h-20 bg-red-800 p-2 rounded-full border-4 border-white shadow-lg object-contain -mt-4">
-        </div>
-
-        <h3 class="font-bold text-lg text-center flex-grow">Ferre-Bot Asistente</h3>
-
-        <button id="close-chat-btn"
-          class="hover:text-gray-300 text-2xl absolute right-4 top-1/2 -translate-y-1/2 z-20">&times;</button>
-      </div>
-
-      <div id="chat-messages" class="flex-1 p-4 space-y-4 overflow-y-auto">
-      </div>
-
-      <div id="quick-actions" class="p-4 bg-gray-100 border-t border-gray-200 flex flex-wrap gap-2 justify-center">
-        <button
-          class="quick-action-btn bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full text-sm">Horarios</button>
-        <button
-          class="quick-action-btn bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full text-sm">Ubicacion</button>
-        <button
-          class="quick-action-btn bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full text-sm">Telefonos</button>
-        <button
-          class="quick-action-btn bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full text-sm">Categorias</button>
-      </div>
-
-      <div class="p-4 border-t border-gray-200 bg-gray-50">
-        <form id="chat-form" class="flex gap-2">
-          <input type="text" id="chat-input" placeholder="Escribe un mensaje..." autocomplete="off"
-            class="flex-1 px-3 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-red-500">
-          <button type="submit"
-            class="bg-orange-500 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-orange-600 shadow-md">
-            <span class="material-symbols-outlined">send</span>
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
   
    <!-- Modal de Inicio de Sesión -->
 <div id="loginModal" class="fixed inset-0 flex items-center justify-center hidden z-50">
@@ -330,9 +272,13 @@
   </div>
 </div>
 
-
   <script src="{{ url_for('static', filename='js/boton.js') }}"></script>
   <script src="{{ url_for('static', filename='js/contacto.js') }}"></script>
-
+  <!-- SCRIPTS: externalizado a static/js/carrito.js -->
+  <script src="{{ url_for('static', filename='js/carrito.js') }}"></script>
+    <!-- Toast de notificación -->
+  <div id="toast" class="fixed top-6 right-6 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg font-semibold text-base opacity-0 pointer-events-none transition-opacity duration-500">
+    <span id="toast-msg">Producto agregado al carrito</span>
+  </div>
 </body>
 </html>
