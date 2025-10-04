@@ -177,15 +177,65 @@ document.addEventListener('DOMContentLoaded', function() {
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
     }
-
+    // RESPUESTAS DEL CHATBOT
     function getBotResponse(userInput) {
-        const input = userInput.toLowerCase();
-        if (input.includes("hola") || input.includes("buenos dias")) { return "¡Hola! ¿En qué puedo ayudarte?"; }
-        if (input.includes("horario")) { return "Nuestro horario es: Lunes a Viernes de 07:00 am a 7:00 pm, y Sábados de 07:00 am a 02:00 pm."; }
-        if (input.includes("ubicacion")) { return "Nos encontramos en Av. Libertad 101, San Antonio - Cañete. ¡Te esperamos!"; }
-        if (input.includes("telefonos")) { return "Puedes contactarnos al +51 988 184 554 o por WhatsApp al mismo número."; }
-        if (input.includes("categorias")) { return "Vendemos una amplia gama de artículos de seguridad industrial. ¿Te interesa alguna categoría en particular?"; }
-        if (input.includes("gracias")) { return "¡De nada! Ha sido un placer ayudarte. Si tienes otra pregunta, no dudes en consultarme."; }
-        return "Disculpa, no he entendido tu pregunta. ¿Puedes reformularla o elegir una de las opciones rápidas?";
+    const input = userInput.toLowerCase().trim(); // Usamos .trim() para eliminar espacios en blanco
+
+    // --- SALUDOS Y DESPEDIDAS ---
+    if (input.includes("hola") || input.includes("buenos dias") || input.includes("buenas tardes")) {
+        return "¡Hola! Soy Ferre-Bot, tu asistente virtual. ¿En qué puedo ayudarte?";
+    }
+    if (input.includes("gracias")) {
+        return "¡De nada! Ha sido un placer ayudarte. Si tienes otra pregunta, no dudes en consultarme.";
+    }
+    if (input.includes("adios") || input.includes("chao") || input.includes("hasta luego")) {
+        return "¡Hasta luego! Que tengas un excelente día.";
+    }
+
+    // --- PREGUNTAS SOBRE LA TIENDA (EXISTENTES Y MEJORADAS) ---
+    if (input.includes("horario") || input.includes("atienden")) {
+        return "Nuestro horario es: Lunes a Viernes de 07:00 am a 7:00 pm, y Sábados de 07:00 am a 02:00 pm.";
+    }
+    if (input.includes("ubicacion") || input.includes("direccion") || input.includes("tienda fisica")) {
+        return "Nos encontramos en Av. Libertad 101, San Antonio - Cañete. ¡Te esperamos!";
+    }
+    if (input.includes("telefono") || input.includes("numero") || input.includes("llamar") || input.includes("whatsapp")) {
+        return "Puedes contactarnos al +51 988 184 554 o por WhatsApp al mismo número.";
+    }
+
+    // --- PREGUNTAS SOBRE PRODUCTOS Y COMPRAS (NUEVAS) ---
+    if (input.includes("comprar") || input.includes("hacer un pedido")) {
+        return "Para comprar, solo agrega los productos a tu carrito y sigue los pasos. Si necesitas ayuda, puedes contactar a un asesor +51 988 194 594.";
+    }
+    if (input.includes("pago") || input.includes("pagar") || input.includes("metodos de pago") || input.includes("aceptan tarjeta")) {
+        return "Aceptamos pagos con tarjeta de crédito/débito (Visa, Mastercard), Yape, Plin y transferencias bancarias. Encontrarás todas las opciones al finalizar tu compra.";
+    }
+    if (input.includes("delivery") || input.includes("envio") || input.includes("entrega")) {
+        return "Sí, realizamos envíos a domicilio. El costo y tiempo de entrega dependen de tu ubicación y se calculan al momento de la compra.";
+    }
+    if (input.includes("recoger") || input.includes("recojo en tienda")) {
+        return "¡Claro! Puedes realizar tu compra online y seleccionar la opción de 'Recojo en tienda' sin costo adicional. Te avisaremos cuando tu pedido esté listo.";
+    }
+    if (input.includes("marcas")) {
+        return "Trabajamos con las mejores marcas del mercado en seguridad industrial. Puedes ver todas las marcas con las que trabajamos en nuestra sección 'Marcas' del menú principal.";
+    }
+    if (input.includes("categorias") || input.includes("productos")) {
+        return "Tenemos un amplio catálogo en seguridad industrial: calzado, guantes, cascos, protección respiratoria y más. Puedes navegar por la seccion de catalogo o Producto para ver lo que ofrecemos";
+    }
+    if (input.includes("devolucion") || input.includes("cambio") || input.includes("garantia")) {
+        return "Para gestionar un cambio o devolución, por favor comunícate directamente con nuestro equipo de atención al cliente para que puedan ayudarte con el proceso.";
+    }
+    if (input.includes("empresa") || input.includes("factura") || input.includes("ruc") || input.includes("por mayor")) {
+        return "Sí, realizamos ventas a empresas y emitimos factura. Para cotizaciones o compras por mayor, contáctanos a nuestro correo ferre.che@gmail.com.";
+    }
+
+
+    // --- AYUDA Y SOPORTE (NUEVAS) ---
+    if (input.includes("humano") || input.includes("persona") || input.includes("asesor") || input.includes("ayuda")) {
+        return "Entendido. Para hablar con un asesor, puedes llamarnos al +51 988 184 554 durante nuestro horario de atención.";
+    }
+
+    // --- RESPUESTA POR DEFECTO ---
+    return "Disculpa, no he entendido tu pregunta. ¿Puedes reformularla o elegir una de las opciones rápidas?";
     }
 });
