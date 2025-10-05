@@ -8,7 +8,32 @@ function getCarrito() {
 
 // Guarda el carrito en localStorage
 function setCarrito(carrito) {
+    // obtener estado previo
+    const prevRaw = localStorage.getItem('carrito');
+    const prevCarrito = prevRaw ? JSON.parse(prevRaw) : [];
+    const prevCantidad = prevCarrito.reduce((s, it) => s + (it.cantidad || 0), 0);
+
+    // guardar nuevo estado
     localStorage.setItem('carrito', JSON.stringify(carrito));
+
+    // calcular nueva cantidad
+    const newCantidad = (carrito || []).reduce((s, it) => s + (it.cantidad || 0), 0);
+
+    // dispatch evento con detalles
+    try {
+        window.dispatchEvent(new CustomEvent('carrito:changed', {
+            detail: {
+                prevCantidad,
+                newCantidad,
+                carrito: carrito
+            }
+        }));
+    } catch (err) {
+        // navegador viejo: fallback usando evento simple
+        const ev = document.createEvent('CustomEvent');
+        ev.initCustomEvent('carrito:changed', true, true, { prevCantidad, newCantidad, carrito });
+        window.dispatchEvent(ev);
+    }
 }
 
 // Actualiza el monto del carrito en el header (intenta usar el id, si existe)
@@ -27,43 +52,141 @@ function actualizarCarritoHeader() {
 }
 
 // Muestra una notificación tipo toast cuando se agrega o actualiza un producto
-function mostrarToast(mensaje = "Producto agregado al carrito") {
-    console.log('mostrarToast called:', mensaje);
-    let toast = document.getElementById("toast");
-    // Si no existe el toast en el DOM (mal insertado), lo creamos temporalmente
-    let createdTemp = false;
+// Reemplazamos la implementación por una más robusta que garantiza un único #toast
+let __ferre_toast_timeout = null;
+
+function ensureSingleToastElement() {
+    // eliminar duplicados si los hubiera
+    const nodes = Array.from(document.querySelectorAll('#toast'));
+    if (nodes.length > 1) {
+        nodes.slice(1).forEach(n => n.parentNode && n.parentNode.removeChild(n));
+    }
+    let toast = document.getElementById('toast');
     if (!toast) {
-        createdTemp = true;
         toast = document.createElement('div');
         toast.id = 'toast';
+        toast.setAttribute('role', 'status');
+        toast.setAttribute('aria-live', 'polite');
+        // clases (si existe Tailwind) + estilos inline robustos para fallback
         toast.className = 'fixed top-6 right-6 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg font-semibold text-base opacity-0 pointer-events-none transition-opacity duration-500';
+        // estilos inline garantizados (y forzados como importantes)
+        Object.assign(toast.style, {
+            position: 'fixed',
+            top: '1.5rem',
+            right: '1.5rem',
+            zIndex: 9999,
+            color: '#ffffff',
+            padding: '0.75rem 1.5rem',
+            borderRadius: '0.5rem',
+            boxShadow: '0 10px 15px rgba(0,0,0,0.1)',
+            opacity: '0',
+            pointerEvents: 'none',
+            transition: 'opacity 0.25s ease-in-out, transform 0.25s ease-in-out',
+            transform: 'translateY(-6px)'
+        });
+        // Forzar fondo opaco independientemente de CSS externo
+        toast.style.setProperty('background-color', '#16a34a', 'important'); // verde opaco
+        toast.style.setProperty('background-image', 'none', 'important');
+        toast.style.setProperty('background-blend-mode', 'normal', 'important');
+        toast.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
+        toast.style.setProperty('backdrop-filter', 'none', 'important');
+        toast.style.setProperty('box-shadow', '0 10px 15px rgba(0,0,0,0.12)', 'important');
+
         const span = document.createElement('span');
         span.id = 'toast-msg';
+        span.textContent = 'Producto agregado al carrito';
+        span.style.color = '#ffffff';
         toast.appendChild(span);
         document.body.appendChild(toast);
+    } else {
+        // asegurar que exista el span con id toast-msg
+        if (!toast.querySelector('#toast-msg')) {
+            const span = document.createElement('span');
+            span.id = 'toast-msg';
+            span.textContent = 'Producto agregado al carrito';
+            span.style.color = '#ffffff';
+            toast.appendChild(span);
+        }
+        // Garantizar y forzar estilos de fondo opaco por si no existen
+        toast.style.setProperty('background-color', toast.style.backgroundColor || '#16a34a', 'important');
+        toast.style.setProperty('background-image', 'none', 'important');
+        toast.style.setProperty('background-blend-mode', 'normal', 'important');
+        toast.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
+        toast.style.setProperty('backdrop-filter', 'none', 'important');
+        toast.style.setProperty('box-shadow', '0 10px 15px rgba(0,0,0,0.12)', 'important');
+
+        // También garantizar posición básica
+        Object.assign(toast.style, {
+            position: toast.style.position || 'fixed',
+            top: toast.style.top || '1.5rem',
+            right: toast.style.right || '1.5rem',
+            zIndex: toast.style.zIndex || 9999
+        });
+        // asegurar texto blanco
+        const span = toast.querySelector('#toast-msg');
+        if (span) span.style.color = '#ffffff';
     }
+    return toast;
+}
+
+function showToast(message = "Producto agregado al carrito", duration = 2000) {
+    const toast = ensureSingleToastElement();
     const toastMsg = document.getElementById('toast-msg');
-    if (toastMsg) toastMsg.textContent = mensaje; else toast.textContent = mensaje;
-    // Mostrar (clases + fallback inline)
-    toast.classList.remove('opacity-0');
-    toast.classList.add('opacity-100');
-    toast.classList.remove('pointer-events-none');
-    // Fallback inline por si Tailwind no aplica inmediatamente
+    if (toastMsg) {
+        toastMsg.textContent = message;
+        toastMsg.style.color = '#ffffff';
+    }
+
+    // Reforzar fondo opaco justo antes de mostrar
+    toast.style.setProperty('background-color', '#16a34a', 'important');
+    toast.style.setProperty('background-image', 'none', 'important');
+    toast.style.setProperty('background-blend-mode', 'normal', 'important');
+    toast.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
+    toast.style.setProperty('backdrop-filter', 'none', 'important');
+
+    // Mostrar inmediatamente (clases + inline) y forzar reflow para transición
+    toast.style.display = 'block';
+    // Forzar reflow
+    // eslint-disable-next-line no-unused-expressions
+    toast.offsetHeight;
     toast.style.opacity = '1';
     toast.style.pointerEvents = 'auto';
-    // Duración visible (2s)
-    setTimeout(() => {
-        // Ocultar (clases + fallback inline)
-        toast.classList.remove('opacity-100');
-        toast.classList.add('opacity-0');
-        toast.classList.add('pointer-events-none');
+    toast.style.transform = 'translateY(0)';
+    // Añadir clase de visibilidad si se usa Tailwind
+    toast.classList.remove('opacity-0', 'pointer-events-none');
+    toast.classList.add('opacity-100');
+
+    // Limpiar timeout previo y crear uno nuevo
+    if (__ferre_toast_timeout) {
+        clearTimeout(__ferre_toast_timeout);
+        __ferre_toast_timeout = null;
+    }
+    __ferre_toast_timeout = setTimeout(() => {
+        // Ocultar con transición
         toast.style.opacity = '0';
         toast.style.pointerEvents = 'none';
-        // Si lo creamos temporalmente, lo eliminamos del DOM después de ocultarlo
-        if (createdTemp) {
-            setTimeout(() => { if (toast && toast.parentNode) toast.parentNode.removeChild(toast); }, 300);
-        }
-    }, 2000);
+        toast.style.transform = 'translateY(-6px)';
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0', 'pointer-events-none');
+        // opcional: mantener display:none hasta terminar la transición
+        setTimeout(() => {
+            // asegurarse de que siga existiendo
+            if (toast && toast.style) toast.style.display = 'none';
+        }, 300);
+    }, duration);
+}
+
+// Mantener compatibilidad: la función pública seguir llamándose mostrarToast
+function mostrarToast(mensaje = "Producto agregado al carrito") {
+    // delegar en la implementación robusta
+    try {
+        showToast(mensaje, 2000);
+    } catch (err) {
+        // fallback mínimo por si algo falla
+        console.log('mostrarToast fallback:', mensaje, err);
+        // intento mínimo de mostrar alert como último recurso
+        try { alert(mensaje); } catch (e) { /* ignore */ }
+    }
 }
 
 /**
@@ -239,3 +362,21 @@ document.addEventListener("DOMContentLoaded", function() {
     // Si estamos en la página del carrito, renderizar su contenido
     renderCarrito();
 });
+
+// Listener global para mostrar notificación cuando cambie el carrito
+(function() {
+    window.addEventListener('carrito:changed', function(e) {
+        const detail = e && e.detail ? e.detail : {};
+        const prevQ = Number(detail.prevCantidad || 0);
+        const newQ = Number(detail.newCantidad || 0);
+
+        // Mostrar mensaje distinto si se agregó (cantidad aumentó) o solo se actualizó/eliminó
+        if (newQ > prevQ) {
+            mostrarToast("Producto agregado al carrito");
+        } else if (newQ < prevQ) {
+            mostrarToast("Producto eliminado del carrito");
+        } else {
+            mostrarToast("Carrito actualizado");
+        }
+    });
+})();
