@@ -46,5 +46,10 @@ def carrito():
 def micuenta():
     return render_template('micuenta.html')
 
+@app.route('/libroRecl')
+def libroRecl():
+    return render_template("libroRecl.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)

@@ -39,7 +39,7 @@
 
       <!-- Centro: Buscador -->
       <div class="w-full sm:flex-1 sm:mx-6">
-        <div class="flex border rounded overflow-hidden w-full max-w-md mx-auto">
+       <div class="flex border border-gray-300 rounded overflow-hidden w-full max-w-md mx-auto">
           <input type="text" placeholder="¿Qué producto estás buscando?"
             class="flex-1 px-3 py-2 focus:outline-none text-sm md:text-base">
           <button class="bg-gray-300 px-3 sm:px-4">
@@ -63,7 +63,7 @@
             class="absolute left-0 top-full mt-0 w-44 bg-red-600 rounded shadow-lg hidden group-hover:block group-focus-within:block z-50">
             <a href="#" id="openLoginModal" class="block px-4 py-2 text-white hover:bg-red-700">Iniciar sesión</a>
             <a href="{{ url_for('formulario') }}" class="block px-4 py-2 text-white hover:bg-red-700">Regístrate</a>
-            <a href="#" class="block px-4 py-2 text-white hover:bg-red-700">Mi cuenta</a>
+            <a href="{{ url_for('micuenta') }}" class="block px-4 py-2 text-white hover:bg-red-700">Mi cuenta</a>
           </div>
         </div>
 
@@ -72,15 +72,16 @@
           <span class="material-symbols-outlined">local_shipping</span>
           <span class="hidden sm:inline">Envío</span>
         </a>
+
         <a href="{{ url_for('carrito') }}" class="flex items-center gap-1 hover:text-red-600 text-lg">
           <span class="material-symbols-outlined">shopping_cart</span>
-          <span class="hidden sm:inline" id="cart-header-total">Carrito S/0.00</span>
+          <span class="hidden sm:inline">Carrito S/0.00</span>
         </a>
       </div>
     </div>
 
     <!-- Menú de navegación -->
-    <nav class="bg-white border-t border-b px-4 sm:px-8">
+    <nav class="bg-white border-t border-b border-gray-300 px-4 sm:px-8">
       <ul
         class="hidden lg:flex justify-center gap-10 xl:gap-20 font-semibold text-gray-700 leading-loose text-sm md:text-base">
         <li><a href="{{ url_for('index') }}"

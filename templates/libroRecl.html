@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Sitio Web</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+  <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/slider.css') }}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/chatbot.css') }}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+</head>
+
+<body class="w-full text-center">
+
+  <!-- Menú de navegación -->
+  <header class="w-full">
+
+    <!-- Encabezado rojo -->
+    <div class="bg-red-900 py-4"></div>
+
+    <!-- Fila blanca con logo, buscador, iconos -->
+    <div class="bg-white shadow flex flex-col sm:flex-row items-center justify-between px-4 sm:px-6 py-3 gap-4">
+
+      <!-- Izquierda: Logo + Nombre + Botón menú -->
+      <div class="flex items-center gap-3 w-full sm:w-auto justify-between">
+        <div class="flex items-center gap-2">
+          <span class="material-icons-outlined text-3xl text-red-700">handyman</span>
+          <h1 class="text-2xl md:text-3xl font-bold text-gray-800">FERRE-CHE</h1>
+        </div>
+
+        <!-- Botón menú hamburguesa -->
+        <button id="menu-toggle" class="lg:hidden text-gray-700">
+          ☰
+        </button>
+      </div>
+
+      <!-- Centro: Buscador -->
+      <div class="w-full sm:flex-1 sm:mx-6">
+       <div class="flex border border-gray-300 rounded overflow-hidden w-full max-w-md mx-auto">
+          <input type="text" placeholder="¿Qué producto estás buscando?"
+            class="flex-1 px-3 py-2 focus:outline-none text-sm md:text-base">
+          <button class="bg-gray-300 px-3 sm:px-4">
+            <span class="material-icons-outlined">search</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Derecha: Dropdown + Botones -->
+      <div class="flex items-center gap-4 w-full sm:w-auto justify-center sm:justify-end">
+
+        <!-- Menú desplegable usuario -->
+        <div class="relative inline-block group">
+          <button id="userMenuButton" type="button"
+            class="flex items-center gap-1 hover:text-red-600 text-lg px-2 py-1 focus:outline-none"
+            aria-expanded="false" aria-controls="userMenu">
+            <span class="material-symbols-outlined">account_circle</span>
+            <span class="hidden sm:inline">Iniciar sesión</span>
+          </button>
+          <div id="userMenu"
+            class="absolute left-0 top-full mt-0 w-44 bg-red-600 rounded shadow-lg hidden group-hover:block group-focus-within:block z-50">
+            <a href="#" id="openLoginModal" class="block px-4 py-2 text-white hover:bg-red-700">Iniciar sesión</a>
+            <a href="{{ url_for('formulario') }}" class="block px-4 py-2 text-white hover:bg-red-700">Regístrate</a>
+            <a href="{{ url_for('micuenta') }}" class="block px-4 py-2 text-white hover:bg-red-700">Mi cuenta</a>
+          </div>
+        </div>
+
+        <!-- Otros botones -->
+        <a href="#" class="flex items-center gap-1 hover:text-red-600 text-lg">
+          <span class="material-symbols-outlined">local_shipping</span>
+          <span class="hidden sm:inline">Envío</span>
+        </a>
+
+        <a href="{{ url_for('carrito') }}" class="flex items-center gap-1 hover:text-red-600 text-lg">
+          <span class="material-symbols-outlined">shopping_cart</span>
+          <span class="hidden sm:inline">Carrito S/0.00</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Menú de navegación -->
+    <nav class="bg-white border-t border-b border-gray-300 px-4 sm:px-8">
+      <ul
+        class="hidden lg:flex justify-center gap-10 xl:gap-20 font-semibold text-gray-700 leading-loose text-sm md:text-base">
+        <li><a href="{{ url_for('index') }}"
+            class="py-2 px-3 hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='index' %}text-red-600 border-red-600{% endif %}">INICIO</a>
+        </li>
+        <li><a href="{{ url_for('producto') }}"
+            class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='producto' %}text-red-600 border-red-600{% endif %}">PRODUCTO</a>
+        </li>
+        <li><a href="{{ url_for('nosotros') }}"
+            class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='nosotros' %}text-red-600 border-red-600{% endif %}">NOSOTROS</a>
+        </li>
+        <li><a href="{{ url_for('catalogo') }}"
+            class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='catalogo' %}text-red-600 border-red-600{% endif %}">CATÁLOGO</a>
+        </li>
+        <li><a href="{{ url_for('marcas') }}"
+            class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='marcas' %}text-red-600 border-red-600{% endif %}">MARCAS</a>
+        </li>
+        <li><a href="{{ url_for('contacto') }}"
+            class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 {% if active_page=='contacto' %}text-red-600 border-red-600{% endif %}">CONTACTENOS</a>
+        </li>
+      </ul>
+
+      <!-- Menú móvil (oculto por defecto) -->
+      <ul id="mobile-menu" class="hidden flex-col gap-2 font-semibold text-gray-700 lg:hidden py-4">
+        <li><a href="{{ url_for('index') }}">INICIO</a></li>
+        <li><a href="{{ url_for('producto') }}">PRODUCTO</a></li>
+        <li><a href="{{ url_for('nosotros') }}">NOSOTROS</a></li>
+        <li><a href="{{ url_for('catalogo') }}">CATÁLOGO</a></li>
+        <li><a href="{{ url_for('marcas') }}">MARCAS</a></li>
+        <li><a href="{{ url_for('contacto') }}">CONTACTENOS</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Sección Libro de Reclamaciones -->
+<section class="bg-slate-50 py-10 px-4">
+  <div class="max-w-6xl mx-auto bg-white shadow-lg rounded-2xl overflow-hidden">
+    <!-- Header -->
+    <div class="bg-gradient-to-r bg-red-900 bg-red-500 text-white px-6 py-6 sm:flex sm:items-center sm:justify-between">
+      <div>
+        <h2 class="text-2xl font-semibold">Libro de Reclamaciones — Ferretería <span class="font-extrabold">El Martillo</span></h2>
+        <p class="text-sm opacity-90 mt-1">RUC: <span class="font-medium">20501234567</span> · Dirección: Av. Principal 123, Lima</p>
+      </div>
+      <div class="mt-4 sm:mt-0">
+        <span class="inline-flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-lg text-sm">
+          <span class="material-symbols-outlined">support_agent</span>
+          Libro de Reclamaciones disponible
+        </span>
+      </div>
+    </div>
+
+    <!-- Formulario -->
+    <form class="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6" novalidate>
+      <!-- Columna 1: Datos del consumidor -->
+      <div class="lg:col-span-1 space-y-4">
+        <h3 class="text-lg font-semibold">Datos del consumidor</h3>
+
+        <label class="block">
+          <span class="text-sm font-medium">Nombre completo</span>
+          <input required type="text" placeholder="Ej. Juan Pérez" class="mt-1 block w-full rounded-xl border border-slate-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 transition" />
+        </label>
+
+        <label class="block">
+          <span class="text-sm font-medium">Documento (DNI / CE / Pasaporte)</span>
+          <input required type="text" placeholder="Ej. 87654321" class="mt-1 block w-full rounded-xl border border-slate-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 transition" />
+        </label>
+
+        <label class="block">
+          <span class="text-sm font-medium">Teléfono / Celular</span>
+          <input type="tel" placeholder="Ej. +51 9 123 456 78" class="mt-1 block w-full rounded-xl border border-slate-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 transition" />
+        </label>
+
+        <label class="block">
+          <span class="text-sm font-medium">Correo electrónico</span>
+          <input type="email" placeholder="ejemplo@mail.com" class="mt-1 block w-full rounded-xl border border-slate-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 transition" />
+        </label>
+      </div>
+
+      <!-- Columna 2: Datos de la transacción y tipo -->
+      <div class="lg:col-span-1 space-y-4">
+        <h3 class="text-lg font-semibold">Datos de la transacción</h3>
+
+        <label class="block">
+          <span class="text-sm font-medium">Fecha de compra / servicio</span>
+          <input required type="date" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 transition" />
+        </label>
+
+        <label class="block">
+          <span class="text-sm font-medium">Monto (S/.)</span>
+          <input type="number" step="0.01" min="0" placeholder="Ej. 45.00" class="mt-1 block w-full rounded-xl border border-slate-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 transition" />
+        </label>
+
+        <label class="block">
+          <span class="text-sm font-medium">N° de boleta / factura (si tiene)</span>
+          <input type="text" placeholder="Ej. B001-000123" class="mt-1 block w-full rounded-xl border border-slate-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 transition" />
+        </label>
+
+        <fieldset class="mt-2">
+          <legend class="text-sm font-medium">Tipo de registro</legend>
+          <div class="mt-2 flex gap-3 items-center">
+            <label class="inline-flex items-center gap-2">
+              <input type="radio" name="tipo" value="reclamo" class="h-4 w-4 text-sky-600" checked />
+              <span class="text-sm">Reclamo (producto / servicio)</span>
+            </label>
+            <label class="inline-flex items-center gap-2">
+              <input type="radio" name="tipo" value="queja" class="h-4 w-4 text-sky-600" />
+              <span class="text-sm">Queja (atención)</span>
+            </label>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Columna 3: Descripción del reclamo y respuesta -->
+      <div class="lg:col-span-1 space-y-4">
+        <h3 class="text-lg font-semibold">Descripción y solicitud</h3>
+
+        <label class="block">
+          <span class="text-sm font-medium">Producto / Servicio</span>
+          <input type="text" placeholder="Ej. Taladro inalámbrico X-200" class="mt-1 block w-full rounded-xl border border-slate-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 transition" />
+        </label>
+
+        <label class="block">
+          <span class="text-sm font-medium">Descripción detallada del reclamo / queja</span>
+          <textarea required rows="5" placeholder="Describa lo ocurrido, fechas, y cualquier detalle útil..." class="mt-1 block w-full rounded-xl border border-slate-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 transition"></textarea>
+        </label>
+
+        <label class="block">
+          <span class="text-sm font-medium">Solicitud (¿qué espera?):</span>
+          <select class="mt-1 block w-full rounded-xl border border-slate-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 transition">
+            <option>Reembolso</option>
+            <option>Cambio de producto</option>
+            <option>Reparación</option>
+            <option>Descuento / Compensación</option>
+            <option>Mejora de atención / Capacitación</option>
+            <option>Otro</option>
+          </select>
+        </label>
+      </div>
+
+      <!-- Línea separadora -->
+      <div class="lg:col-span-3 border-t border-slate-100 mt-2 pt-4"></div>
+
+      <!-- Recepción y respuesta de la empresa -->
+      <div class="lg:col-span-2 space-y-3">
+        <h3 class="text-lg font-semibold">Para uso de la empresa - Recepción</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <input type="date" class="rounded-xl border border-slate-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400" />
+          <input type="text" placeholder="Nombre del receptor (empleado)" class="rounded-xl border border-slate-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400" />
+          <input type="text" placeholder="Sello / Código interno" class="rounded-xl border border-slate-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400" />
+        </div>
+
+        <label class="block">
+          <span class="text-sm font-medium">Respuesta de la empresa (acciones a tomar)</span>
+          <textarea rows="4" placeholder="Detalle de la respuesta, plazos y responsable..." class="mt-1 block w-full rounded-xl border border-slate-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 transition"></textarea>
+        </label>
+
+        <p class="text-sm text-slate-500">Plazo máximo de respuesta: <span class="font-semibold">30 días calendario</span> (puede documentarse acuerdo de prórroga con el consumidor).</p>
+      </div>
+
+      <!-- Botones -->
+      <div class="lg:col-span-1 flex flex-col gap-3">
+        <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 bg-slate-50">
+          <input type="checkbox" class="h-4 w-4 text-sky-600" />
+          <span class="text-sm">Deseo recibir respuesta por correo electrónico</span>
+        </label>
+
+        <button type="submit" class="group relative inline-flex items-center justify-center rounded-xl px-5 py-3 bg-gradient-to-r bg-yellow-500 bg-orange-500 text-white font-semibold shadow hover:scale-[1.01] active:scale-95 transition transform">
+          <span class="material-symbols-outlined mr-2">send</span>
+          Enviar registro
+          <span class="absolute -right-3 -top-3 inline-flex items-center justify-center rounded-full bg-white text-xs text-sky-700 font-bold px-2 py-1 transform translate-x-0 translate-y-0 transition group-hover:translate-x-1">›</span>
+        </button>
+
+        <button type="reset" class="rounded-xl px-5 py-3 border border-slate-200 hover:bg-slate-50 transition">
+          <span class="material-symbols-outlined align-middle mr-2">restart_alt</span>
+          Limpiar formulario
+        </button>
+
+        <p class="text-xs text-slate-500 mt-2">Firma y sello (si es físico) o constancia de recepción electrónica serán adjuntados al registro.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+   <!-- Modal de Inicio de Sesión -->
+<div id="loginModal" class="fixed inset-0 flex items-center justify-center hidden z-50">
+
+  <!-- Capa de fondo negro semi-transparente -->
+  <div class="absolute inset-0 bg-black opacity-50"></div>
+
+  <!-- Capa con desenfoque -->
+  <div class="absolute inset-0 backdrop-blur-sm"></div>
+
+  <!-- Contenido del modal -->
+  <div class="relative bg-white w-full max-w-md p-6 rounded-lg shadow-xl z-10">
+
+    <!-- Botón cerrar -->
+    <button id="closeLoginModal" class="absolute top-3 right-4 text-gray-500 hover:text-black text-xl">
+      &times;
+    </button>
+
+
+    <h2 class="text-2xl font-bold mb-4 text-center">Iniciar sesión</h2>
+
+
+    <form class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Correo</label>
+        <input type="email" placeholder="Escribe tu correo"
+               class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" required>
+      </div>
+
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Contraseña</label>
+        <input type="password" placeholder="Escribe tu contraseña"
+               class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" required>
+      </div>
+
+
+      <div class="text-right text-sm">
+        <a href="#" class="text-red-600 hover:underline">¿Olvidaste tu contraseña?</a>
+      </div>
+
+
+      <button type="submit"
+              class="w-full bg-red-700 text-white py-2 rounded-md hover:bg-red-800 transition">
+        Ingresar
+      </button>
+
+
+      <div class="text-center text-gray-500 text-sm mt-4">O inicia sesión con</div>
+
+
+      <button type="button"
+              class="w-full border border-gray-300 py-2 rounded-md mt-2 hover:bg-gray-100 transition">
+        Google
+      </button>
+
+
+      <p class="text-sm text-center mt-4">
+        ¿No tienes una cuenta?
+        <a href="#" class="text-red-700 font-semibold hover:underline">Registrarme</a>
+      </p>
+    </form>
+  </div>
+</div>
+
+
+ <script src="{{ url_for('static', filename='js/boton.js') }}"></script>
+   <script src="{{ url_for('static', filename='js/contacto.js') }}"></script>
+
+</body>
+</html>
