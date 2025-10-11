@@ -1,4 +1,5 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for ,request,jsonify , redirect
+from db import get_connection 
 
 app = Flask(__name__)
 
@@ -50,6 +51,90 @@ def micuenta():
 def libroRecl():
     return render_template("libroRecl.html")
 
+# Ruta de prueba de conexión
+@app.route('/test-db')
+def test_db():
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT DATABASE();")
+        db_name = cursor.fetchone()[0]
+        cursor.close()
+        conn.close()
+        return f"✅ Conexión exitosa a la base de datos: {db_name}"
+    except Exception as e:
+        return f"❌ Error al conectar: {e}"
+
+
+@app.route('/registrar_usuario', methods=['POST'])
+def registrar_usuario():
+    correo = request.form.get('correo')
+    nombre_apellidos = request.form.get('nombre_apellidos')
+    profesion = request.form.get('profesion')
+    tipo_documento = request.form.get('tipo_documento')
+    celular = request.form.get('celular')
+    contrasena = request.form.get('contrasena')
+    confirmar = request.form.get('confirmar_contrasena')
+
+    # Validar contraseñas iguales
+    if contrasena != confirmar:
+        print("⚠️ Las contraseñas no coinciden")
+        return redirect(url_for('formulario'))
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("""
+            INSERT INTO usuarios (correo, nombre_apellidos, profesion, tipo_documento, celular, contrasena)
+            VALUES (%s, %s, %s, %s, %s, %s)
+        """, (correo, nombre_apellidos, profesion, tipo_documento, celular, contrasena))
+        conn.commit()
+        print("✅ Usuario registrado correctamente")
+    except Exception as e:
+        conn.rollback()
+        print("❌ Error al registrar usuario:", e)
+    finally:
+        cursor.close()
+        conn.close()
+
+    return redirect(url_for('formulario'))
+
+
+@app.route('/registrar_empresa', methods=['POST'])
+def registrar_empresa():
+    correo = request.form.get('correo')
+    razon_social = request.form.get('razon_social')
+    direccion = request.form.get('direccion')
+    tipo_empresa = request.form.get('tipo_empresa')
+    ruc = request.form.get('ruc')
+    celular = request.form.get('celular')
+    contrasena = request.form.get('contrasena')
+    confirmar = request.form.get('confirmar_contrasena')
+
+    # Validar contraseñas iguales
+    if contrasena != confirmar:
+        print("⚠️ Las contraseñas no coinciden")
+        return redirect(url_for('formulario'))
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("""
+            INSERT INTO empresas (correo, razon_social, direccion, tipo_empresa, ruc, celular, contrasena)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+        """, (correo, razon_social, direccion, tipo_empresa, ruc, celular, contrasena))
+        conn.commit()
+        print("✅ Empresa registrada correctamente")
+    except Exception as e:
+        conn.rollback()
+        print("❌ Error al registrar empresa:", e)
+    finally:
+        cursor.close()
+        conn.close()
+
+    return redirect(url_for('formulario'))
 
 if __name__ == "__main__":
     app.run(debug=True)
