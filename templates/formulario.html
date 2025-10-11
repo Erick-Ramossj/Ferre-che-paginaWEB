@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,7 +39,7 @@
 
       <!-- Centro: Buscador -->
       <div class="w-full sm:flex-1 sm:mx-6">
-        <div class="flex border border-gray-300 rounded overflow-hidden w-full max-w-md mx-auto">
+       <div class="flex border border-gray-300 rounded overflow-hidden w-full max-w-md mx-auto">
           <input type="text" placeholder="¿Qué producto estás buscando?"
             class="flex-1 px-3 py-2 focus:outline-none text-sm md:text-base">
           <button class="bg-gray-300 px-3 sm:px-4">
@@ -117,48 +116,51 @@
     </nav>
   </header>
 
-  <div class="w-full max-w-6xl mx-auto p-10 bg-white shadow-lg rounded-2xl">
-    <h2 class="text-3xl font-extrabold text-center mb-10 text-gray-800">
-      Regístrate para comprar
-    </h2>
+<div class="w-full max-w-6xl mx-auto p-10 bg-white shadow-lg rounded-2xl">
+  <!-- Título -->
+  <h2 class="text-3xl font-extrabold text-center text-gray-800 mb-14">
+    Regístrate para comprar
+  </h2>
 
-    <!-- Botón toggle -->
-    <div class="flex justify-center items-center mb-10 relative">
-      <div class="flex rounded-lg shadow overflow-hidden">
-        <button id="btnUsuario"
-          class="flex items-center gap-2 px-8 py-3 bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-all duration-300">
-          <span class="material-symbols-outlined">person</span>
-          Usuario
-        </button>
-        <button id="btnEmpresa"
-          class="flex items-center gap-2 px-8 py-3 bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-all duration-300">
-          <span class="material-symbols-outlined">apartment</span>
-          Empresa
-        </button>
-      </div>
+  <!-- Botones toggle -->
+  <div class="flex justify-center items-center mb-12 relative">
+    <div class="flex rounded-lg shadow overflow-hidden">
+      <button id="btnUsuario"
+        class="flex items-center gap-2 px-8 py-3 bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 hover:scale-105 transition-all duration-300">
+        <span class="material-symbols-outlined">person</span>
+        Usuario
+      </button>
+      <button id="btnEmpresa"
+        class="flex items-center gap-2 px-8 py-3 bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 hover:scale-105 transition-all duration-300">
+        <span class="material-symbols-outlined">apartment</span>
+        Empresa
+      </button>
     </div>
+  </div>
+</div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-      <!-- Form Usuario -->
+     
+            <!-- Form Usuario -->
       <form id="formUsuario" method="POST" action="/registrar_usuario"
         class="p-6 rounded-xl bg-blue-50 shadow-md transition-all duration-500">
 
         <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Correo</label>
+          <label class="block text-sm font-medium text-gray-700 text-left pl-1">Correo</label>
           <input type="email" name="correo" required
             class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             placeholder="Ingresa un correo">
         </div>
 
         <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Nombre y Apellidos</label>
+          <label class="block text-sm font-medium text-gray-700 text-left pl-1">Nombre y Apellidos</label>
           <input type="text" name="nombre_apellidos" required
             class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             placeholder="Ingresa tu nombre">
         </div>
 
         <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Información Profesional</label>
+          <label class="block text-sm font-medium text-gray-700 text-left pl-1">Información Profesional</label>
           <select name="profesion"
             class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
             <option value="">Selecciona tu especialidad</option>
@@ -170,63 +172,64 @@
         </div>
 
         <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Tipo de documento</label>
+          <label class="block text-sm font-medium text-gray-700 text-left pl-1">Tipo de documento</label>
           <input type="text" name="tipo_documento"
             class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="DNI">
         </div>
 
         <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Celular</label>
+          <label class="block text-sm font-medium text-gray-700 text-left pl-1">Celular</label>
           <input type="tel" name="celular"
             class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="+51">
         </div>
 
         <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Contraseña</label>
+          <label class="block text-sm font-medium text-gray-700 text-left pl-1">Contraseña</label>
           <input type="password" name="contrasena" required
             class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
         </div>
 
         <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Confirmar Contraseña</label>
+          <label class="block text-sm font-medium text-gray-700 text-left pl-1">Confirmar Contraseña</label>
           <input type="password" name="confirmar_contrasena" required
             class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
         </div>
-
-        <button type="submit"
-          class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 hover:scale-105 transition-all duration-300">
-          Registrarse
-        </button>
+         
+        <button id="btnUsuarioRegistro"
+         type="button"
+         class="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-yellow-500 hover:scale-105 transition-all duration-300">
+        Registrarse
+       </button>
       </form>
 
+      
 
-      <!-- Form Empresa -->
+          <!-- Form Empresa -->
       <form id="formEmpresa" action="/registrar_empresa" method="POST"
         class="p-6 rounded-xl bg-gray-100 shadow-md transition-all duration-500">
-
         <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Correo</label>
+          <label class="block text-sm font-medium text-gray-700 text-left pl-1">Correo</label>
           <input type="email" name="correo"
             class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             placeholder="Ingresa un correo" required>
         </div>
 
         <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Razón Social</label>
+          <label class="block text-sm font-medium text-gray-700 text-left pl-1">Razón Social</label>
           <input type="text" name="razon_social"
             class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             placeholder="Nombre legal de la empresa" required>
         </div>
 
         <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Dirección</label>
+          <label class="block text-sm font-medium text-gray-700 text-left pl-1">Dirección</label>
           <input type="text" name="direccion"
             class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             placeholder="Dirección de la empresa">
         </div>
 
         <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Tipo de Empresa</label>
+          <label class="block text-sm font-medium text-gray-700 text-left pl-1">Tipo de Empresa</label>
           <select name="tipo_empresa"
             class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
             <option value="Otro">Selecciona</option>
@@ -236,41 +239,41 @@
         </div>
 
         <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">RUC</label>
+          <label class="block text-sm font-medium text-gray-700 text-left pl-1">RUC</label>
           <input type="text" name="ruc"
             class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             placeholder="Número de RUC" required>
         </div>
 
         <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Celular</label>
+          <label class="block text-sm font-medium text-gray-700 text-left pl-1">Celular</label>
           <input type="tel" name="celular"
             class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="+51"
             required>
         </div>
 
         <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Contraseña</label>
+          <label class="block text-sm font-medium text-gray-700 text-left pl-1">Contraseña</label>
           <input type="password" name="contrasena"
             class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
         </div>
 
         <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Confirmar Contraseña</label>
+          <label class="block text-sm font-medium text-gray-700 text-left pl-1">Confirmar Contraseña</label>
           <input type="password" name="confirmar_contrasena"
             class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
         </div>
 
-        <button type="submit"
-          class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 hover:scale-105 transition-all duration-300">
-          Registrarse
-        </button>
+
+        <button id="btnEmpresaRegistro"
+         type="button"
+         class="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-yellow-500 hover:scale-105 transition-all duration-300">
+        Registrarse
+       </button>
       </form>
-
     </div>
-  </div>
 
-  <!-- === INICIO: Footer === -->
+     <!-- === INICIO: Footer === -->
   <footer class="bg-gray-900 text-gray-200 py-10 mt-10">
     <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
@@ -301,8 +304,7 @@
       <div>
         <h3 class="text-lg font-semibold mb-3">Contáctanos</h3>
         <ul class="space-y-2 text-sm text-gray-400">
-          <li><span class="material-icons-outlined text-red-600 align-middle">location_on</span> Av. Principal #123 -
-            Lima</li>
+          <li><span class="material-icons-outlined text-red-600 align-middle">location_on</span> Av. Principal #123 - Lima</li>
           <li><span class="material-icons-outlined text-red-600 align-middle">call</span> +51 987 654 321</li>
           <li><span class="material-icons-outlined text-red-600 align-middle">email</span> ferreche@empresa.com</li>
         </ul>
@@ -323,7 +325,7 @@
       © 2025 FERRE-CHE. Todos los derechos reservados.
     </div>
   </footer>
-
+  
   <!-- === FIN: Footer === -->
 
   <!--CHATBOT PARA TODAS LAS PAGINAS-->
@@ -339,9 +341,8 @@
     </div>
   </div>
 
-  <!--INICIO DE CHATBOT-->
-  <div id="chatbot-overlay" class="hidden fixed inset-0 flex items-center justify-center z-50"
-    style="background-color: rgba(0, 0, 0, 0.5);">
+   <!--INICIO DE CHATBOT-->
+  <div id="chatbot-overlay" class="hidden fixed inset-0 flex items-center justify-center z-50" style="background-color: rgba(0, 0, 0, 0.5);">
     <div id="chatbot-window"
       class="relative bg-white rounded-lg shadow-xl w-11/12 max-w-lg flex flex-col max-h-[90vh] overflow-hidden">
 
@@ -383,74 +384,138 @@
       </div>
     </div>
   </div>
+  
+   <!-- Modal de Inicio de Sesión -->
+<div id="loginModal" class="fixed inset-0 flex items-center justify-center hidden z-50">
 
-  <!-- Modal de Inicio de Sesión -->
-  <div id="loginModal" class="fixed inset-0 flex items-center justify-center hidden z-50">
+  <!-- Capa de fondo negro semi-transparente -->
+  <div class="absolute inset-0 bg-black opacity-50"></div>
 
-    <!-- Capa de fondo negro semi-transparente -->
-    <div class="absolute inset-0 bg-black opacity-50"></div>
+  <!-- Capa con desenfoque -->
+  <div class="absolute inset-0 backdrop-blur-sm"></div>
 
-    <!-- Capa con desenfoque -->
-    <div class="absolute inset-0 backdrop-blur-sm"></div>
+  <!-- Contenido del modal -->
+  <div class="relative bg-white w-full max-w-md p-6 rounded-lg shadow-xl z-10">
 
-    <!-- Contenido del modal -->
-    <div class="relative bg-white w-full max-w-md p-6 rounded-lg shadow-xl z-10">
+    <!-- Botón cerrar -->
+    <button id="closeLoginModal" class="absolute top-3 right-4 text-gray-500 hover:text-black text-xl">
+      &times;
+    </button>
 
-      <!-- Botón cerrar -->
-      <button id="closeLoginModal" class="absolute top-3 right-4 text-gray-500 hover:text-black text-xl">
-        &times;
+
+    <h2 class="text-2xl font-bold mb-4 text-center">Iniciar sesión</h2>
+
+
+    <form class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Correo</label>
+        <input type="email" placeholder="Escribe tu correo"
+               class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" required>
+      </div>
+
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Contraseña</label>
+        <input type="password" placeholder="Escribe tu contraseña"
+               class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" required>
+      </div>
+
+
+      <div class="text-right text-sm">
+        <a href="#" class="text-red-600 hover:underline">¿Olvidaste tu contraseña?</a>
+      </div>
+
+
+      <button type="submit"
+              class="w-full bg-red-700 text-white py-2 rounded-md hover:bg-red-800 transition">
+        Ingresar
       </button>
 
 
-      <h2 class="text-2xl font-bold mb-4 text-center">Iniciar sesión</h2>
+      <div class="text-center text-gray-500 text-sm mt-4">O inicia sesión con</div>
 
 
-      <form class="space-y-4">
-        <div>
-          <label class="block text-sm font-medium text-gray-700">Correo</label>
-          <input type="email" placeholder="Escribe tu correo"
-            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" required>
-        </div>
+      <button type="button"
+              class="w-full border border-gray-300 py-2 rounded-md mt-2 hover:bg-gray-100 transition">
+        Google
+      </button>
 
 
-        <div>
-          <label class="block text-sm font-medium text-gray-700">Contraseña</label>
-          <input type="password" placeholder="Escribe tu contraseña"
-            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" required>
-        </div>
-
-
-        <div class="text-right text-sm">
-          <a href="#" class="text-red-600 hover:underline">¿Olvidaste tu contraseña?</a>
-        </div>
-
-
-        <button type="submit" class="w-full bg-red-700 text-white py-2 rounded-md hover:bg-red-800 transition">
-          Ingresar
-        </button>
-
-
-        <div class="text-center text-gray-500 text-sm mt-4">O inicia sesión con</div>
-
-
-        <button type="button" class="w-full border border-gray-300 py-2 rounded-md mt-2 hover:bg-gray-100 transition">
-          Google
-        </button>
-
-
-        <p class="text-sm text-center mt-4">
-          ¿No tienes una cuenta?
-          <a href="#" class="text-red-700 font-semibold hover:underline">Registrarme</a>
-        </p>
-      </form>
-    </div>
+      <p class="text-sm text-center mt-4">
+        ¿No tienes una cuenta?
+        <a href="#" class="text-red-700 font-semibold hover:underline">Registrarme</a>
+      </p>
+    </form>
   </div>
+</div>
 
 
+<!-- Modal -->
+<div id="modalExito"
+  class="hidden fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-300">
+
+  <!-- Fondo oscuro -->
+  <div class="absolute inset-0 bg-black opacity-50 backdrop-blur-[2px]"></div>
+
+  <!-- Contenido del modal -->
+  <div id="modalContenido"
+    class="relative bg-white p-8 rounded-2xl shadow-2xl text-center max-w-lg w-[90%] transform scale-95 opacity-0 transition-all duration-300 z-10">
+
+    <!-- Botón de cierre (esquina superior derecha) -->
+    <button id="cerrarModal"
+      class="absolute top-3 right-3 text-gray-400 hover:text-gray-700 transition-all duration-200">
+      <span class="material-symbols-outlined text-3xl">close</span>
+    </button>
+
+    <span class="material-symbols-outlined text-green-500 text-6xl mb-4">check_circle</span>
+    <h2 class="text-2xl font-bold mb-4 text-gray-800">¡Registro Exitoso!</h2>
+    <p class="text-gray-600 mb-6">
+      ¡Bienvenido a <strong>Ferre-Che</strong>! Ahora eres parte de nuestra comunidad.
+    </p>
+
+    <ul class="text-left text-gray-700 mb-6 space-y-2">
+      <li class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-yellow-500">notifications_active</span>
+        Recibe notificaciones en tiempo real.
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-blue-500">receipt_long</span>
+        Revisa tus boletas online.
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-green-500">credit_card</span>
+        Guarda tus medios de pago.
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-pink-500">local_offer</span>
+        Accede a promociones exclusivas.
+      </li>
+    </ul>
+
+          <!-- Línea decorativa -->
+      <div class="h-1 w-full bg-gradient-to-r from-red-500 via-blue-500 to-green-500 mb-4 rounded-full"></div>
+
+      <!-- Métodos de pago -->
+      <p class="font-semibold text-gray-700 mb-3">Métodos de pago accesibles</p>
+      <div class="flex justify-center gap-4">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Yape_logo.png" alt="Yape" class="h-8">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Logo_BCP.png" alt="BCP" class="h-6 mt-1">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" class="h-6 mt-1">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Logo_Plin.png" alt="Plin" class="h-8">
+      </div>
+  
+    <button id="cerrarModalBtn"
+      class="mt-4 px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all duration-300">
+      Cerrar
+    </button>
+  </div>
+</div>
+
+
+  <script src="{{ url_for('static', filename='js/confirmacion.js') }}"></script>
   <script src="{{ url_for('static', filename='js/boton.js') }}"></script>
   <script src="{{ url_for('static', filename='js/boton.js') }}"></script>
   <script src="{{ url_for('static', filename='js/contacto.js') }}"></script>
 
 </body>
-
 </html>
