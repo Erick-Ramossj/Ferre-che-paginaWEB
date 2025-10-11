@@ -197,57 +197,80 @@
 
 
     <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-200 py-10 mt-10">
-    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+  <footer class="bg-gray-900 text-gray-200 py-12 mt-12 relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
-      <!-- Logo y descripción -->
-      <div>
-        <div class="flex items-center gap-2 mb-3">
-          <span class="material-icons-outlined text-red-600">handyman</span>
-          <h2 class="text-2xl font-bold">FERRE-CHE</h2>
-        </div>
-        <p class="text-gray-400 text-sm">
-          Tu ferretería de confianza, ofreciendo calidad y compromiso en cada producto para tu hogar y proyectos.
-        </p>
+    <!-- Logo y descripción -->
+    <div>
+      <div class="flex items-center gap-2 mb-4">
+        <span class="material-icons-outlined text-red-600 text-3xl">handyman</span>
+        <h2 class="text-2xl font-bold tracking-wide">FERRE-CHE</h2>
       </div>
-
-      <!-- Enlaces rápidos -->
-      <div>
-        <h3 class="text-lg font-semibold mb-3">Enlaces rápidos</h3>
-        <ul class="space-y-2 text-sm">
-          <li><a href="{{ url_for('index') }}" class="hover:text-red-500">Inicio</a></li>
-          <li><a href="{{ url_for('producto') }}" class="hover:text-red-500">Producto</a></li>
-          <li><a href="{{ url_for('catalogo') }}" class="hover:text-red-500">Catálogo</a></li>
-          <li><a href="{{ url_for('marcas') }}" class="hover:text-red-500">Marcas</a></li>
-          <li><a href="{{ url_for('contacto') }}" class="hover:text-red-500">Contáctenos</a></li>
-        </ul>
-      </div>
-
-      <!-- Información de contacto -->
-      <div>
-        <h3 class="text-lg font-semibold mb-3">Contáctanos</h3>
-        <ul class="space-y-2 text-sm text-gray-400">
-          <li><span class="material-icons-outlined text-red-600 align-middle">location_on</span> Av. Principal #123 - Lima</li>
-          <li><span class="material-icons-outlined text-red-600 align-middle">call</span> +51 987 654 321</li>
-          <li><span class="material-icons-outlined text-red-600 align-middle">email</span> ferreche@empresa.com</li>
-        </ul>
-      </div>
-
-      <!-- Redes sociales -->
-      <div>
-        <h3 class="text-lg font-semibold mb-3">Síguenos</h3>
-        <div class="flex gap-4 text-xl">
-          <a href="#" class="hover:text-red-500"><span class="material-icons-outlined">facebook</span></a>
-          <a href="#" class="hover:text-red-500"><span class="material-icons-outlined">photo_camera</span></a>
-          <a href="#" class="hover:text-red-500"><span class="material-icons-outlined">alternate_email</span></a>
-        </div>
-      </div>
+      <p class="text-gray-400 text-sm leading-relaxed">
+        Tu ferretería de confianza, ofreciendo calidad y compromiso en cada producto para tu hogar y proyectos.
+      </p>
     </div>
 
-    <div class="text-center text-gray-500 text-sm mt-8 border-t border-gray-700 pt-4">
-      © 2025 FERRE-CHE. Todos los derechos reservados.
+    <!-- Enlaces rápidos -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Enlaces rápidos</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a href="{{ url_for('index') }}" class="hover:text-red-500 transition">Inicio</a></li>
+        <li><a href="{{ url_for('producto') }}" class="hover:text-red-500 transition">Producto</a></li>
+        <li><a href="{{ url_for('catalogo') }}" class="hover:text-red-500 transition">Catálogo</a></li>
+        <li><a href="{{ url_for('marcas') }}" class="hover:text-red-500 transition">Marcas</a></li>
+        <li><a href="{{ url_for('contacto') }}" class="hover:text-red-500 transition">Contáctenos</a></li>
+      </ul>
     </div>
-  </footer>
+
+    <!-- Información de contacto -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Contáctanos</h3>
+      <ul class="space-y-2 text-sm text-gray-400">
+        <li class="flex items-center gap-2"><span class="material-icons-outlined text-red-600">location_on</span> Av. Principal #123 - Lima</li>
+        <li class="flex items-center gap-2"><span class="material-icons-outlined text-red-600">call</span> +51 987 654 321</li>
+        <li class="flex items-center gap-2"><span class="material-icons-outlined text-red-600">email</span> ferreche@empresa.com</li>
+      </ul>
+    </div>
+
+    <!-- Redes sociales -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Síguenos</h3>
+      <div class="flex gap-4 text-xl">
+        <a href="#" class="hover:text-red-500 transition"><span class="material-icons-outlined">facebook</span></a>
+        <a href="#" class="hover:text-red-500 transition"><span class="material-icons-outlined">photo_camera</span></a>
+        <a href="#" class="hover:text-red-500 transition"><span class="material-icons-outlined">alternate_email</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bloque Libro de Reclamaciones -->
+  <div class="mt-12 bg-gray-800 border-t border-gray-700 py-8">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+      
+      <!-- Texto -->
+      <div class="flex items-center gap-4">
+        <img src="{{ url_for('static', filename='image/libro.png') }}" alt="Libro de Reclamaciones" class="w-16 h-16 object-contain">
+        <div>
+          <h3 class="text-lg font-semibold text-white">Libro de Reclamaciones</h3>
+          <p class="text-gray-400 text-sm">Haz clic para registrar tu queja o reclamo en línea.</p>
+        </div>
+      </div>
+
+      <!-- Botón -->
+      <a href="{{ url_for('libroRecl') }}" 
+         class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 px-6 py-3 rounded-xl text-white font-semibold shadow-lg transform hover:scale-105 transition">
+        <span class="material-icons-outlined">description</span> 
+        Acceder al Libro
+      </a>
+    </div>
+  </div>
+
+  <!-- Derechos -->
+  <div class="text-center text-gray-500 text-sm mt-8 border-t border-gray-700 pt-4">
+    © 2025 FERRE-CHE. Todos los derechos reservados.
+  </div>
+</footer>
 
 </body>
 <script src="{{ url_for('static', filename='js/micuenta.js') }}"></script>
