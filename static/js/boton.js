@@ -111,3 +111,4 @@ window.addEventListener('click', (e) => {
     loginModal.classList.add('hidden');
   }
 });
+

@@ -616,50 +616,6 @@
       </div>
   </section>
 
-  <!-- Slider -->
-  <div class="relative w-full max-w-5xl mx-auto overflow-hidden rounded-2xl shadow-2xl border border-pink-300">
-    <!-- Track -->
-    <div id="carousel-track" class="flex transition-transform duration-700 ease-in-out">
-
-      {% for img in imagenes %}
-      <div class="relative w-full h-[500px] flex-shrink-0">
-        <img src="{{ img.src }}" class="w-full h-full object-cover" alt="Imagen {{ loop.index }}">
-        <!-- Overlay con texto -->
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end justify-start p-6">
-          <div>
-
-            <h2 class="text-white text-2xl font-bold drop-shadow-lg">
-              {{ img.titulo }}
-            </h2>
-            <p class="text-gray-200 text-sm">
-              {{ img.descripcion }}
-            </p>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-
-    <!-- Botones -->
-    <button id="prevBtn"
-      class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-pink-500 hover:text-white transition-all px-4 py-2 rounded-full shadow-lg animate-pulse">
-      ‹
-    </button>
-    <button id="nextBtn"
-      class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-pink-500 hover:text-white transition-all px-4 py-2 rounded-full shadow-lg animate-pulse">
-      ›
-    </button>
-
-    <!-- Indicadores -->
-    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-      {% for img in imagenes %}
-      <span
-        class="indicator w-3 h-3 rounded-full bg-white/50 hover:bg-pink-400 cursor-pointer transition animate-pulse"></span>
-      {% endfor %}
-    </div>
-  </div>
-
 
   <!-- Animaciones de ejemplo -->
   <button class="bg-blue-500 text-white px-4 py-2 rounded animate-bounce mt-6">
@@ -894,7 +850,6 @@
 
   <script src="{{ url_for('static', filename='js/boton.js') }}"></script>
   <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/slider.js') }}"></script>
   <script src="{{ url_for('static', filename='js/carrusel.js') }}"></script>
   <script src="{{ url_for('static', filename='js/contacto.js') }}"></script>
   <script src="{{ url_for('static', filename='js/carrito.js') }}"></script>
