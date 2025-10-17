@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     imagenes = [
-        {"src": url_for('static', filename='image/imagen1.png'), "titulo": "Ropa que Enamora", "descripcion": "Colecciones diseñadas para destacar tu feminidad en cada ocasión especial."},
+        {"src": url_for('static', filename='image/fe1.png'), "titulo": "Ropa que Enamora", "descripcion": "Colecciones diseñadas para destacar tu feminidad en cada ocasión especial."},
         {"src": url_for('static', filename='image/imagen2.png'), "titulo": "Tu Estilo, Tu Fuerza", "descripcion": "Outfits versátiles que combinan comodidad y moda para mujeres seguras de sí mismas."},
         {"src": url_for('static', filename='image/imagen3.png'), "titulo": "Noches de Glamour", "descripcion": "Brilla con prendas únicas que transforman cada salida en un momento inolvidable."},
         {"src": url_for('static', filename='image/imagen4.png'), "titulo": "Casual con Estilo", "descripcion": "Looks frescos y cómodos pensados para acompañarte en tu día a día sin perder elegancia."},

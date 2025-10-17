@@ -13,7 +13,7 @@
 
 </head>
 
-<body class="w-full text-center">
+<body class="pt-[100px] text-center">
 
   <!-- Menú de navegación -->
   <header class="w-full">
@@ -116,98 +116,167 @@
     </nav>
   </header>
 
+<!-- SLIDER INICIO -->
+<section class="relative w-full bg-white pt-6 pb-10 z-[20] mb-10">
+  <div class="relative w-full max-w-6xl mx-auto overflow-hidden rounded-2xl shadow-2xl border border-red-300">
+    <!-- Track -->
+    <div id="carousel-track" class="flex transition-transform duration-700 ease-in-out">
+      {% for img in imagenes %}
+      <div class="relative w-full h-[480px] flex-shrink-0">
+        <img src="{{ img.src }}" class="w-full h-full object-cover" alt="Imagen {{ loop.index }}">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end justify-start p-6">
+          <div>
+            <h2 class="text-white text-2xl md:text-3xl font-bold drop-shadow-lg mb-2">{{ img.titulo }}</h2>
+            <p class="text-gray-200 text-sm md:text-base max-w-lg">{{ img.descripcion }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Botones -->
+    <button id="prevBtn"
+      class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-red-600 hover:text-white transition-all px-4 py-2 rounded-full shadow-lg text-2xl font-bold">
+      ‹
+    </button>
+    <button id="nextBtn"
+      class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-red-600 hover:text-white transition-all px-4 py-2 rounded-full shadow-lg text-2xl font-bold">
+      ›
+    </button>
+
+    <!-- Indicadores -->
+    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+      {% for img in imagenes %}
+      <span class="indicator w-3 h-3 rounded-full bg-white/50 hover:bg-red-500 cursor-pointer transition"></span>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
   <!-- Hero Nosotros -->
-  <section class="bg-red-900 text-white py-12 px-6">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8">
-      <div class="md:w-1/2">
-        <h2 class="text-3xl font-bold mb-4">Corporación Ferre-Che <br> Venta de Artículos de Seguridad Industrial</h2>
-        <p class="leading-relaxed">
+  <section class="hero-gradient text-black py-16 px-6 relative">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8 animate-fade-in">
+      <div class="md:w-1/2 text-center md:text-left">
+        <h2 class="text-4xl md:text-5xl font-black mb-6 leading-tight text-shadow animate-slide-up">
+          Corporación Ferre-Che <br> 
+          <span class="text-yellow-500">Venta de Artículos de Seguridad Industrial</span>
+        </h2>
+        <p class="leading-relaxed text-lg mb-8 max-w-xl mx-auto md:mx-0">
           Somos una empresa familiar peruana dedicada a la venta de productos industriales. 
           Tenemos más de 4 años de experiencia y toda una amplia gama de productos. 
           Contamos con un amplio stock que garantiza nuestra confiabilidad y excelencia. 
-          Somos una empresa socialmente responsable con la comunidad y el medio ambiente.
         </p>
+        <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+          <button class="bg-white text-red-700 font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-gray-100 transition-all transform hover:scale-105">
+            Ver productos
+          </button>
+          <button class="bg-white text-red-700 font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-gray-100 transition-all transform hover:scale-105">
+            Contáctanos
+          </button>
+        </div>
       </div>
-      <div class="md:w-1/2">
-        <img src="{{ url_for('static', filename='image/nosotros1.png') }}" class="rounded-lg shadow-lg" alt="Ferretería Ferre-Che">
+      <div class="md:w-1/2 animate-float">
+        <img src="{{ url_for('static', filename='image/nosotros1.png') }}" class="rounded-xl shadow-2xl" alt="Ferretería Ferre-Che">
       </div>
     </div>
+    
+    <!-- Elementos decorativos -->
+    <div class="absolute -top-20 -left-20 w-40 h-40 bg-red-600 rounded-full opacity-20 animate-pulse"></div>
+    <div class="absolute -bottom-20 -right-20 w-60 h-60 bg-red-600 rounded-full opacity-20 animate-pulse"></div>
   </section>
 
- <section class="max-w-6xl mx-auto py-12 px-6">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 relative">
-      <span class="before:content-[''] before:absolute before:w-20 before:h-[2px] before:bg-gray-400 before:left-0 before:top-1/2 
-      after:content-[''] after:absolute after:w-20 after:h-[2px] after:bg-gray-400 after:right-0 after:top-1/2">
+  <!-- Sección Misión y Visión -->
+  <section class="max-w-6xl mx-auto py-16 px-6 animate-fade-in">
+    <h2 class="text-3xl md:text-4xl font-black text-center mb-12 relative">
+      <span class="inline-block px-4 relative">
         Trabajamos con un propósito
+        <span class="absolute bottom-0 left-0 w-full h-1 bg-red-700 transform scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></span>
       </span>
     </h2>
 
     <!-- Grid principal -->
-    <div class="grid md:grid-cols-2 gap-6 items-stretch">
+    <div class="grid md:grid-cols-2 gap-8 items-stretch">
       
       <!-- Imagen -->
-      <div class="overflow-hidden rounded-xl shadow-lg">
+      <div class="overflow-hidden rounded-2xl shadow-lg card-hover">
         <img src="{{ url_for('static', filename='image/nosotros.png') }}" 
              alt="Construcción" 
-             class="w-full h-full object-cover transform hover:scale-105 transition duration-700">
+             class="w-full h-full object-cover transform transition duration-700 hover:scale-110">
       </div>
 
       <!-- Misión y visión -->
-      <div class="grid grid-cols-1 md:grid-cols-2 rounded-xl overflow-hidden shadow-lg">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         
         <!-- Misión -->
-        <div class="bg-blue-500 text-white p-6 flex flex-col items-center justify-center text-center transition transform hover:-translate-y-2 hover:shadow-xl duration-500">
-          <div class="text-4xl mb-3">🌐</div>
-          <h3 class="text-xl font-bold mb-2">MISIÓN</h3>
-          <p class="text-sm">Brindar a nuestros clientes productos de ferretería de calidad, con un servicio cercano y confiable que ofrezca soluciones prácticas en construcción, reparación y mantenimiento.</p>
+        <div class="bg-gradient-to-br from-blue-600 to-blue-800 text-black p-8 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center card-hover animate-slide-up">
+          <div class="text-5xl mb-4 animate-bounce-slow">🌐</div>
+          <h3 class="text-2xl font-bold mb-4">MISIÓN</h3>
+          <p class="text-base leading-relaxed">Brindar a nuestros clientes productos de ferretería de calidad, con un servicio cercano y confiable que ofrezca soluciones prácticas en construcción, reparación y mantenimiento.</p>
         </div>
 
         <!-- Visión -->
-        <div class="bg-yellow-500 text-white p-6 flex flex-col items-center justify-center text-center transition transform hover:-translate-y-2 hover:shadow-xl duration-500">
-          <div class="text-4xl mb-3">👁️</div>
-          <h3 class="text-xl font-bold mb-2">VISIÓN</h3>
-          <p class="text-sm">Ser la ferretería familiar de referencia, reconocida por su confianza, compromiso y calidad en el servicio, adaptándonos a las necesidades del mercado.</p>
+        <div class="bg-gradient-to-br from-amber-500 to-amber-500 text-black p-8 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center card-hover animate-slide-up" style="animation-delay: 0.1s">
+          <div class="text-5xl mb-4 animate-bounce-slow" style="animation-delay: 0.2s">👁️</div>
+          <h3 class="text-2xl font-bold mb-4">VISIÓN</h3>
+          <p class="text-base leading-relaxed">Ser la ferretería familiar de referencia, reconocida por su confianza, compromiso y calidad en el servicio, adaptándonos a las necesidades del mercado.</p>
         </div>
       </div>
     </div>
 
     <!-- Valores -->
-    <div class="bg-gray-300 text-gray-800 mt-8 p-8 rounded-xl shadow-lg text-center transition hover:scale-[1.02] duration-500">
-      <div class="text-3xl mb-4">🤝</div>
-      <h3 class="text-xl font-bold mb-4">VALORES</h3>
-      <ul class="text-sm space-y-2">
-        <li><strong>Honestidad:</strong> Actuar con transparencia y responsabilidad.</li>
-        <li><strong>Compromiso:</strong> Siempre disponibles para apoyar a nuestros clientes.</li>
-        <li><strong>Cercanía:</strong> Mantener un trato amable y familiar.</li>
-        <li><strong>Calidad:</strong> Ofrecer productos confiables y duraderos.</li>
-      </ul>
+    <div class="bg-gradient-to-r from-gray-200 to-gray-300 text-gray-800 mt-12 p-8 rounded-2xl shadow-lg text-center card-hover animate-slide-up" style="animation-delay: 0.2s">
+      <div class="text-4xl mb-6 animate-bounce-slow" style="animation-delay: 0.3s">🤝</div>
+      <h3 class="text-2xl font-black mb-6">VALORES</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white p-4 rounded-xl shadow-md">
+          <h4 class="font-bold text-red-700 mb-2">Honestidad</h4>
+          <p class="text-sm">Actuar con transparencia y responsabilidad en todas nuestras acciones.</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow-md">
+          <h4 class="font-bold text-red-700 mb-2">Compromiso</h4>
+          <p class="text-sm">Siempre disponibles para apoyar y satisfacer a nuestros clientes.</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow-md">
+          <h4 class="font-bold text-red-700 mb-2">Cercanía</h4>
+          <p class="text-sm">Mantener un trato amable, personalizado y familiar con cada cliente.</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow-md">
+          <h4 class="font-bold text-red-700 mb-2">Calidad</h4>
+          <p class="text-sm">Ofrecer productos confiables, duraderos y de la mejor calidad.</p>
+        </div>
+      </div>
     </div>
 
   </section>
 
-
 <!-- Únete -->
-<section class="bg-red-900 text-white py-12 px-6 relative">
-  <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-8">
+<section class="bg-red-900 text-white py-16 px-6 relative overflow-visible">
+  <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-8 relative">
 
-    <!-- Texto a la izquierda -->
+    <!-- Texto -->
     <div class="lg:w-1/2 text-center lg:text-left z-10">
-      <h2 class="text-2xl font-bold mb-4">Únete a la familia Ferre-Che</h2>
-      <p class="leading-relaxed mb-6">
-        En la ferreteria nos dedicamos a ofrecer equipos de protección personal de la más alta calidad. 
+      <h1 class="text-5xl font-extrabold mb-6 uppercase tracking-wide">
+        ÚNETE A LA FAMILIA FERRE-CHE
+      </h1>
+      <p class="leading-relaxed text-sm md:text-base">
+        En Ferre-Che nos dedicamos a ofrecer equipos de protección personal de la más alta calidad. 
         Si compartes nuestra pasión por la seguridad y el compromiso, ¡te invitamos a formar parte de nuestra familia!
       </p>
     </div>
 
-    <!-- Imagen a la derecha, sobresaliendo -->
-    <div class="lg:w-1/2 flex justify-center lg:justify-end relative">
-      <img src="{{ url_for('static', filename='image/sin fondo.png') }}" 
-           class="rounded-lg shadow-lg w-80 lg:translate-x-16 -translate-y-12" 
-           alt="Equipo Ferre-Che">
+    <!-- Imagen a la derecha sobresaliendo -->
+    <div class="lg:w-1/2 flex justify-center lg:justify-end relative z-20">
+      <img 
+        src="{{ url_for('static', filename='image/sin fondo.png') }}" 
+        alt="Equipo Ferre-Che"
+        class="w-80 md:w-96 drop-shadow-2xl transform -translate-y-16 lg:-translate-y-24 lg:translate-x-8"
+      >
     </div>
 
   </div>
 </section>
+
 
   <!-- Footer -->
 <footer class="bg-gray-900 text-gray-200 py-12 mt-12 relative overflow-hidden">
@@ -410,6 +479,7 @@
 
  <script src="{{ url_for('static', filename='js/boton.js') }}"></script>
  <script src="{{ url_for('static', filename='js/contacto.js') }}"></script>
+<script src="{{ url_for('static', filename='js/slider.js') }}"></script>
 
 </body>
 </html>
