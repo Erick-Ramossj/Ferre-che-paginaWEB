@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,7 +40,7 @@
 
       <!-- Centro: Buscador -->
       <div class="w-full sm:flex-1 sm:mx-6">
-       <div class="flex border border-gray-300 rounded overflow-hidden w-full max-w-md mx-auto">
+        <div class="flex border border-gray-300 rounded overflow-hidden w-full max-w-md mx-auto">
           <input type="text" placeholder="¿Qué producto estás buscando?"
             class="flex-1 px-3 py-2 focus:outline-none text-sm md:text-base">
           <button class="bg-gray-300 px-3 sm:px-4">
@@ -104,6 +105,11 @@
         </li>
       </ul>
 
+      <div class="mb-10">
+        <img src="{{ url_for('static', filename='image/fe3.png') }}" alt="Banner de Ferre-Che"
+          class="w-full h-48 sm:h-64 md:h-96 object-cover object-center rounded-lg shadow-md">
+      </div>
+
       <!-- Menú móvil (oculto por defecto) -->
       <ul id="mobile-menu" class="hidden flex-col gap-2 font-semibold text-gray-700 lg:hidden py-4">
         <li><a href="{{ url_for('index') }}">INICIO</a></li>
@@ -112,150 +118,308 @@
         <li><a href="{{ url_for('catalogo') }}">CATÁLOGO</a></li>
         <li><a href="{{ url_for('marcas') }}">MARCAS</a></li>
         <li><a href="{{ url_for('contacto') }}">CONTACTENOS</a></li>
+
       </ul>
     </nav>
   </header>
 
   <!-- ================= CONTENIDO PRINCIPAL ================= -->
-  <main class="max-w-7xl mx-auto px-6 py-10 flex gap-8">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
-    <!-- Filtros -->
-    <aside class="w-1/4 bg-white p-6 rounded-lg shadow text-left">
-      <h2 class="font-bold text-gray-800 mb-4">Categoría de producto</h2>
-      <ul class="space-y-2">
-        <li><input type="checkbox"> Seguridad Industrial</li>
-        <li><input type="checkbox"> Protección Personal</li>
-        <li><input type="checkbox"> Eléctricos</li>
-        <li><input type="checkbox"> Herramientas Manuales</li>
-        <li><input type="checkbox"> Otros</li>
-      </ul>
 
-      <h2 class="font-bold text-gray-800 mt-6 mb-4">Filtrar por género</h2>
-      <select class="w-full border rounded px-3 py-2">
-        <option>Masculino</option>
-        <option>Femenino</option>
-      </select>
+    <div class="flex flex-col lg:flex-row gap-8">
 
-      <h2 class="font-bold text-gray-800 mt-6 mb-4">Filtrar por color</h2>
-      <select class="w-full border rounded px-3 py-2">
-        <option>Amarillo</option>
-        <option>Rojo</option>
-        <option>Negro</option>
-        <option>Naranja</option>
-      </select>
-    </aside>
-
-    <!-- Listado de productos -->
-    <section class="flex-1">
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">Productos disponibles</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Producto 1 -->
-        <div class="bg-white rounded-lg shadow p-4">
-          <img src="{{ url_for('static', filename='image/prod1.png') }}" alt="Producto 1" class="w-full h-40 object-contain mb-3">
-          <h3 class="font-semibold text-gray-700">Amoladora Angular 7"</h3>
-          <p class="text-gray-500 line-through text-sm">S/ 898.00</p>
-          <p class="text-gray-900 font-bold">S/ 699.00</p>
-          <button class="mt-2 w-full bg-black text-white py-2 rounded hover:bg-yellow-500 transition">Agregar al carrito</button>
+      <aside>
+        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+          <h3 class="font-bold text-gray-800 mb-4 flex justify-between items-center cursor-pointer">
+            <span>CATEGORIA DE PRODUCTO</span>
+            <div class="w-5 h-5 text-yellow-500 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
+          </h3>
+          <ul class="space-y-3 text-sm text-gray-700">
+            <li class="font-bold text-gray-800">
+              <div class="flex items-center justify-between cursor-pointer">
+                <span>SEGURIDAD INDUSTRIAL</span>
+                <div class="w-5 h-5 text-yellow-500 flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+              <ul class="pl-6 mt-2 space-y-2 font-semibold text-gray-600">
+                <li>Seguridad Vial</li>
+                <li>Proteccion Soldador</li>
+              </ul>
+            </li>
+          </ul>
         </div>
-
-        <!-- Producto 2 -->
-        <div class="bg-white rounded-lg shadow p-4">
-          <img src="{{ url_for('static', filename='image/prod2.png') }}" alt="Producto 2" class="w-full h-40 object-contain mb-3">
-          <h3 class="font-semibold text-gray-700">Soldadura Inverter 160 AMP</h3>
-          <p class="text-gray-500 line-through text-sm">S/ 899.00</p>
-          <p class="text-gray-900 font-bold">S/ 750.00</p>
-          <button class="mt-2 w-full bg-black text-white py-2 rounded hover:bg-yellow-500 transition">Agregar al carrito</button>
+        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+          <h3 class="font-bold text-red-800 mb-3">FILTRAR POR GENERO</h3>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex justify-between items-center"><span>Hombre</span> <span>(1)</span></li>
+            <li class="flex justify-between items-center"><span>Mujer</span> <span>(1)</span></li>
+          </ul>
         </div>
-
-        <!-- Producto 3 -->
-        <div class="bg-white rounded-lg shadow p-4">
-          <img src="{{ url_for('static', filename='image/prod3.png') }}" alt="Producto 3" class="w-full h-40 object-contain mb-3">
-          <h3 class="font-semibold text-gray-700">Rotomartillo 850W</h3>
-          <p class="text-gray-500 line-through text-sm">S/ 1,055.00</p>
-          <p class="text-gray-900 font-bold">S/ 900.90</p>
-          <button class="mt-2 w-full bg-black text-white py-2 rounded hover:bg-yellow-500 transition">Agregar al carrito</button>
+        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+          <h3 class="font-bold text-red-800 mb-3">FILTRAR POR COLOR</h3>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex justify-between items-center"><span>Amarillo</span> <span>(2)</span></li>
+            <li class="flex justify-between items-center"><span>Anaranjado</span> <span>(2)</span></li>
+            <li class="flex justify-between items-center"><span>Blanco</span> <span>(2)</span></li>
+          </ul>
         </div>
+        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+          <h3 class="font-bold text-red-800 mb-3">FILTRAR POR RUBRO</h3>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex justify-between items-center"><span>Construccion</span> <span>(1)</span></li>
+            <li class="flex justify-between items-center"><span>Seguridad Industrial</span> <span>(1)</span></li>
+            <li class="flex justify-between items-center"><span>Salud</span> <span>(1)</span></li>
+            <li class="flex justify-between items-center"><span>Mineria</span> <span>(1)</span></li>
+          </ul>
+        </div>
+      </aside>
 
-      </div>
-    </section>
+      <section class="flex-1">
+        <div class="mb-10">
+          <div class="bg-yellow-400 inline-block px-4 py-1 rounded-md mb-4">
+            <h2 class="text-lg font-bold text-gray-800">NOVEDADES</h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+
+              <img src="{{ url_for('static', filename='image/prod3.png') }}" alt="Amoladora"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Amoladora Angular 7"</h3>
+              <p class="text-gray-500 text-sm line-through">S/ 898.00</p>
+              <p class="text-gray-900 font-bold">S/ 699.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
+                <span>Agregar Carrito</span>
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </button>
+            </div>
+            <div
+              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+
+              <img src="{{ url_for('static', filename='image/mas1.png') }}" alt="Alicate"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Juego de Alicates</h3>
+              <p class="text-gray-500 text-sm line-through">S/ 120.00</p>
+              <p class="text-gray-900 font-bold">S/ 99.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
+                <span>Agregar Carrito</span>
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </button>
+            </div>
+            <div
+              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+
+              <img src="{{ url_for('static', filename='image/mas1.png') }}" alt="Alicate"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Juego de Alicates</h3>
+              <p class="text-gray-500 text-sm line-through">S/ 120.00</p>
+              <p class="text-gray-900 font-bold">S/ 99.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
+                <span>Agregar Carrito</span>
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </button>
+            </div>
+            <div
+              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+
+              <img src="{{ url_for('static', filename='image/mas1.png') }}" alt="Alicate"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Juego de Alicates</h3>
+              <p class="text-gray-500 text-sm line-through">S/ 120.00</p>
+              <p class="text-gray-900 font-bold">S/ 99.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
+                <span>Agregar Carrito</span>
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </button>
+            </div>
+            <div
+              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+
+              <img src="{{ url_for('static', filename='image/mas1.png') }}" alt="Alicate"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Juego de Alicates</h3>
+              <p class="text-gray-500 text-sm line-through">S/ 120.00</p>
+              <p class="text-gray-900 font-bold">S/ 99.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
+                <span>Agregar Carrito</span>
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </button>
+            </div>
+            <div
+              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+
+              <img src="{{ url_for('static', filename='image/mas1.png') }}" alt="Alicate"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Juego de Alicates</h3>
+              <p class="text-gray-500 text-sm line-through">S/ 120.00</p>
+              <p class="text-gray-900 font-bold">S/ 99.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
+                <span>Agregar Carrito</span>
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!--INICIO DE BANNER-->
+        <div class="bg-red-600 rounded-lg shadow-lg p-6 flex flex-col items-center justify-center text-white text-center mb-10 space-y-6">
+
+          <div class="flex items-center">
+            <span class="material-symbols-outlined text-6xl mr-4">
+              shopping_cart
+            </span>
+            <div>
+              <h3 class="font-bold text-2xl tracking-wide">OFERTA EXCLUSIVA</h3>
+              <p class="text-lg leading-relaxed">POR TIEMPO LIMITADO</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center gap-6">
+            <div class="flex items-center gap-2">
+              <div class="text-center">
+                <div class="bg-white text-red-600 text-3xl font-bold rounded-md px-3 py-1">24</div>
+                <div class="text-xs mt-1">Días</div>
+              </div>
+              <div class="text-center">
+                <div class="bg-white text-red-600 text-3xl font-bold rounded-md px-3 py-1">00</div>
+                <div class="text-xs mt-1">Horas</div>
+              </div>
+              <div class="text-center">
+                <div class="bg-white text-red-600 text-3xl font-bold rounded-md px-3 py-1">00</div>
+                <div class="text-xs mt-1">Minutos</div>
+              </div>
+            </div>
+            <button class="bg-black text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-800 transition">
+              Compra ya
+            </button>
+          </div>
+
+        </div>
+    <section/>
+    </div>
+    
+
+    </div>
   </main>
 
+
+
   <!-- ================= PIE DE PÁGINA ================= -->
-<footer class="bg-gray-900 text-gray-200 py-12 mt-12 relative overflow-hidden">
-  <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+  <footer class="bg-gray-900 text-gray-200 py-12 mt-12 relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
-    <!-- Logo y descripción -->
-    <div>
-      <div class="flex items-center gap-2 mb-4">
-        <span class="material-icons-outlined text-red-600 text-3xl">handyman</span>
-        <h2 class="text-2xl font-bold tracking-wide">FERRE-CHE</h2>
+      <!-- Logo y descripción -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-icons-outlined text-red-600 text-3xl">handyman</span>
+          <h2 class="text-2xl font-bold tracking-wide">FERRE-CHE</h2>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          Tu ferretería de confianza, ofreciendo calidad y compromiso en cada producto para tu hogar y proyectos.
+        </p>
       </div>
-      <p class="text-gray-400 text-sm leading-relaxed">
-        Tu ferretería de confianza, ofreciendo calidad y compromiso en cada producto para tu hogar y proyectos.
-      </p>
-    </div>
 
-    <!-- Enlaces rápidos -->
-    <div>
-      <h3 class="text-lg font-semibold mb-4">Enlaces rápidos</h3>
-      <ul class="space-y-2 text-sm">
-        <li><a href="{{ url_for('index') }}" class="hover:text-red-500 transition">Inicio</a></li>
-        <li><a href="{{ url_for('producto') }}" class="hover:text-red-500 transition">Producto</a></li>
-        <li><a href="{{ url_for('catalogo') }}" class="hover:text-red-500 transition">Catálogo</a></li>
-        <li><a href="{{ url_for('marcas') }}" class="hover:text-red-500 transition">Marcas</a></li>
-        <li><a href="{{ url_for('contacto') }}" class="hover:text-red-500 transition">Contáctenos</a></li>
-      </ul>
-    </div>
-
-    <!-- Información de contacto -->
-    <div>
-      <h3 class="text-lg font-semibold mb-4">Contáctanos</h3>
-      <ul class="space-y-2 text-sm text-gray-400">
-        <li class="flex items-center gap-2"><span class="material-icons-outlined text-red-600">location_on</span> Av. Principal #123 - Lima</li>
-        <li class="flex items-center gap-2"><span class="material-icons-outlined text-red-600">call</span> +51 987 654 321</li>
-        <li class="flex items-center gap-2"><span class="material-icons-outlined text-red-600">email</span> ferreche@empresa.com</li>
-      </ul>
-    </div>
-
-    <!-- Redes sociales -->
-    <div>
-      <h3 class="text-lg font-semibold mb-4">Síguenos</h3>
-      <div class="flex gap-4 text-xl">
-        <a href="#" class="hover:text-red-500 transition"><span class="material-icons-outlined">facebook</span></a>
-        <a href="#" class="hover:text-red-500 transition"><span class="material-icons-outlined">photo_camera</span></a>
-        <a href="#" class="hover:text-red-500 transition"><span class="material-icons-outlined">alternate_email</span></a>
+      <!-- Enlaces rápidos -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Enlaces rápidos</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="{{ url_for('index') }}" class="hover:text-red-500 transition">Inicio</a></li>
+          <li><a href="{{ url_for('producto') }}" class="hover:text-red-500 transition">Producto</a></li>
+          <li><a href="{{ url_for('catalogo') }}" class="hover:text-red-500 transition">Catálogo</a></li>
+          <li><a href="{{ url_for('marcas') }}" class="hover:text-red-500 transition">Marcas</a></li>
+          <li><a href="{{ url_for('contacto') }}" class="hover:text-red-500 transition">Contáctenos</a></li>
+        </ul>
       </div>
-    </div>
-  </div>
 
-  <!-- Bloque Libro de Reclamaciones -->
-  <div class="mt-12 bg-gray-800 border-t border-gray-700 py-8">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
-      
-      <!-- Texto -->
-      <div class="flex items-center gap-4">
-        <img src="{{ url_for('static', filename='image/libro.png') }}" alt="Libro de Reclamaciones" class="w-16 h-16 object-contain">
-        <div>
-          <h3 class="text-lg font-semibold text-white">Libro de Reclamaciones</h3>
-          <p class="text-gray-400 text-sm">Haz clic para registrar tu queja o reclamo en línea.</p>
+      <!-- Información de contacto -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Contáctanos</h3>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li class="flex items-center gap-2"><span class="material-icons-outlined text-red-600">location_on</span> Av.
+            Principal #123 - Lima</li>
+          <li class="flex items-center gap-2"><span class="material-icons-outlined text-red-600">call</span> +51 987 654
+            321</li>
+          <li class="flex items-center gap-2"><span class="material-icons-outlined text-red-600">email</span>
+            ferreche@empresa.com</li>
+        </ul>
+      </div>
+
+      <!-- Redes sociales -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Síguenos</h3>
+        <div class="flex gap-4 text-xl">
+          <a href="#" class="hover:text-red-500 transition"><span class="material-icons-outlined">facebook</span></a>
+          <a href="#" class="hover:text-red-500 transition"><span
+              class="material-icons-outlined">photo_camera</span></a>
+          <a href="#" class="hover:text-red-500 transition"><span
+              class="material-icons-outlined">alternate_email</span></a>
         </div>
       </div>
-
-      <!-- Botón -->
-      <a href="{{ url_for('libroRecl') }}" 
-         class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 px-6 py-3 rounded-xl text-white font-semibold shadow-lg transform hover:scale-105 transition">
-        <span class="material-icons-outlined">description</span> 
-        Acceder al Libro
-      </a>
     </div>
-  </div>
 
-  <!-- Derechos -->
-  <div class="text-center text-gray-500 text-sm mt-8 border-t border-gray-700 pt-4">
-    © 2025 FERRE-CHE. Todos los derechos reservados.
-  </div>
-</footer>
+    <!-- Bloque Libro de Reclamaciones -->
+    <div class="mt-12 bg-gray-800 border-t border-gray-700 py-8">
+      <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+
+        <!-- Texto -->
+        <div class="flex items-center gap-4">
+          <img src="{{ url_for('static', filename='image/libro.png') }}" alt="Libro de Reclamaciones"
+            class="w-16 h-16 object-contain">
+          <div>
+            <h3 class="text-lg font-semibold text-white">Libro de Reclamaciones</h3>
+            <p class="text-gray-400 text-sm">Haz clic para registrar tu queja o reclamo en línea.</p>
+          </div>
+        </div>
+
+        <!-- Botón -->
+        <a href="{{ url_for('libroRecl') }}"
+          class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 px-6 py-3 rounded-xl text-white font-semibold shadow-lg transform hover:scale-105 transition">
+          <span class="material-icons-outlined">description</span>
+          Acceder al Libro
+        </a>
+      </div>
+    </div>
+
+    <!-- Derechos -->
+    <div class="text-center text-gray-500 text-sm mt-8 border-t border-gray-700 pt-4">
+      © 2025 FERRE-CHE. Todos los derechos reservados.
+    </div>
+  </footer>
 
   <!--CHATBOT PARA TODAS LAS PAGINAS-->
   <div id="floating-chat-button" class="fixed bottom-6 right-6 z-40 cursor-pointer">
@@ -270,8 +434,9 @@
     </div>
   </div>
 
-   <!--INICIO DE CHATBOT-->
-  <div id="chatbot-overlay" class="hidden fixed inset-0 flex items-center justify-center z-50" style="background-color: rgba(0, 0, 0, 0.5);">
+  <!--INICIO DE CHATBOT-->
+  <div id="chatbot-overlay" class="hidden fixed inset-0 flex items-center justify-center z-50"
+    style="background-color: rgba(0, 0, 0, 0.5);">
     <div id="chatbot-window"
       class="relative bg-white rounded-lg shadow-xl w-11/12 max-w-lg flex flex-col max-h-[90vh] overflow-hidden">
 
@@ -313,77 +478,76 @@
       </div>
     </div>
   </div>
- 
-   <!-- Modal de Inicio de Sesión -->
-<div id="loginModal" class="fixed inset-0 flex items-center justify-center hidden z-50">
 
-  <!-- Capa de fondo negro semi-transparente -->
-  <div class="absolute inset-0 bg-black opacity-50"></div>
+  <!-- Modal de Inicio de Sesión -->
+  <div id="loginModal" class="fixed inset-0 flex items-center justify-center hidden z-50">
 
-  <!-- Capa con desenfoque -->
-  <div class="absolute inset-0 backdrop-blur-sm"></div>
+    <!-- Capa de fondo negro semi-transparente -->
+    <div class="absolute inset-0 bg-black opacity-50"></div>
 
-  <!-- Contenido del modal -->
-  <div class="relative bg-white w-full max-w-md p-6 rounded-lg shadow-xl z-10">
+    <!-- Capa con desenfoque -->
+    <div class="absolute inset-0 backdrop-blur-sm"></div>
 
-    <!-- Botón cerrar -->
-    <button id="closeLoginModal" class="absolute top-3 right-4 text-gray-500 hover:text-black text-xl">
-      &times;
-    </button>
+    <!-- Contenido del modal -->
+    <div class="relative bg-white w-full max-w-md p-6 rounded-lg shadow-xl z-10">
 
-
-    <h2 class="text-2xl font-bold mb-4 text-center">Iniciar sesión</h2>
-
-
-    <form class="space-y-4">
-      <div>
-        <label class="block text-sm font-medium text-gray-700">Correo</label>
-        <input type="email" placeholder="Escribe tu correo"
-               class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" required>
-      </div>
-
-
-      <div>
-        <label class="block text-sm font-medium text-gray-700">Contraseña</label>
-        <input type="password" placeholder="Escribe tu contraseña"
-               class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" required>
-      </div>
-
-
-      <div class="text-right text-sm">
-        <a href="#" class="text-red-600 hover:underline">¿Olvidaste tu contraseña?</a>
-      </div>
-
-
-      <button type="submit"
-              class="w-full bg-red-700 text-white py-2 rounded-md hover:bg-red-800 transition">
-        Ingresar
+      <!-- Botón cerrar -->
+      <button id="closeLoginModal" class="absolute top-3 right-4 text-gray-500 hover:text-black text-xl">
+        &times;
       </button>
 
 
-      <div class="text-center text-gray-500 text-sm mt-4">O inicia sesión con</div>
+      <h2 class="text-2xl font-bold mb-4 text-center">Iniciar sesión</h2>
 
 
-      <button type="button"
-              class="w-full border border-gray-300 py-2 rounded-md mt-2 hover:bg-gray-100 transition">
-        Google
-      </button>
+      <form class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Correo</label>
+          <input type="email" placeholder="Escribe tu correo"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" required>
+        </div>
 
 
-      <p class="text-sm text-center mt-4">
-        ¿No tienes una cuenta?
-        <a href="#" class="text-red-700 font-semibold hover:underline">Registrarme</a>
-      </p>
-    </form>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Contraseña</label>
+          <input type="password" placeholder="Escribe tu contraseña"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" required>
+        </div>
+
+
+        <div class="text-right text-sm">
+          <a href="#" class="text-red-600 hover:underline">¿Olvidaste tu contraseña?</a>
+        </div>
+
+
+        <button type="submit" class="w-full bg-red-700 text-white py-2 rounded-md hover:bg-red-800 transition">
+          Ingresar
+        </button>
+
+
+        <div class="text-center text-gray-500 text-sm mt-4">O inicia sesión con</div>
+
+
+        <button type="button" class="w-full border border-gray-300 py-2 rounded-md mt-2 hover:bg-gray-100 transition">
+          Google
+        </button>
+
+
+        <p class="text-sm text-center mt-4">
+          ¿No tienes una cuenta?
+          <a href="#" class="text-red-700 font-semibold hover:underline">Registrarme</a>
+        </p>
+      </form>
+    </div>
   </div>
-</div>
 
 
   <script src="{{ url_for('static', filename='js/boton.js') }}"></script>
 
   <script src="{{ url_for('static', filename='js/contacto.js') }}"></script>
-  
+
   <script src="{{ url_for('static', filename='js/carrito.js') }}"></script>
 
 </body>
+
 </html>
