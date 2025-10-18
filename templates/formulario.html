@@ -14,7 +14,6 @@
 
 </head>
 
-<body class="w-full text-center">
 
   <!-- Menú de navegación -->
   <header class="w-full">
@@ -117,158 +116,80 @@
     </nav>
   </header>
 
-  <div class="w-full max-w-6xl mx-auto p-10 bg-white shadow-lg rounded-2xl">
-    <h2 class="text-3xl font-extrabold text-center mb-10 text-gray-800">
-      Regístrate para comprar
-    </h2>
+  <body class="w-full text-center">
+     <img src="/static/image/formulario.png" alt="Banner de herramientas de ferretería" class="w-full h-4/5 object-cover">
 
-    <!-- Botón toggle -->
-    <div class="flex justify-center items-center mb-10 relative">
-      <div class="flex rounded-lg shadow overflow-hidden">
-        <button id="btnUsuario"
-          class="flex items-center gap-2 px-8 py-3 bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-all duration-300">
-          <span class="material-symbols-outlined">person</span>
-          Usuario
-        </button>
-        <button id="btnEmpresa"
-          class="flex items-center gap-2 px-8 py-3 bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-all duration-300">
-          <span class="material-symbols-outlined">apartment</span>
-          Empresa
-        </button>
-      </div>
+
+    <div class="max-w-5xl w-full bg-white rounded-xl shadow-lg overflow-hidden my-8">
+        
+        <div class="p-8 md:p-12">
+            <div class="text-center">
+                <h1 class="text-3xl font-bold text-text-primary animate-subtle-pulse">Regístrate para comprar</h1>
+                <p class="text-text-secondary mt-3 max-w-2xl mx-auto">
+                    En nuestra tienda, queremos conocerte mejor para ofrecerte una experiencia personalizada. Regístrate como cliente individual y recibe nuestras promociones exclusivas, o crea una cuenta de empresa para acceder a precios preferenciales y beneficios por volumen de compra.
+                </p>
+            </div>
+
+            <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="flex flex-col gap-6">
+                    <h2 class="text-lg font-semibold text-text-primary">¡Comienza ahora! Elige cómo deseas registrarte</h2>
+                    
+                    <div id="client-option" class="option-button flex items-center gap-4 p-4 border rounded-lg cursor-pointer transition-all duration-300">
+                        <span class="material-symbols-outlined">person</span>
+                        <span class="font-medium">Soy Cliente</span>
+                    </div>
+
+                    <div id="company-option" class="option-button flex items-center gap-4 p-4 border rounded-lg cursor-pointer transition-all duration-300">
+                        <span class="material-symbols-outlined">store</span>
+                        <span class="font-medium">Soy Empresa</span>
+                    </div>
+
+                    <button class="w-full bg-dark text-white py-3 px-6 rounded-lg flex items-center justify-center gap-2 font-semibold hover:bg-opacity-90 transition-colors">
+                        Continue
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+
+                <div>
+                    <h2 class="text-lg font-semibold text-text-primary mb-6">Beneficio Ferre-che</h2>
+                    <ul class="space-y-5">
+                        <li class="flex items-start gap-4 animate-fade-in-up">
+                            <span class="material-symbols-outlined text-primary mt-1">notifications</span>
+                            <span class="text-text-secondary">Recibir notificaciones en <strong class="text-text-primary">tiempo real</strong> de tus pedidos</span>
+                        </li>
+                        <li class="flex items-start gap-4 animate-fade-in-up animation-delay-150">
+                            <span class="material-symbols-outlined text-primary mt-1">receipt_long</span>
+                            <span class="text-text-secondary">Revisar tus <strong class="text-text-primary">boletas online</strong>.</span>
+                        </li>
+                        <li class="flex items-start gap-4 animate-fade-in-up animation-delay-300">
+                            <span class="material-symbols-outlined text-primary mt-1">star</span>
+                            <span class="text-text-secondary">Guardar medios de pago y <strong class="text-text-primary">direcciones favoritas</strong>.</span>
+                        </li>
+                        <li class="flex items-start gap-4 animate-fade-in-up animation-delay-450">
+                            <span class="material-symbols-outlined text-primary mt-1">card_giftcard</span>
+                            <span class="text-text-secondary"><strong class="text-text-primary">Promociones</strong> especiales, cupones de descuento y más.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="w-full h-1 my-10 bg-gradient-to-r from-gradient-start via-gradient-mid to-gradient-end"></div>
+
+            <div class="text-center">
+                <h3 class="font-semibold text-text-primary mb-4">Métodos de pago accesibles</h3>
+                <div class="flex justify-center items-center gap-4 md:gap-6 flex-wrap">
+                    <img src="https://via.placeholder.com/80x50.png?text=Yape" alt="Yape" class="h-10">
+                    <img src="https://via.placeholder.com/80x50.png?text=BCP" alt="BCP" class="h-10">
+                    <img src="https://via.placeholder.com/80x50.png?text=Visa" alt="Visa" class="h-8">
+                    <img src="https://via.placeholder.com/80x50.png?text=Plin" alt="Plin" class="h-10">
+                </div>
+            </div>
+
+            <p class="text-center text-sm text-text-secondary mt-10">
+                ¿Compras con frecuencia? ¡<a href="#" class="font-bold text-primary hover:underline">Conviértete en cliente empresa y obtén mejores precios!</a>
+            </p>
+        </div>
     </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-      <!-- Form Usuario -->
-      <form id="formUsuario" method="POST" action="/registrar_usuario"
-        class="p-6 rounded-xl bg-blue-50 shadow-md transition-all duration-500">
-
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Correo</label>
-          <input type="email" name="correo" required
-            class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            placeholder="Ingresa un correo">
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Nombre y Apellidos</label>
-          <input type="text" name="nombre_apellidos" required
-            class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            placeholder="Ingresa tu nombre">
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Información Profesional</label>
-          <select name="profesion"
-            class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-            <option value="">Selecciona tu especialidad</option>
-            <option value="Electricista">Electricista</option>
-            <option value="Gafitero">Gafitero</option>
-            <option value="Carpintero">Carpintero</option>
-            <option value="Maestro de obra">Maestro de obra</option>
-          </select>
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Tipo de documento</label>
-          <input type="text" name="tipo_documento"
-            class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="DNI">
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Celular</label>
-          <input type="tel" name="celular"
-            class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="+51">
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Contraseña</label>
-          <input type="password" name="contrasena" required
-            class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Confirmar Contraseña</label>
-          <input type="password" name="confirmar_contrasena" required
-            class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-        </div>
-
-        <button type="submit"
-          class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 hover:scale-105 transition-all duration-300">
-          Registrarse
-        </button>
-      </form>
-
-
-      <!-- Form Empresa -->
-      <form id="formEmpresa" action="/registrar_empresa" method="POST"
-        class="p-6 rounded-xl bg-gray-100 shadow-md transition-all duration-500">
-
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Correo</label>
-          <input type="email" name="correo"
-            class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            placeholder="Ingresa un correo" required>
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Razón Social</label>
-          <input type="text" name="razon_social"
-            class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            placeholder="Nombre legal de la empresa" required>
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Dirección</label>
-          <input type="text" name="direccion"
-            class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            placeholder="Dirección de la empresa">
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Tipo de Empresa</label>
-          <select name="tipo_empresa"
-            class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-            <option value="Otro">Selecciona</option>
-            <option value="S.A.">S.A.</option>
-            <option value="S.A.C.">S.A.C.</option>
-          </select>
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">RUC</label>
-          <input type="text" name="ruc"
-            class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            placeholder="Número de RUC" required>
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Celular</label>
-          <input type="tel" name="celular"
-            class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="+51"
-            required>
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Contraseña</label>
-          <input type="password" name="contrasena"
-            class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700">Confirmar Contraseña</label>
-          <input type="password" name="confirmar_contrasena"
-            class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
-        </div>
-
-        <button type="submit"
-          class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 hover:scale-105 transition-all duration-300">
-          Registrarse
-        </button>
-      </form>
-
-    </div>
-  </div>
 
   <!-- === INICIO: Footer === -->
   <footer class="bg-gray-900 text-gray-200 py-10 mt-10">
