@@ -7,15 +7,15 @@
   <title>Mi Sitio Web</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
   <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static', filename='css/slider.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/registrate.css') }}" rel="stylesheet">
   <link href="{{ url_for('static', filename='css/chatbot.css') }}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  </head>
 
-</head>
 
+  <body class="w-full text-center">
 
-  <!-- Menú de navegación -->
   <header class="w-full">
 
     <!-- Encabezado rojo -->
@@ -104,6 +104,18 @@
         </li>
       </ul>
 
+<div class="mb-10">
+  <video 
+    src="{{ url_for('static', filename='image/regist.mov') }}" 
+    class="w-full h-48 sm:h-64 md:h-96 object-cover object-center rounded-lg shadow-md" 
+    autoplay 
+    muted 
+    loop 
+    playsinline>
+  </video>
+</div>
+     
+
       <!-- Menú móvil (oculto por defecto) -->
       <ul id="mobile-menu" class="hidden flex-col gap-2 font-semibold text-gray-700 lg:hidden py-4">
         <li><a href="{{ url_for('index') }}">INICIO</a></li>
@@ -114,82 +126,100 @@
         <li><a href="{{ url_for('contacto') }}">CONTACTENOS</a></li>
       </ul>
     </nav>
+
   </header>
 
-  <body class="w-full text-center">
-     <img src="/static/image/formulario.png" alt="Banner de herramientas de ferretería" class="w-full h-4/5 object-cover">
+  <!-- Contenedor principal -->
+    <main class="max-w-5xl mx-auto bg-white mt-[-3rem] p-8 rounded-2xl shadow-lg animate-fadeIn">
+    <h2 class="text-2xl font-bold text-center mb-2">Regístrate para comprar</h2>
+    <p class="text-center text-gray-600 mb-8">
+      Únete a nuestra comunidad de clientes y obtén beneficios exclusivos.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-8">
+<!-- Sección izquierda -->
+<div class="space-y-8">
+  <p class="text-gray-700 leading-relaxed">
+    En nuestra tienda, queremos conocerte mejor para ofrecerte una experiencia personalizada.  
+    Regístrate como cliente individual y recibe promociones exclusivas, o crea una cuenta de empresa 
+    para acceder a precios preferenciales y beneficios por volumen de compra.
+  </p>
+
+  <!-- Título más grande y con separación -->
+  <p class="text-2xl text-red-600 font-bold mt-6 mb-4">
+    ¡Comienza ahora! Elige cómo deseas registrarte
+  </p>
+
+<!-- Botones tipo selección -->
+<div class="flex flex-col gap-6">
+  <button id="btnCliente" class="option-btn border border-orange-400 text-orange-600 rounded-xl">
+    <span class="material-symbols-outlined">person</span> Soy Cliente
+  </button>
+
+  <button id="btnEmpresa" class="option-btn border border-red-600 text-red-600 rounded-xl">
+    <span class="material-symbols-outlined">business</span> Soy Empresa
+  </button>
+</div>
+
+<button
+  id="btnContinue"
+  class="continue-btn w-full bg-black text-white py-3 mt-8 rounded-xl font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+>
+  Continue →
+</button>
+
+</div>
 
 
-    <div class="max-w-5xl w-full bg-white rounded-xl shadow-lg overflow-hidden my-8">
-        
-        <div class="p-8 md:p-12">
-            <div class="text-center">
-                <h1 class="text-3xl font-bold text-text-primary animate-subtle-pulse">Regístrate para comprar</h1>
-                <p class="text-text-secondary mt-3 max-w-2xl mx-auto">
-                    En nuestra tienda, queremos conocerte mejor para ofrecerte una experiencia personalizada. Regístrate como cliente individual y recibe nuestras promociones exclusivas, o crea una cuenta de empresa para acceder a precios preferenciales y beneficios por volumen de compra.
-                </p>
-            </div>
+      <!-- Sección derecha -->
+      <div class="bg-gray-50 p-6 rounded-xl shadow-inner animate-fadeIn delay-300">
+        <h1 class="text-lg font-bold text-gray-800 mb-4 ">Beneficio Ferre-che</h1>
 
-            <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="flex flex-col gap-6">
-                    <h2 class="text-lg font-semibold text-text-primary">¡Comienza ahora! Elige cómo deseas registrarte</h2>
-                    
-                    <div id="client-option" class="option-button flex items-center gap-4 p-4 border rounded-lg cursor-pointer transition-all duration-300">
-                        <span class="material-symbols-outlined">person</span>
-                        <span class="font-medium">Soy Cliente</span>
-                    </div>
+        <ul class="space-y-4 text-gray-700">
+          <li class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-blue-500">notifications_active</span>
+            <p>Recibir <strong>notificaciones en tiempo real</strong> de tus pedidos.</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-blue-500">receipt_long</span>
+            <p>Revisar tus <strong>boletas online</strong>.</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-blue-500">credit_card</span>
+            <p>Guardar <strong>medios de pago</strong> y <strong>direcciones favoritas</strong>.</p>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-blue-500">redeem</span>
+            <p><strong>Promociones especiales</strong>, cupones de descuento y más.</p>
+          </li>
+        </ul>
 
-                    <div id="company-option" class="option-button flex items-center gap-4 p-4 border rounded-lg cursor-pointer transition-all duration-300">
-                        <span class="material-symbols-outlined">store</span>
-                        <span class="font-medium">Soy Empresa</span>
-                    </div>
+         <hr class="my-6 border-gray-300">
 
-                    <button class="w-full bg-dark text-white py-3 px-6 rounded-lg flex items-center justify-center gap-2 font-semibold hover:bg-opacity-90 transition-colors">
-                        Continue
-                        <span class="material-symbols-outlined">arrow_forward</span>
-                    </button>
-                </div>
+<!-- Línea divisoria elegante con degradado -->
+<div class="relative my-8">
+  <hr class="h-[3px] bg-gradient-to-r from-red-700 via-orange-500 to-yellow-500 border-0 rounded-full">
+  <span class="absolute left-1/2 -top-3 bg-white px-3 text-orange-600 text-sm font-bold transform -translate-x-1/2">
+  </span>
+</div>
 
-                <div>
-                    <h2 class="text-lg font-semibold text-text-primary mb-6">Beneficio Ferre-che</h2>
-                    <ul class="space-y-5">
-                        <li class="flex items-start gap-4 animate-fade-in-up">
-                            <span class="material-symbols-outlined text-primary mt-1">notifications</span>
-                            <span class="text-text-secondary">Recibir notificaciones en <strong class="text-text-primary">tiempo real</strong> de tus pedidos</span>
-                        </li>
-                        <li class="flex items-start gap-4 animate-fade-in-up animation-delay-150">
-                            <span class="material-symbols-outlined text-primary mt-1">receipt_long</span>
-                            <span class="text-text-secondary">Revisar tus <strong class="text-text-primary">boletas online</strong>.</span>
-                        </li>
-                        <li class="flex items-start gap-4 animate-fade-in-up animation-delay-300">
-                            <span class="material-symbols-outlined text-primary mt-1">star</span>
-                            <span class="text-text-secondary">Guardar medios de pago y <strong class="text-text-primary">direcciones favoritas</strong>.</span>
-                        </li>
-                        <li class="flex items-start gap-4 animate-fade-in-up animation-delay-450">
-                            <span class="material-symbols-outlined text-primary mt-1">card_giftcard</span>
-                            <span class="text-text-secondary"><strong class="text-text-primary">Promociones</strong> especiales, cupones de descuento y más.</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="w-full h-1 my-10 bg-gradient-to-r from-gradient-start via-gradient-mid to-gradient-end"></div>
-
-            <div class="text-center">
-                <h3 class="font-semibold text-text-primary mb-4">Métodos de pago accesibles</h3>
-                <div class="flex justify-center items-center gap-4 md:gap-6 flex-wrap">
-                    <img src="https://via.placeholder.com/80x50.png?text=Yape" alt="Yape" class="h-10">
-                    <img src="https://via.placeholder.com/80x50.png?text=BCP" alt="BCP" class="h-10">
-                    <img src="https://via.placeholder.com/80x50.png?text=Visa" alt="Visa" class="h-8">
-                    <img src="https://via.placeholder.com/80x50.png?text=Plin" alt="Plin" class="h-10">
-                </div>
-            </div>
-
-            <p class="text-center text-sm text-text-secondary mt-10">
-                ¿Compras con frecuencia? ¡<a href="#" class="font-bold text-primary hover:underline">Conviértete en cliente empresa y obtén mejores precios!</a>
-            </p>
+        <!-- Métodos de pago -->
+        <div class="text-center">
+          <p class="text-md font-bold text-gray-700 mb-1 text-1xl">Métodos de pago accesibles</p>
+          <div class="flex justify-center gap-6 items-center animate-payment">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Yape_logo.svg/512px-Yape_logo.svg.png" class="h-8" alt="Yape">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Logo_BCP.svg/512px-Logo_BCP.svg.png" class="h-6" alt="BCP">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" class="h-6" alt="Visa">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Plin_logo.svg/512px-Plin_logo.svg.png" class="h-7" alt="Plin">
+          </div>
         </div>
-    </div>
+      </div>
+      </div>
+
+    <p class="text-center text-gray-700 text-sm mt-10">
+      ¿Compras con frecuencia? <strong>¡Conviértete en cliente empresa y obtén mejores precios!</strong>
+    </p>
+  </main>
 
   <!-- === INICIO: Footer === -->
   <footer class="bg-gray-900 text-gray-200 py-10 mt-10">
@@ -371,6 +401,8 @@
   <script src="{{ url_for('static', filename='js/boton.js') }}"></script>
   <script src="{{ url_for('static', filename='js/boton.js') }}"></script>
   <script src="{{ url_for('static', filename='js/contacto.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/registrate.js') }}"></script>  
+
 
 </body>
 
