@@ -128,30 +128,23 @@
 
 
     <div class="flex flex-col lg:flex-row gap-8">
-
+      <!--BARRA DE FILTROS LATERAL-->
       <aside>
-        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
-          <h3 class="font-bold text-gray-800 mb-4 flex justify-between items-center cursor-pointer">
+        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200 mb-4">
+          <h3 id="accordion-button-1" class="font-bold text-gray-800 flex justify-between items-center cursor-pointer">
             <span>CATEGORIA DE PRODUCTO</span>
-            <div class="w-5 h-5 text-yellow-500 flex-shrink-0">
+            <div class="w-5 h-5 text-yellow-500 transition-transform duration-300">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
-                  d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                   clip-rule="evenodd" />
               </svg>
             </div>
           </h3>
-          <ul class="space-y-3 text-sm text-gray-700">
+          <ul id="accordion-content-1" class="space-y-3 text-sm text-gray-700 mt-4 hidden">
             <li class="font-bold text-gray-800">
               <div class="flex items-center justify-between cursor-pointer">
                 <span>SEGURIDAD INDUSTRIAL</span>
-                <div class="w-5 h-5 text-yellow-500 flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd" />
-                  </svg>
-                </div>
               </div>
               <ul class="pl-6 mt-2 space-y-2 font-semibold text-gray-600">
                 <li>Seguridad Vial</li>
@@ -160,24 +153,54 @@
             </li>
           </ul>
         </div>
-        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
-          <h3 class="font-bold text-red-800 mb-3">FILTRAR POR GENERO</h3>
-          <ul class="space-y-2 text-sm text-gray-600">
+
+        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200 mb-4">
+          <h3 id="accordion-button-2" class="font-bold text-gray-800 flex justify-between items-center cursor-pointer">
+            <span>FILTRAR POR GÉNERO</span>
+            <div class="w-5 h-5 text-yellow-500 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
+          </h3>
+          <ul id="accordion-content-2" class="space-y-2 text-sm text-gray-600 mt-4 hidden">
             <li class="flex justify-between items-center"><span>Hombre</span> <span>(1)</span></li>
             <li class="flex justify-between items-center"><span>Mujer</span> <span>(1)</span></li>
           </ul>
         </div>
-        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
-          <h3 class="font-bold text-red-800 mb-3">FILTRAR POR COLOR</h3>
-          <ul class="space-y-2 text-sm text-gray-600">
+
+        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200 mb-4">
+          <h3 id="accordion-button-3" class="font-bold text-gray-800 flex justify-between items-center cursor-pointer">
+            <span>FILTRAR POR COLOR</span>
+            <div class="w-5 h-5 text-yellow-500 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
+          </h3>
+          <ul id="accordion-content-3" class="space-y-2 text-sm text-gray-600 mt-4 hidden">
             <li class="flex justify-between items-center"><span>Amarillo</span> <span>(2)</span></li>
             <li class="flex justify-between items-center"><span>Anaranjado</span> <span>(2)</span></li>
             <li class="flex justify-between items-center"><span>Blanco</span> <span>(2)</span></li>
           </ul>
         </div>
-        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
-          <h3 class="font-bold text-red-800 mb-3">FILTRAR POR RUBRO</h3>
-          <ul class="space-y-2 text-sm text-gray-600">
+
+        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200 mb-4">
+          <h3 id="accordion-button-4" class="font-bold text-gray-800 flex justify-between items-center cursor-pointer">
+            <span>FILTRAR POR RUBRO</span>
+            <div class="w-5 h-5 text-yellow-500 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
+          </h3>
+          <ul id="accordion-content-4" class="space-y-2 text-sm text-gray-600 mt-4 hidden">
             <li class="flex justify-between items-center"><span>Construccion</span> <span>(1)</span></li>
             <li class="flex justify-between items-center"><span>Seguridad Industrial</span> <span>(1)</span></li>
             <li class="flex justify-between items-center"><span>Salud</span> <span>(1)</span></li>
@@ -185,6 +208,7 @@
           </ul>
         </div>
       </aside>
+      <!--FIN DE BARRA LATERAL DE FILTROS-->
 
       <section class="flex-1">
         <div class="mb-10">
@@ -192,6 +216,8 @@
             <h2 class="text-lg font-bold text-gray-800">NOVEDADES</h2>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!--PRODUCTO 1-->
             <div
               class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
 
@@ -209,6 +235,7 @@
                 </svg>
               </button>
             </div>
+            <!--PRODUCTO 2-->
             <div
               class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
 
@@ -226,14 +253,16 @@
                 </svg>
               </button>
             </div>
+
+            <!--PRODUCTO 3-->
             <div
               class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
 
-              <img src="{{ url_for('static', filename='image/mas1.png') }}" alt="Alicate"
+              <img src="{{ url_for('static', filename='image/pistol.jpg') }}" alt="Alicate"
                 class="w-full h-40 object-contain mb-2">
-              <h3 class="font-semibold text-gray-700 mb-1 truncate">Juego de Alicates</h3>
-              <p class="text-gray-500 text-sm line-through">S/ 120.00</p>
-              <p class="text-gray-900 font-bold">S/ 99.00</p>
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Pistola Clavadora 200w</h3>
+              <p class="text-gray-500 text-sm line-through">S/ 450.00</p>
+              <p class="text-gray-900 font-bold">S/ 415.00</p>
               <button
                 class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
                 <span>Agregar Carrito</span>
@@ -243,14 +272,16 @@
                 </svg>
               </button>
             </div>
+
+            <!-- PRODUCTO 4-->
             <div
               class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
 
-              <img src="{{ url_for('static', filename='image/mas1.png') }}" alt="Alicate"
+              <img src="{{ url_for('static', filename='image/sierracal.jpg') }}" alt="Alicate"
                 class="w-full h-40 object-contain mb-2">
-              <h3 class="font-semibold text-gray-700 mb-1 truncate">Juego de Alicates</h3>
-              <p class="text-gray-500 text-sm line-through">S/ 120.00</p>
-              <p class="text-gray-900 font-bold">S/ 99.00</p>
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Sierra Caladora</h3>
+              <p class="text-gray-500 text-sm line-through">S/ 190.00</p>
+              <p class="text-gray-900 font-bold">S/ 150.00</p>
               <button
                 class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
                 <span>Agregar Carrito</span>
@@ -260,14 +291,16 @@
                 </svg>
               </button>
             </div>
+
+            <!--PRODUCTO 5-->
             <div
               class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
 
-              <img src="{{ url_for('static', filename='image/mas1.png') }}" alt="Alicate"
+              <img src="{{ url_for('static', filename='image/mas3.png') }}" alt="Alicate"
                 class="w-full h-40 object-contain mb-2">
-              <h3 class="font-semibold text-gray-700 mb-1 truncate">Juego de Alicates</h3>
-              <p class="text-gray-500 text-sm line-through">S/ 120.00</p>
-              <p class="text-gray-900 font-bold">S/ 99.00</p>
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Audifonos Insonoros</h3>
+              <p class="text-gray-500 text-sm line-through">S/ 55.00</p>
+              <p class="text-gray-900 font-bold">S/ 44.00</p>
               <button
                 class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
                 <span>Agregar Carrito</span>
@@ -277,14 +310,15 @@
                 </svg>
               </button>
             </div>
+            <!--PRODUCTO 6-->
             <div
               class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
 
-              <img src="{{ url_for('static', filename='image/mas1.png') }}" alt="Alicate"
+              <img src="{{ url_for('static', filename='image/pinza.jpg') }}" alt="Alicate"
                 class="w-full h-40 object-contain mb-2">
-              <h3 class="font-semibold text-gray-700 mb-1 truncate">Juego de Alicates</h3>
-              <p class="text-gray-500 text-sm line-through">S/ 120.00</p>
-              <p class="text-gray-900 font-bold">S/ 99.00</p>
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Pinza de Mayolicas</h3>
+              <p class="text-gray-500 text-sm line-through">S/ 40.00</p>
+              <p class="text-gray-900 font-bold">S/ 32.00</p>
               <button
                 class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
                 <span>Agregar Carrito</span>
@@ -297,42 +331,168 @@
           </div>
         </div>
         <!--INICIO DE BANNER-->
-        <div class="bg-red-600 rounded-lg shadow-lg p-6 flex flex-col items-center justify-center text-white text-center mb-10 space-y-6">
+        <div
+          class="bg-red-600 rounded-xl shadow-xl p-8 flex flex-col items-center justify-center text-white text-center mb-12 space-y-8">
 
-          <div class="flex items-center">
-            <span class="material-symbols-outlined text-6xl mr-4">
+          <div class="flex flex-col items-center gap-4">
+            <span class="material-symbols-outlined text-7xl">
               shopping_cart
             </span>
             <div>
-              <h3 class="font-bold text-2xl tracking-wide">OFERTA EXCLUSIVA</h3>
-              <p class="text-lg leading-relaxed">POR TIEMPO LIMITADO</p>
+              <h3 class="font-extrabold text-3xl tracking-wider uppercase">OFERTA EXCLUSIVA</h3>
+              <p class="text-xl font-light mt-1">POR TIEMPO LIMITADO</p>
             </div>
           </div>
 
-          <div class="flex flex-col sm:flex-row items-center gap-6">
-            <div class="flex items-center gap-2">
-              <div class="text-center">
-                <div class="bg-white text-red-600 text-3xl font-bold rounded-md px-3 py-1">24</div>
-                <div class="text-xs mt-1">Días</div>
+          <div class="flex flex-col sm:flex-row items-center gap-8">
+            <div class="flex items-center gap-4">
+              <div class="text-center flex flex-col items-center">
+                <div
+                  class="bg-red-700/50 border border-white/30 text-white text-4xl font-extrabold rounded-lg px-5 py-2 min-w-[70px]">
+                  24</div>
+                <div class="text-sm font-semibold mt-2">Días</div>
               </div>
-              <div class="text-center">
-                <div class="bg-white text-red-600 text-3xl font-bold rounded-md px-3 py-1">00</div>
-                <div class="text-xs mt-1">Horas</div>
+              <div class="text-center flex flex-col items-center">
+                <div
+                  class="bg-red-700/50 border border-white/30 text-white text-4xl font-extrabold rounded-lg px-5 py-2 min-w-[70px]">
+                  00</div>
+                <div class="text-sm font-semibold mt-2">Horas</div>
               </div>
-              <div class="text-center">
-                <div class="bg-white text-red-600 text-3xl font-bold rounded-md px-3 py-1">00</div>
-                <div class="text-xs mt-1">Minutos</div>
+              <div class="text-center flex flex-col items-center">
+                <div
+                  class="bg-red-700/50 border border-white/30 text-white text-4xl font-extrabold rounded-lg px-5 py-2 min-w-[70px]">
+                  00</div>
+                <div class="text-sm font-semibold mt-2">Minutos</div>
               </div>
             </div>
-            <button class="bg-black text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-800 transition">
+            <button
+              class="bg-white text-red-600 font-bold py-4 px-8 rounded-full shadow-lg hover:bg-red-100 transition transform hover:scale-105 duration-200 uppercase tracking-wide text-lg">
               Compra ya
             </button>
           </div>
 
         </div>
-    <section/>
+        <div class="mb-10">
+
+          <!--FIN DEL BANNER-->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!--PRODUCTO 7-->
+            <div
+              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+
+              <img src="{{ url_for('static', filename='image/formones.jpg') }}" alt="Amoladora"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Juego de Formones para Madera</h3>
+              <p class="text-gray-500 text-sm line-through">S/ 40.00</p>
+              <p class="text-gray-900 font-bold">S/ 32.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
+                <span>Agregar Carrito</span>
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </button>
+            </div>
+            <!--PRODUCTO 8-->
+            <div
+              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+
+              <img src="{{ url_for('static', filename='image/estaño.jpg') }}" alt="Alicate"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Rollo de Estaño</h3>
+              <p class="text-gray-500 text-sm line-through">S/ 20.00</p>
+              <p class="text-gray-900 font-bold">S/ 14.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
+                <span>Agregar Carrito</span>
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </button>
+            </div>
+
+            <!--PRODUCTO 9-->
+            <div
+              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+
+              <img src="{{ url_for('static', filename='image/cautin.png') }}" alt="Alicate"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Juego de Cautines</h3>
+              <p class="text-gray-500 text-sm line-through">S/ 50.00</p>
+              <p class="text-gray-900 font-bold">S/ 45.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
+                <span>Agregar Carrito</span>
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- PRODUCTO 10-->
+            <div
+              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+
+              <img src="{{ url_for('static', filename='image/amobosh.jpg') }}" alt="Alicate"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Amoladora Bosh</h3>
+              <p class="text-gray-500 text-sm line-through">S/ 190.00</p>
+              <p class="text-gray-900 font-bold">S/ 150.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
+                <span>Agregar Carrito</span>
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </button>
+            </div>
+
+            <!--PRODUCTO 11-->
+            <div
+              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+
+              <img src="{{ url_for('static', filename='image/cortapvc.jpg') }}" alt="Alicate"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Cortadora de PVC</h3>
+              <p class="text-gray-500 text-sm line-through">S/ 35.00</p>
+              <p class="text-gray-900 font-bold">S/ 29.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
+                <span>Agregar Carrito</span>
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </button>
+            </div>
+            <!--PRODUCTO 12-->
+            <div
+              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+
+              <img src="{{ url_for('static', filename='image/solda.jpg') }}" alt="Alicate"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Soldador 400W</h3>
+              <p class="text-gray-500 text-sm line-through">S/ 400.00</p>
+              <p class="text-gray-900 font-bold">S/ 320.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
+                <span>Agregar Carrito</span>
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <section />
     </div>
-    
+
 
     </div>
   </main>
@@ -547,6 +707,10 @@
   <script src="{{ url_for('static', filename='js/contacto.js') }}"></script>
 
   <script src="{{ url_for('static', filename='js/carrito.js') }}"></script>
+
+  <script src="{{ url_for('static', filename='js/producto.js') }}"></script>
+
+
 
 </body>
 
