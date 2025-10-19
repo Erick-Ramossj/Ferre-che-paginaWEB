@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+</head>
+<body>
+    <div class="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+    <div class="max-w-xl w-full bg-white p-8 rounded-xl shadow-2xl space-y-6">
+        <h2 class="text-2xl font-bold text-center text-gray-900">Regístrate</h2>
+        <form class="space-y-6" action="#" method="POST" novalidate>
+            <div>
+                <label for="correo" class="block text-sm font-medium text-gray-700">Correo</label>
+                <input id="correo" name="correo" type="email" autocomplete="email" required 
+                       placeholder="Ingresa un correo"
+                       class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 
+                              peer invalid:border-red-500 invalid:text-red-600 focus:invalid:ring-red-500 focus:invalid:border-red-500">
+                <p class="mt-2 text-sm text-red-600 hidden peer-invalid:block">
+                    Ingresa un correo electrónico válido.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
+                    <input id="nombre" name="nombre" type="text" autocomplete="given-name" required
+                           placeholder="Ingresa un nombre"
+                           class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 peer invalid:border-red-500">
+                    <p class="mt-2 text-sm text-red-600 hidden peer-invalid:block">
+                        El nombre es obligatorio.
+                    </p>
+                </div>
+                <div>
+                    <label for="apellidos" class="block text-sm font-medium text-gray-700">Apellidos</label>
+                    <input id="apellidos" name="apellidos" type="text" autocomplete="family-name" required
+                           placeholder="Ingresa un apellido"
+                           class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 peer invalid:border-red-500">
+                    <p class="mt-2 text-sm text-red-600 hidden peer-invalid:block">
+                        Los apellidos son obligatorios.
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <label for="especialidad" class="block text-sm font-medium text-gray-700">Información Profesional</label>
+                <select id="especialidad" name="especialidad" required
+                        class="mt-1 block w-full px-4 py-3 border border-gray-300 bg-white rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 peer invalid:border-red-500">
+                    <option value="" disabled selected>Especialidad</option>
+                    <option value="ingenieria">Ingeniería</option>
+                    <option value="medicina">Medicina</option>
+                    <option value="otros">Otros</option>
+                </select>
+                <p class="mt-2 text-sm text-red-600 hidden peer-invalid:block">
+                    Selecciona una especialidad.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-4 gap-4">
+                <div class="col-span-1">
+                    <label for="tipo-documento" class="block text-sm font-medium text-gray-700">Tipo de documento</label>
+                    <input id="tipo-documento" type="text" value="DNI" disabled
+                           class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm bg-gray-100 text-gray-500 cursor-not-allowed">
+                </div>
+                <div class="col-span-3">
+                    <label for="documento" class="block text-sm font-medium text-gray-700">&nbsp;</label>
+                    <input id="documento" name="documento" type="text" required pattern="[0-9]{8}"
+                           placeholder="Ingresa un documento de identidad"
+                           class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 peer invalid:border-red-500">
+                    <p class="mt-2 text-sm text-red-600 hidden peer-invalid:block">
+                        El DNI debe tener 8 dígitos numéricos.
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <label for="celular" class="block text-sm font-medium text-gray-700">Celular</label>
+                <div class="mt-1 flex rounded-lg shadow-sm">
+                    <span class="inline-flex items-center px-4 py-3 rounded-l-lg border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">+51</span>
+                    <input id="celular" name="celular" type="tel" required pattern="[0-9]{9}"
+                           placeholder="Ingresa un celular"
+                           class="flex-1 block w-full px-4 py-3 border border-gray-300 rounded-r-lg placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 peer invalid:border-red-500">
+                </div>
+                <p class="mt-2 text-sm text-red-600 hidden peer-invalid:block">
+                    El celular es obligatorio y debe tener 9 dígitos numéricos.
+                </p>
+            </div>
+
+            <div>
+                <label for="contrasena" class="block text-sm font-medium text-gray-700">Contraseña</label>
+                <input id="contrasena" name="contrasena" type="password" required 
+                       pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d\w\W]{8,}$"
+                       placeholder="Ingresa una contraseña"
+                       class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 peer invalid:border-red-500">
+            </div>
+
+            <div>
+                <label for="confirmar-contrasena" class="block text-sm font-medium text-gray-700">Confirmar Contraseña</label>
+                <div class="relative mt-1">
+                    <input id="confirmar-contrasena" name="confirmar-contrasena" type="password" required
+                           placeholder="Confirma tu contraseña segura"
+                           class="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 peer invalid:border-red-500">
+                    <span class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 cursor-pointer">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                    </span>
+                </div>
+                
+                <div class="mt-2 grid grid-cols-3 text-xs text-gray-500 gap-y-1">
+                    <span>• Mín. 8 caracteres</span>
+                    <span>• 1 número</span>
+                    <span>• 1 mayúscula</span>
+                    <span>• 1 minúscula</span>
+                    <span>• Sin espacios</span>
+                    <span>• Sin usar $\tilde{\text{ñ}}$, $\text{á}$, $\text{é}$, $\text{í}$, $\text{ó}$, $\text{ú}$</span>
+                </div>
+
+                <p class="mt-2 text-sm text-red-600 hidden peer-invalid:block" id="password-validation-msg">
+                    La contraseña debe tener al menos 8 caracteres, 1 mayúscula, 1 minúscula y 1 número.
+                </p>
+                </div>
+
+            <div>
+                <button type="submit"
+                        class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-lg text-lg font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Regístrate
+                </button>
+            </div>
+            
+            <p class="text-center text-sm text-gray-600">
+                ¿Ya tienes una cuenta? 
+                <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Iniciar sesión</a>
+            </p>
+        </form>
+    </div>
+</div>
+    
+</body>
+</html>
