@@ -131,219 +131,78 @@
       <!--BARRA DE FILTROS LATERAL-->
       <aside>
         <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200 mb-4">
-          <h3 id="accordion-button-1" class="font-bold text-gray-800 flex justify-between items-center cursor-pointer">
-            <span>CATEGORIA DE PRODUCTO</span>
-            <div class="w-5 h-5 text-yellow-500 transition-transform duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd" />
-              </svg>
-            </div>
-          </h3>
-          <ul id="accordion-content-1" class="space-y-3 text-sm text-gray-700 mt-4 hidden">
-            <li class="font-bold text-gray-800">
-              <div class="flex items-center justify-between cursor-pointer">
-                <span>SEGURIDAD INDUSTRIAL</span>
-              </div>
-              <ul class="pl-6 mt-2 space-y-2 font-semibold text-gray-600">
-                <li>Seguridad Vial</li>
-                <li>Proteccion Soldador</li>
-              </ul>
-            </li>
-          </ul>
         </div>
 
         <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200 mb-4">
           <h3 id="accordion-button-2" class="font-bold text-gray-800 flex justify-between items-center cursor-pointer">
             <span>FILTRAR POR GÉNERO</span>
-            <div class="w-5 h-5 text-yellow-500 transition-transform duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd" />
-              </svg>
-            </div>
           </h3>
           <ul id="accordion-content-2" class="space-y-2 text-sm text-gray-600 mt-4 hidden">
-            <li class="flex justify-between items-center"><span>Hombre</span> <span>(1)</span></li>
-            <li class="flex justify-between items-center"><span>Mujer</span> <span>(1)</span></li>
+            <li class="filter-option flex justify-between items-center cursor-pointer hover:text-yellow-500"
+              data-filter-type="genero" data-filter-value="todos"><span><strong>Mostrar Todos</strong></span></li>
+            <li class="filter-option flex justify-between items-center cursor-pointer hover:text-yellow-500"
+              data-filter-type="genero" data-filter-value="hombre"><span>Hombre</span></li>
+            <li class="filter-option flex justify-between items-center cursor-pointer hover:text-yellow-500"
+              data-filter-type="genero" data-filter-value="mujer"><span>Mujer</span></li>
+            <li class="filter-option flex justify-between items-center cursor-pointer hover:text-yellow-500"
+              data-filter-type="genero" data-filter-value="unisex"><span>Unisex</span></li>
           </ul>
         </div>
 
         <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200 mb-4">
           <h3 id="accordion-button-3" class="font-bold text-gray-800 flex justify-between items-center cursor-pointer">
             <span>FILTRAR POR COLOR</span>
-            <div class="w-5 h-5 text-yellow-500 transition-transform duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd" />
-              </svg>
-            </div>
           </h3>
           <ul id="accordion-content-3" class="space-y-2 text-sm text-gray-600 mt-4 hidden">
-            <li class="flex justify-between items-center"><span>Amarillo</span> <span>(2)</span></li>
-            <li class="flex justify-between items-center"><span>Anaranjado</span> <span>(2)</span></li>
-            <li class="flex justify-between items-center"><span>Blanco</span> <span>(2)</span></li>
+            <li class="filter-option flex justify-between items-center cursor-pointer hover:text-yellow-500"
+              data-filter-type="color" data-filter-value="todos"><span><strong>Mostrar Todos</strong></span></li>
+            <li class="filter-option flex justify-between items-center cursor-pointer hover:text-yellow-500"
+              data-filter-type="color" data-filter-value="amarillo"><span>Amarillo</span></li>
+            <li class="filter-option flex justify-between items-center cursor-pointer hover:text-yellow-500"
+              data-filter-type="color" data-filter-value="anaranjado"><span>Anaranjado</span></li>
+            <li class="filter-option flex justify-between items-center cursor-pointer hover:text-yellow-500"
+              data-filter-type="color" data-filter-value="blanco"><span>Blanco</span></li>
+            <li class="filter-option flex justify-between items-center cursor-pointer hover:text-yellow-500"
+              data-filter-type="color" data-filter-value="negro"><span>Negro</span></li>
+            <li class="filter-option flex justify-between items-center cursor-pointer hover:text-yellow-500"
+              data-filter-type="color" data-filter-value="rojo"><span>Rojo</span></li>
           </ul>
         </div>
 
         <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200 mb-4">
           <h3 id="accordion-button-4" class="font-bold text-gray-800 flex justify-between items-center cursor-pointer">
             <span>FILTRAR POR RUBRO</span>
-            <div class="w-5 h-5 text-yellow-500 transition-transform duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd" />
-              </svg>
-            </div>
           </h3>
           <ul id="accordion-content-4" class="space-y-2 text-sm text-gray-600 mt-4 hidden">
-            <li class="flex justify-between items-center"><span>Construccion</span> <span>(1)</span></li>
-            <li class="flex justify-between items-center"><span>Seguridad Industrial</span> <span>(1)</span></li>
-            <li class="flex justify-between items-center"><span>Salud</span> <span>(1)</span></li>
-            <li class="flex justify-between items-center"><span>Mineria</span> <span>(1)</span></li>
+            <li class="filter-option flex justify-between items-center cursor-pointer hover:text-yellow-500"
+              data-filter-type="rubro" data-filter-value="todos"><span><strong>Mostrar Todos</strong></span></li>
+            <li class="filter-option flex justify-between items-center cursor-pointer hover:text-yellow-500"
+              data-filter-type="rubro" data-filter-value="construccion"><span>Construcción</span></li>
+            <li class="filter-option flex justify-between items-center cursor-pointer hover:text-yellow-500"
+              data-filter-type="rubro" data-filter-value="seguridad-industrial"><span>Seguridad Industrial</span></li>
+            <li class="filter-option flex justify-between items-center cursor-pointer hover:text-yellow-500"
+              data-filter-type="rubro" data-filter-value="salud"><span>Salud</span></li>
+            <li class="filter-option flex justify-between items-center cursor-pointer hover:text-yellow-500"
+              data-filter-type="rubro" data-filter-value="mineria"><span>Minería</span></li>
           </ul>
         </div>
       </aside>
       <!--FIN DE BARRA LATERAL DE FILTROS-->
 
+      
       <section class="flex-1">
-        <div class="mb-10">
-          <div class="bg-yellow-400 inline-block px-4 py-1 rounded-md mb-4">
-            <h2 class="text-lg font-bold text-gray-800">NOVEDADES</h2>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            <!--PRODUCTO 1-->
-            <div
-              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+        <!--BANNER-->
 
-              <img src="{{ url_for('static', filename='image/prod3.png') }}" alt="Amoladora"
-                class="w-full h-40 object-contain mb-2">
-              <h3 class="font-semibold text-gray-700 mb-1 truncate">Amoladora Angular 7"</h3>
-              <p class="text-gray-500 text-sm line-through">S/ 898.00</p>
-              <p class="text-gray-900 font-bold">S/ 699.00</p>
-              <button
-                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
-                <span>Agregar Carrito</span>
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </button>
-            </div>
-            <!--PRODUCTO 2-->
-            <div
-              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
-
-              <img src="{{ url_for('static', filename='image/mas1.png') }}" alt="Alicate"
-                class="w-full h-40 object-contain mb-2">
-              <h3 class="font-semibold text-gray-700 mb-1 truncate">Juego de Alicates</h3>
-              <p class="text-gray-500 text-sm line-through">S/ 120.00</p>
-              <p class="text-gray-900 font-bold">S/ 99.00</p>
-              <button
-                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
-                <span>Agregar Carrito</span>
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </button>
-            </div>
-
-            <!--PRODUCTO 3-->
-            <div
-              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
-
-              <img src="{{ url_for('static', filename='image/pistol.jpg') }}" alt="Alicate"
-                class="w-full h-40 object-contain mb-2">
-              <h3 class="font-semibold text-gray-700 mb-1 truncate">Pistola Clavadora 200w</h3>
-              <p class="text-gray-500 text-sm line-through">S/ 450.00</p>
-              <p class="text-gray-900 font-bold">S/ 415.00</p>
-              <button
-                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
-                <span>Agregar Carrito</span>
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </button>
-            </div>
-
-            <!-- PRODUCTO 4-->
-            <div
-              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
-
-              <img src="{{ url_for('static', filename='image/sierracal.jpg') }}" alt="Alicate"
-                class="w-full h-40 object-contain mb-2">
-              <h3 class="font-semibold text-gray-700 mb-1 truncate">Sierra Caladora</h3>
-              <p class="text-gray-500 text-sm line-through">S/ 190.00</p>
-              <p class="text-gray-900 font-bold">S/ 150.00</p>
-              <button
-                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
-                <span>Agregar Carrito</span>
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </button>
-            </div>
-
-            <!--PRODUCTO 5-->
-            <div
-              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
-
-              <img src="{{ url_for('static', filename='image/mas3.png') }}" alt="Alicate"
-                class="w-full h-40 object-contain mb-2">
-              <h3 class="font-semibold text-gray-700 mb-1 truncate">Audifonos Insonoros</h3>
-              <p class="text-gray-500 text-sm line-through">S/ 55.00</p>
-              <p class="text-gray-900 font-bold">S/ 44.00</p>
-              <button
-                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
-                <span>Agregar Carrito</span>
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </button>
-            </div>
-            <!--PRODUCTO 6-->
-            <div
-              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
-
-              <img src="{{ url_for('static', filename='image/pinza.jpg') }}" alt="Alicate"
-                class="w-full h-40 object-contain mb-2">
-              <h3 class="font-semibold text-gray-700 mb-1 truncate">Pinza de Mayolicas</h3>
-              <p class="text-gray-500 text-sm line-through">S/ 40.00</p>
-              <p class="text-gray-900 font-bold">S/ 32.00</p>
-              <button
-                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
-                <span>Agregar Carrito</span>
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-        <!--INICIO DE BANNER-->
         <div
           class="bg-red-600 rounded-xl shadow-xl p-8 flex flex-col items-center justify-center text-white text-center mb-12 space-y-8">
-
           <div class="flex flex-col items-center gap-4">
-            <span class="material-symbols-outlined text-7xl">
-              shopping_cart
-            </span>
+            <span class="material-symbols-outlined text-7xl">shopping_cart</span>
             <div>
               <h3 class="font-extrabold text-3xl tracking-wider uppercase">OFERTA EXCLUSIVA</h3>
               <p class="text-xl font-light mt-1">POR TIEMPO LIMITADO</p>
             </div>
           </div>
-
           <div class="flex flex-col sm:flex-row items-center gap-8">
             <div class="flex items-center gap-4">
               <div class="text-center flex flex-col items-center">
@@ -370,127 +229,239 @@
               Compra ya
             </button>
           </div>
-
         </div>
-        <div class="mb-10">
 
-          <!--FIN DEL BANNER-->
+        <!--BANNER-->
+
+        <div class="mb-10">
+          <div class="bg-yellow-400 inline-block px-4 py-1 rounded-md mb-4">
+            <h2 class="text-lg font-bold text-gray-800">NOVEDADES</h2>
+          </div>
+
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            <!--PRODUCTO 7-->
             <div
-              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+              class="product-card bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg"
+              data-color="amarillo" data-genero="unisex" data-rubro="construccion">
+              <img src="{{ url_for('static', filename='image/cascoamarillo.jpg') }}" alt="Casco de Obra"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Casco de Obra</h3>
+              <p class="text-gray-900 font-bold">S/ 29.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300"><span>Agregar
+                  Carrito</span></button>
+            </div>
 
-              <img src="{{ url_for('static', filename='image/formones.jpg') }}" alt="Amoladora"
+            <div
+              class="product-card bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg"
+              data-color="blanco" data-genero="unisex" data-rubro="salud">
+              <img src="{{ url_for('static', filename='image/guanteblan.jpg') }}" alt="Guantes de Nitrilo"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Guantes de Nitrilo (Caja)</h3>
+              <p class="text-gray-900 font-bold">S/ 35.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300"><span>Agregar
+                  Carrito</span></button>
+            </div>
+
+            <div
+              class="product-card bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg"
+              data-color="negro" data-genero="hombre" data-rubro="mineria">
+              <img src="{{ url_for('static', filename='image/linternaminero.jpg') }}" alt="Lámpara de Casco"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Lámpara de Casco Minero</h3>
+              <p class="text-gray-900 font-bold">S/ 80.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300"><span>Agregar
+                  Carrito</span></button>
+            </div>
+
+            <div
+              class="product-card bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg"
+              data-color="anaranjado" data-genero="unisex" data-rubro="seguridad-industrial">
+              <img src="{{ url_for('static', filename='image/cono.jpg') }}" alt="Cono de Tráfico"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Cono de Tráfico Reflectante</h3>
+              <p class="text-gray-900 font-bold">S/ 25.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300"><span>Agregar
+                  Carrito</span></button>
+            </div>
+
+            <div
+              class="product-card bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg"
+              data-color="negro" data-genero="hombre" data-rubro="seguridad-industrial">
+              <img src="{{ url_for('static', filename='image/mascarasold.jpg') }}" alt="Máscara de Soldar"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Máscara de Soldar</h3>
+              <p class="text-gray-900 font-bold">S/ 150.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300"><span>Agregar
+                  Carrito</span></button>
+            </div>
+
+            <div
+              class="product-card bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg"
+              data-color="negro" data-genero="hombre" data-rubro="construccion">
+              <img src="{{ url_for('static', filename='image/zapatoconst.jpg') }}" alt="Botas de Seguridad"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Botas de Seguridad Punta de Acero</h3>
+              <p class="text-gray-900 font-bold">S/ 180.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300"><span>Agregar
+                  Carrito</span></button>
+            </div>
+
+            <div
+              class="product-card bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg"
+              data-color="rojo" data-genero="hombre" data-rubro="construccion">
+              <img src="{{ url_for('static', filename='image/arnes.jpg') }}" alt="Arnés de Seguridad"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Arnés de Cuerpo Completo</h3>
+              <p class="text-gray-900 font-bold">S/ 110.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300"><span>Agregar
+                  Carrito</span></button>
+            </div>
+
+            <div
+              class="product-card bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg"
+              data-color="negro" data-genero="mujer" data-rubro="mineria">
+              <img src="{{ url_for('static', filename='image/botascaucho.jpg') }}" alt="Botas de Goma"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Botas de Goma para Mujer</h3>
+              <p class="text-gray-900 font-bold">S/ 40.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300"><span>Agregar
+                  Carrito</span></button>
+            </div>
+
+            <div
+              class="product-card bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg"
+              data-color="blanco" data-genero="unisex" data-rubro="salud">
+              <img src="{{ url_for('static', filename='image/botiblanco.jpg') }}" alt="Botiquín"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Kit Primeros Auxilios</h3>
+              <p class="text-gray-900 font-bold">S/ 45.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300"><span>Agregar
+                  Carrito</span></button>
+            </div>
+
+            <div
+              class="product-card bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg"
+              data-color="anaranjado" data-genero="unisex" data-rubro="construccion">
+              <img src="{{ url_for('static', filename='image/chaleco.jpg') }}" alt="Chaleco de Seguridad"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Chaleco de Seguridad</h3>
+              <p class="text-gray-900 font-bold">S/ 29.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300"><span>Agregar
+                  Carrito</span></button>
+            </div>
+
+            <div
+              class="product-card bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg"
+              data-color="blanco" data-genero="mujer" data-rubro="seguridad-industrial">
+              <img src="{{ url_for('static', filename='image/guanteconstr.jpg') }}" alt="Guantes para Mujer"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Guantes de Seguridad para Mujer</h3>
+              <p class="text-gray-900 font-bold">S/ 15.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300"><span>Agregar
+                  Carrito</span></button>
+            </div>
+
+            <div
+              class="product-card bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg"
+              data-color="amarillo" data-genero="unisex" data-rubro="seguridad-industrial">
+              <img src="{{ url_for('static', filename='image/cintaamarilla.jpg') }}" alt="Cinta Antideslizante"
+                class="w-full h-40 object-contain mb-2">
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Cinta Antideslizante Amarilla</h3>
+              <p class="text-gray-900 font-bold">S/ 22.00</p>
+              <button
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300"><span>Agregar
+                  Carrito</span></button>
+            </div>
+
+            <div
+              class="product-card bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+              <img src="{{ url_for('static', filename='image/formones.jpg') }}" alt="Juego de Formones"
                 class="w-full h-40 object-contain mb-2">
               <h3 class="font-semibold text-gray-700 mb-1 truncate">Juego de Formones para Madera</h3>
               <p class="text-gray-500 text-sm line-through">S/ 40.00</p>
               <p class="text-gray-900 font-bold">S/ 32.00</p>
               <button
-                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
-                <span>Agregar Carrito</span>
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </button>
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300"><span>Agregar
+                  Carrito</span></button>
             </div>
-            <!--PRODUCTO 8-->
-            <div
-              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
 
-              <img src="{{ url_for('static', filename='image/estaño.jpg') }}" alt="Alicate"
+            <div
+              class="product-card bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+              <img src="{{ url_for('static', filename='image/estaño.jpg') }}" alt="Rollo de Estaño"
                 class="w-full h-40 object-contain mb-2">
               <h3 class="font-semibold text-gray-700 mb-1 truncate">Rollo de Estaño</h3>
               <p class="text-gray-500 text-sm line-through">S/ 20.00</p>
               <p class="text-gray-900 font-bold">S/ 14.00</p>
               <button
-                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
-                <span>Agregar Carrito</span>
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </button>
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300"><span>Agregar
+                  Carrito</span></button>
             </div>
 
-            <!--PRODUCTO 9-->
             <div
-              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
-
-              <img src="{{ url_for('static', filename='image/cautin.png') }}" alt="Alicate"
+              class="product-card bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+              <img src="{{ url_for('static', filename='image/cautin.png') }}" alt="Juego de Cautines"
                 class="w-full h-40 object-contain mb-2">
               <h3 class="font-semibold text-gray-700 mb-1 truncate">Juego de Cautines</h3>
               <p class="text-gray-500 text-sm line-through">S/ 50.00</p>
               <p class="text-gray-900 font-bold">S/ 45.00</p>
               <button
-                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
-                <span>Agregar Carrito</span>
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </button>
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300"><span>Agregar
+                  Carrito</span></button>
             </div>
 
-            <!-- PRODUCTO 10-->
             <div
-              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
-
-              <img src="{{ url_for('static', filename='image/amobosh.jpg') }}" alt="Alicate"
+              class="product-card bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+              <img src="{{ url_for('static', filename='image/amobosh.jpg') }}" alt="Amoladora Bosch"
                 class="w-full h-40 object-contain mb-2">
-              <h3 class="font-semibold text-gray-700 mb-1 truncate">Amoladora Bosh</h3>
+              <h3 class="font-semibold text-gray-700 mb-1 truncate">Amoladora Bosch</h3>
               <p class="text-gray-500 text-sm line-through">S/ 190.00</p>
               <p class="text-gray-900 font-bold">S/ 150.00</p>
               <button
-                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
-                <span>Agregar Carrito</span>
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </button>
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300"><span>Agregar
+                  Carrito</span></button>
             </div>
 
-            <!--PRODUCTO 11-->
             <div
-              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
-
-              <img src="{{ url_for('static', filename='image/cortapvc.jpg') }}" alt="Alicate"
+              class="product-card bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+              <img src="{{ url_for('static', filename='image/cortapvc.jpg') }}" alt="Cortadora de PVC"
                 class="w-full h-40 object-contain mb-2">
               <h3 class="font-semibold text-gray-700 mb-1 truncate">Cortadora de PVC</h3>
               <p class="text-gray-500 text-sm line-through">S/ 35.00</p>
               <p class="text-gray-900 font-bold">S/ 29.00</p>
               <button
-                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
-                <span>Agregar Carrito</span>
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </button>
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300"><span>Agregar
+                  Carrito</span></button>
             </div>
-            <!--PRODUCTO 12-->
-            <div
-              class="bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
 
-              <img src="{{ url_for('static', filename='image/solda.jpg') }}" alt="Alicate"
+            <div
+              class="product-card bg-white shadow rounded p-4 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+              <img src="{{ url_for('static', filename='image/solda.jpg') }}" alt="Soldador 400W"
                 class="w-full h-40 object-contain mb-2">
               <h3 class="font-semibold text-gray-700 mb-1 truncate">Soldador 400W</h3>
               <p class="text-gray-500 text-sm line-through">S/ 400.00</p>
               <p class="text-gray-900 font-bold">S/ 320.00</p>
               <button
-                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300 hover:animate-bounce">
-                <span>Agregar Carrito</span>
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </button>
+                class="mt-2 w-full bg-black text-white py-2 rounded flex justify-center items-center gap-2 hover:bg-yellow-500 transition duration-300"><span>Agregar
+                  Carrito</span></button>
             </div>
+
           </div>
         </div>
-        <section />
+
+        
+      </section>
+
     </div>
 
 
